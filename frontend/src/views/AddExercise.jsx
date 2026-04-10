@@ -41,29 +41,29 @@ export default function AddExercise() {
   }
 
   return (
-    <div className="min-h-screen p-4 pb-32 md:pb-6 animate-fade-in">
+    <div className="page-shell">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <button
             onClick={() => navigate('/rutinas')}
-            className="flex items-center gap-2 text-[#1E40AF] hover:text-[#00BFFF] transition mb-4"
+            className="flex items-center gap-2 btn-ghost mb-4"
           >
             <ArrowLeft size={20} />
             <span>Volver a Rutinas</span>
           </button>
-          <h1 className="text-3xl font-black text-[#F3F4F6] flex items-center gap-3">
-            <Dumbbell className="text-[#00BFFF]" size={36} />
+          <h1 className="title-screen flex items-center gap-3">
+            <Dumbbell className="text-cyan" size={36} />
             Agregar Nuevo Ejercicio
           </h1>
         </div>
 
         {/* Formulario */}
-        <div className="bg-gradient-to-br from-[#1a2942] to-[#0f1729] rounded-xl shadow-2xl p-6 md:p-8 border-2 border-[#1E40AF]">
+        <div className="surface-panel p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Nombre del Ejercicio */}
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="name" className="label-dark">
                 Nombre del Ejercicio *
               </label>
               <input
@@ -73,14 +73,14 @@ export default function AddExercise() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="Ej: Burpees, Sentadillas, Plancha..."
               />
             </div>
 
             {/* Unidad de Medida */}
             <div>
-              <label htmlFor="unidad" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="unidad" className="label-dark">
                 Unidad de Medida *
               </label>
               <CustomSelect
@@ -107,7 +107,7 @@ export default function AddExercise() {
             {/* Distancia (para km o metros) */}
             {(formData.unidad === 'km' || formData.unidad === 'metros') && (
               <div>
-                <label htmlFor="distancia" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="distancia" className="label-dark">
                   Distancia Predeterminada
                 </label>
                 <input
@@ -116,7 +116,7 @@ export default function AddExercise() {
                   type="text"
                   value={formData.distancia}
                   onChange={handleChange}
-                  className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                   placeholder="Ej: 5, 10, 21..."
                 />
                 <p className="text-sm text-[#9CA3AF] mt-2">
@@ -128,7 +128,7 @@ export default function AddExercise() {
             {/* Duración (para tiempo) */}
             {(formData.unidad === 'segundos' || formData.unidad === 'minutos' || formData.unidad === 'horas') && (
               <div>
-                <label htmlFor="duracion" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="duracion" className="label-dark">
                   Duración Predeterminada
                 </label>
                 <input
@@ -137,7 +137,7 @@ export default function AddExercise() {
                   type="text"
                   value={formData.duracion}
                   onChange={handleChange}
-                  className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                   placeholder="Ej: 30, 5, 90..."
                 />
                 <p className="text-sm text-[#9CA3AF] mt-2">
@@ -148,7 +148,7 @@ export default function AddExercise() {
 
             {/* Descripción de Intervalo */}
             <div>
-              <label htmlFor="descripcionIntervalo" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="descripcionIntervalo" className="label-dark">
                 Descripción de Intervalos
               </label>
               <textarea
@@ -157,7 +157,7 @@ export default function AddExercise() {
                 value={formData.descripcionIntervalo}
                 onChange={handleChange}
                 rows="3"
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="Ej: 3' suaves x 3' fuertes, rápidos km 4, 8 y 12..."
               />
               <p className="text-sm text-[#9CA3AF] mt-2">
@@ -166,14 +166,14 @@ export default function AddExercise() {
             </div>
 
             {/* Vista Previa */}
-            <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-lg p-6 border-2 border-[#00BFFF]">
+            <div className="surface-brand rounded-lg p-6">
               <h3 className="text-sm font-semibold text-gray-300 mb-3">Vista Previa:</h3>
               <div className="space-y-2">
-                <p className="text-xl font-bold text-[#F3F4F6]">
+                <p className="text-xl font-bold text-[#ffffff]">
                   {formData.name || 'Nombre del Ejercicio'}
                 </p>
                 <p className="text-lg text-gray-300">
-                  Unidad: <span className="font-semibold text-[#00BFFF]">
+                  Unidad: <span className="font-semibold text-[#0697d8]">
                     {formData.unidad === 'reps' ? 'Repeticiones' : 
                      formData.unidad === 'segundos' ? 'Segundos' :
                      formData.unidad === 'minutos' ? 'Minutos' :
@@ -184,21 +184,21 @@ export default function AddExercise() {
                 </p>
                 {formData.distancia && (
                   <p className="text-base text-gray-300">
-                    Distancia: <span className="font-semibold text-[#00BFFF]">
+                    Distancia: <span className="font-semibold text-[#0697d8]">
                       {formData.distancia} {formData.unidad === 'km' ? 'km' : 'metros'}
                     </span>
                   </p>
                 )}
                 {formData.duracion && (
                   <p className="text-base text-gray-300">
-                    Duración: <span className="font-semibold text-[#00BFFF]">
+                    Duración: <span className="font-semibold text-[#0697d8]">
                       {formData.duracion} {formData.unidad === 'segundos' ? 'segundos' : formData.unidad === 'minutos' ? 'minutos' : 'horas'}
                     </span>
                   </p>
                 )}
                 {formData.descripcionIntervalo && (
                   <p className="text-base text-gray-300">
-                    Intervalos: <span className="font-semibold text-[#00BFFF]">{formData.descripcionIntervalo}</span>
+                    Intervalos: <span className="font-semibold text-[#0697d8]">{formData.descripcionIntervalo}</span>
                   </p>
                 )}
               </div>
@@ -210,14 +210,14 @@ export default function AddExercise() {
                 type="button"
                 onClick={() => navigate('/rutinas')}
                 disabled={loading}
-                className="flex-1 bg-gray-700 text-[#F3F4F6] font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition disabled:opacity-50"
+                className="flex-1 btn-secondary disabled:opacity-50"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-[#00BFFF] to-[#1E40AF] text-white font-bold py-3 px-6 rounded-lg hover:shadow-xl transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 btn-primary disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>

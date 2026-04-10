@@ -2,8 +2,10 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react'
 import { personasAPI, ejerciciosAPI, rutinasAPI } from '../services/api'
 import Modal from '../components/Modal'
 import Toast from '../components/Toast'
+import { mockStudents, mockExercises, mockSavedRoutines, mockMyRoutines } from '../mocks/uiMockData'
 
 const AppContext = createContext()
+const USE_UI_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
 
 export const useAppContext = () => {
   const context = useContext(AppContext)
@@ -187,6 +189,16 @@ export const AppProvider = ({ children }) => {
     })
   }
 
+  const loadMockDataByRole = (currentUser) => {
+    if (currentUser?.rol === 'alumno') {
+      setMyRoutines(mockMyRoutines)
+      return
+    }
+    setStudents(mockStudents)
+    setExercises(mockExercises)
+    setSavedRoutines(mockSavedRoutines)
+  }
+
   // Cargar datos del usuario desde localStorage al iniciar
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
@@ -329,6 +341,14 @@ export const AppProvider = ({ children }) => {
   // Cargar datos del backend
   const loadData = async (currentUser = null) => {
     setLoading(true)
+    const userData = currentUser || user
+
+    if (USE_UI_MOCKS) {
+      loadMockDataByRole(userData)
+      setLoading(false)
+      return
+    }
+
     try {
       // Usar el usuario proporcionado o el del estado
       const userData = currentUser || user
@@ -343,6 +363,11 @@ export const AppProvider = ({ children }) => {
       // Si es coach, cargar todos los datos
       // Cargar alumnos
       const alumnos = await personasAPI.getByRol('alumno')
+      if (!alumnos || alumnos.length === 0) {
+        loadMockDataByRole(userData)
+        setLoading(false)
+        return
+      }
       
       // Cargar rutinas asignadas de cada alumno
       const alumnosConRutinas = await Promise.all(
@@ -422,6 +447,8 @@ export const AppProvider = ({ children }) => {
       setSavedRoutines(rutinasConEjercicios)
     } catch (error) {
       console.error('Error loading data:', error)
+      loadMockDataByRole(userData)
+
     } finally {
       setLoading(false)
     }
@@ -575,6 +602,11 @@ export const AppProvider = ({ children }) => {
 
   // Función para cargar detalles completos de un alumno específico
   const loadStudentDetails = async (idPersona) => {
+    if (USE_UI_MOCKS) {
+      const mockStudent = mockStudents.find((s) => s.idPersona === Number(idPersona))
+      if (mockStudent) return mockStudent
+    }
+
     try {
       const alumno = await personasAPI.getById(idPersona)
       if (!alumno) {
@@ -642,6 +674,10 @@ export const AppProvider = ({ children }) => {
       return studentData
     } catch (error) {
       console.error('Error loading student details:', error)
+      const mockStudent = mockStudents.find((s) => s.idPersona === Number(idPersona))
+      if (mockStudent) {
+        return mockStudent
+      }
       throw error
     }
   }
@@ -979,6 +1015,11 @@ export const AppProvider = ({ children }) => {
 
   // Función para cargar rutinas del alumno logueado
   const loadMyRoutines = async (currentUser = null) => {
+    if (USE_UI_MOCKS) {
+      setMyRoutines(mockMyRoutines)
+      return
+    }
+
     try {
       // Usar el usuario proporcionado o el del estado
       const userData = currentUser || user
@@ -1039,8 +1080,8 @@ export const AppProvider = ({ children }) => {
       setLoading(false)
     } catch (error) {
       console.error('Error loading my routines:', error)
+      setMyRoutines(mockMyRoutines)
       setLoading(false)
-      throw error
     }
   }
 

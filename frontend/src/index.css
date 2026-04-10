@@ -1,286 +1,296 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Inter:wght@400;600;700&display=swap');
+
+@theme {
+  /* === PALETA CRONOS TEAM === */
+  --color-primary: #e91a20;
+  --color-success: #41bc7b;
+  --color-brandBlue: #0697d8;
+  --color-cyan: #0697d8;
+  --color-cyanDeep: #1e1e1e;
+
+  /* Superficies */
+  --color-bg: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-background: #1e1e1e;
+  --color-surface-dark: #1e1e1e;
+  --color-surface-deep: #262626;
+
+  /* Textos y Bordes */
+  --color-text: #1e1e1e;
+  --color-text-muted: #6b7280;
+  --color-border: #9ca3af;
+  --color-text-on-dark: #ffffff;
+  --color-border-accent: #0697d8;
+
+  /* Tipografías */
+  --font-display: "Fugaz One", cursive;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
 
 @layer base {
-  :root {
-    /* Palette (stored as RGB triplets to allow alpha control) */
-    --color-text-dark: 30 30 30; /* #1e1e1e */
-    --color-primary: 233 26 32;  /* #e91a20 */
-    --color-success: 65 188 123; /* #41bc7b */
-    --color-bg: 255 255 255;     /* white */
-
-    /* Design tokens */
-    --radius-md: 0.5rem;
-  }
-
-  /* Base element styles using the design tokens */
   html, body {
-    color: rgb(var(--color-text-dark));
-    background-color: rgb(var(--color-bg));
-    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-on-dark);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(circle at 10% 10%, rgba(6, 151, 216, 0.14), transparent 40%), radial-gradient(circle at 90% 90%, rgba(65, 188, 123, 0.08), transparent 35%);
+  }
+
+  #root {
+    min-height: 100vh;
   }
 
   :focus-visible {
-    outline: 3px solid rgb(var(--color-primary));
+    outline: 2px solid var(--color-brandBlue);
     outline-offset: 2px;
   }
-}
 
-.racing-sans {
-  font-family: 'Fugaz One', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  letter-spacing: 0.01em;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:active {
-  @apply scale-95 transition-transform;
-}
-
-/* Animaciones personalizadas */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  h1, h2, h3, h4 {
+    letter-spacing: 0.01em;
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
+@layer components {
+  .page-shell {
+    min-height: 100vh;
+    padding: 1rem;
+    padding-bottom: 8rem;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .page-container {
+    max-width: 56rem;
+    margin: 0 auto;
   }
-}
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
+  .surface-panel {
+    background: linear-gradient(135deg, var(--color-surface-dark), var(--color-surface-deep));
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-accent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .surface-brand {
+    background: linear-gradient(135deg, var(--color-brandBlue), var(--color-cyanDeep));
+    border-radius: 1rem;
+    border: 1px solid rgba(6, 151, 216, 0.45);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
-}
 
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  .surface-muted {
+    background: #1e1e1e;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(6, 151, 216, 0.5);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .title-screen {
+    font-size: clamp(1.875rem, 3.5vw, 2.25rem);
+    font-weight: 900;
+    color: var(--color-text-on-dark);
   }
-}
 
-@keyframes toastEnter {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
+  .title-section {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-on-dark);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .label-dark {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-on-dark);
   }
-}
 
-@keyframes toastExit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
+  .btn-primary {
+    background: var(--color-cyan);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
-  to {
-    opacity: 0;
-    transform: translateY(-100%);
+
+  .btn-secondary {
+    background: #1e1e1e;
+    color: var(--color-text-on-dark);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-accent);
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
-}
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
+  .btn-danger {
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  .btn-ghost {
+    color: var(--color-cyan);
+    transition: color 0.2s ease;
   }
-}
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-primary:active,
+  .btn-secondary:active,
+  .btn-danger:active { transform: scale(0.97); }
+  .btn-secondary:hover { border-color: var(--color-cyan); }
+  .btn-danger:hover { opacity: 0.9; }
+  .btn-ghost:hover { color: #fff; }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
   }
-  50% {
-    opacity: 0.8;
+
+  .status-pill-success {
+    background: #41bc7b;
+    color: #fff;
   }
-}
 
-@keyframes pulseBorder {
-  0%, 100% {
-    border-color: rgb(239, 68, 68);
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  .status-pill-warning {
+    background: var(--color-primary);
+    color: #fff;
   }
-  50% {
-    border-color: rgb(220, 38, 38);
-    box-shadow: 0 0 10px 2px rgba(239, 68, 68, 0.5);
+
+  .status-pill-neutral {
+    background: #1e1e1e;
+    color: #fff;
   }
-}
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.5s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.5s ease-out forwards;
-}
-
-.animate-slide-in-up {
-  animation: slideInUp 0.5s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.4s ease-out forwards;
-}
-
-.animate-pulse-border {
-  animation: pulseBorder 2s ease-in-out infinite;
-}
-
-.animate-toast-enter {
-  animation: toastEnter 0.4s ease-out forwards;
-}
-
-.animate-toast-exit {
-  animation: toastExit 0.3s ease-in forwards;
-}
-
-/* Delay para animaciones escalonadas */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-
-/* Transiciones suaves globales */
-* {
-  transition-property: color, background-color, border-color, box-shadow, transform;
-  transition-duration: 200ms;
-  transition-timing-function: ease-in-out;
-}
-
-/* Animación de confetti */
-@keyframes confetti {
-  0% {
-    transform: translateY(-10vh) rotate(0deg);
-    opacity: 1;
+  .modal-shell {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
   }
-  100% {
-    transform: translateY(110vh) rotate(720deg);
-    opacity: 0;
+
+  .modal-panel {
+    width: 100%;
+    max-width: 28rem;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--color-surface-dark), var(--color-surface-deep));
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-accent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
-}
 
-.animate-confetti {
-  animation: confetti 3s ease-out forwards;
-}
-
-/* Efecto 3D para cards con giro */
-.preserve-3d {
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-}
-
-/* ========== ESTILOS PERSONALIZADOS PARA SELECT ========== */
-
-/* Select con estilo customizado - flecha cyan neón */
-select {
-  /* Remover apariencia por defecto del navegador */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  
-  /* Cursor pointer para indicar que es interactivo */
-  cursor: pointer;
-  
-  /* Flecha personalizada con SVG inline - Cyan neón */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300BFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1.25rem;
-  
-  /* Padding extra a la derecha para la flecha */
-  padding-right: 2.75rem !important;
-}
-
-/* Hover effect para select */
-select:hover:not(:disabled) {
-  border-color: #00BFFF;
-  box-shadow: 0 0 0 1px #00BFFF;
-}
-
-/* Focus effect - Glow cyan neón */
-select:focus {
-  outline: none;
-  border-color: #00BFFF;
-  box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.1), 0 0 20px rgba(0, 191, 255, 0.3);
-}
-
-/* Select disabled */
-select:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-}
-
-/* Estilo de las opciones en el dropdown (limitado por el navegador) */
-select option {
-  background-color: #0f1729;
-  color: #F3F4F6;
-  padding: 0.75rem;
-  font-size: 1rem;
-}
-
-/* Firefox - mejor soporte para opciones */
-@-moz-document url-prefix() {
-  select option {
-    padding: 0.5rem;
+  .content-card {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--color-surface-dark), var(--color-surface-deep));
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-accent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
-}
 
-/* Animación sutil al abrir el select */
-select:active {
-  transform: translateY(1px);
-}
+  .metric-card {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, var(--color-brandBlue), var(--color-cyanDeep));
+    border: 1px solid rgba(6, 151, 216, 0.45);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
 
-/* Transición suave para cambios de estado */
-select {
-  transition: all 0.2s ease-in-out;
+  /* ==========================================================================
+     FORMULARIOS MOBILE-FIRST (Inputs y Selects)
+     ========================================================================== */
+  /* ==========================================================================
+     FORMULARIOS MOBILE-FIRST (Inputs y Selects)
+     ========================================================================== */
+  input, select, textarea {
+    background: #1e1e1e;
+    border: 2px solid var(--color-border-accent);
+    color: var(--color-text-on-dark);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 1rem;
+  }
+
+  /* Evita el zoom automático en iOS al hacer tap en un input */
+  @media screen and (max-width: 768px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 3px rgba(6, 151, 216, 0.2);
+  }
+
+  input:disabled, select:disabled {
+    background: #2a2a2a;
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Select flecha SVG dinámica */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230697d8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+    padding-right: 2.5rem;
+  }
+
+  .auth-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(140deg, #1e1e1e 0%, #262626 55%, #1e1e1e 100%);
+  }
+
+  .auth-card {
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--color-surface-dark), var(--color-surface-deep));
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-accent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .form-note {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #9ca3af;
+  }
+
+  .nav-shell {
+    background: rgba(30, 30, 30, 0.92);
+    backdrop-filter: blur(8px);
+    border-color: var(--color-border-accent);
+  }
+
+  @media (min-width: 768px) {
+    .page-shell {
+      padding-bottom: 1.5rem;
+    }
+  }
 }

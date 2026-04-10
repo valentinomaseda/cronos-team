@@ -36,7 +36,7 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
       case 'warning':
         return <AlertTriangle size={24} className="text-yellow-400 flex-shrink-0" strokeWidth={2.5} />
       default:
-        return <Info size={24} className="text-[#00BFFF] flex-shrink-0" strokeWidth={2.5} />
+        return <Info size={24} className="text-cyan flex-shrink-0" strokeWidth={2.5} />
     }
   }
 
@@ -49,7 +49,7 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
       case 'warning':
         return 'from-yellow-600 to-yellow-800'
       default:
-        return 'from-[#1E40AF] to-[#152e6b]'
+        return 'from-cyanDeep to-[#1e1e1e]'
     }
   }
 
@@ -62,7 +62,7 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
       case 'warning':
         return 'border-yellow-400'
       default:
-        return 'border-[#00BFFF]'
+        return 'border-cyan'
     }
   }
 

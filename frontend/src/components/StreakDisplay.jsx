@@ -2,11 +2,11 @@ import { Flame, Calendar } from 'lucide-react'
 
 export default function StreakDisplay({ currentStreak = 0, longestStreak = 0 }) {
   const getFlameColor = () => {
-    if (currentStreak >= 30) return '#FF1493' // Rosa fuerte
-    if (currentStreak >= 14) return '#FF4500' // Rojo-naranja
-    if (currentStreak >= 7) return '#FF6B00' // Naranja
-    if (currentStreak >= 3) return '#FFD700' // Dorado
-    return '#00BFFF' // Azul por defecto
+    if (currentStreak >= 30) return '#e91a20'
+    if (currentStreak >= 14) return '#41bc7b'
+    if (currentStreak >= 7) return '#0697d8'
+    if (currentStreak >= 3) return '#41bc7b'
+    return '#0697d8' // Azul por defecto
   }
 
   const getStreakMessage = () => {
@@ -19,9 +19,9 @@ export default function StreakDisplay({ currentStreak = 0, longestStreak = 0 }) 
   }
 
   return (
-    <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 border border-[#00BFFF]/20">
+    <div className="bg-gradient-to-br from-[#0697d8] to-[#1e1e1e] rounded-xl shadow-lg p-6 border border-[#0697d8]/20">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-[#F3F4F6]">Racha de Entrenamiento</h3>
+        <h3 className="text-lg font-bold text-[#ffffff]">Racha de Entrenamiento</h3>
         <div className="animate-pulse">
           <Flame 
             size={32} 
@@ -34,7 +34,7 @@ export default function StreakDisplay({ currentStreak = 0, longestStreak = 0 }) 
 
       <div className="grid grid-cols-2 gap-4">
         {/* Racha actual */}
-        <div className="bg-[#111827] rounded-lg p-4 text-center border-2" style={{ borderColor: getFlameColor() }}>
+        <div className="bg-[#1e1e1e] rounded-lg p-4 text-center border-2" style={{ borderColor: getFlameColor() }}>
           <p className="text-4xl font-bold mb-1" style={{ color: getFlameColor() }}>
             {currentStreak}
           </p>
@@ -42,10 +42,10 @@ export default function StreakDisplay({ currentStreak = 0, longestStreak = 0 }) 
         </div>
 
         {/* Mejor racha */}
-        <div className="bg-[#111827] rounded-lg p-4 text-center border-2 border-[#FFD700]">
+        <div className="bg-[#1e1e1e] rounded-lg p-4 text-center border-2 border-[#0697d8]">
           <div className="flex items-center justify-center gap-1 mb-1">
-            <Calendar size={20} className="text-[#FFD700]" />
-            <p className="text-4xl font-bold text-[#FFD700]">
+            <Calendar size={20} className="text-[#0697d8]" />
+            <p className="text-4xl font-bold text-[#0697d8]">
               {longestStreak}
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function StreakDisplay({ currentStreak = 0, longestStreak = 0 }) 
               {currentStreak < 7 ? '7 días' : currentStreak < 14 ? '14 días' : '30 días'}
             </span>
           </div>
-          <div className="w-full bg-[#111827] rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-[#1e1e1e] rounded-full h-2 overflow-hidden">
             <div
               className="h-full rounded-full transition-all duration-1000 ease-out"
               style={{

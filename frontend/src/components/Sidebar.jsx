@@ -44,11 +44,11 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="hidden md:flex flex-col w-64 bg-[#111827] border-r border-[#1E40AF] shadow-sm h-[calc(100vh-4rem)] fixed left-0 top-16 animate-slide-in-left">
-      <div className="p-6 border-b border-[#1E40AF] animate-fade-in delay-200">
-        <p className="text-lg font-bold text-[#00BFFF]">{dashboardTitle}</p>
+    <aside className="hidden md:flex flex-col w-64 nav-shell border-r shadow-sm h-[calc(100vh-4rem)] fixed left-0 top-16 animate-slide-in-left">
+      <div className="p-6 border-b border-border-accent animate-fade-in delay-200">
+        <p className="text-lg font-bold text-cyan">{dashboardTitle}</p>
         {user?.nombre && (
-          <p className="text-sm text-[#F3F4F6] mt-1">Bienvenido, {user.nombre.split(' ')[0]}</p>
+          <p className="text-sm text-text-on-dark mt-1">Bienvenido, {user.nombre.split(' ')[0]}</p>
         )}
       </div>
 
@@ -60,8 +60,8 @@ export default function Sidebar() {
             onClick={handleNavigation}
             className={`flex items-center space-x-3 w-full px-4 py-3 rounded-lg transition-all hover:scale-105 active:scale-95 animate-slide-in-left ${
               isActive(path)
-                ? 'bg-[#00BFFF] text-[#111827] shadow-md'
-                : 'text-[#F3F4F6] hover:bg-[#1E40AF]'
+                ? 'bg-cyan text-[#1e1e1e] shadow-md'
+                : 'text-text-on-dark hover:bg-cyanDeep'
             }`}
             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
           >
@@ -71,12 +71,12 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-[#1E40AF] space-y-3">
-        <div className="flex items-center space-x-3 p-3 bg-[#1E40AF] rounded-lg">
-          <UserCircle size={32} className="text-[#00BFFF]" strokeWidth={2} />
+      <div className="p-4 border-t border-border-accent space-y-3">
+        <div className="flex items-center space-x-3 p-3 bg-cyanDeep rounded-lg">
+          <UserCircle size={32} className="text-cyan" strokeWidth={2} />
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-sm text-[#F3F4F6] truncate">{user?.nombre || userFallback}</p>
-            <p className="text-xs text-[#00BFFF]">Sesión activa</p>
+            <p className="font-semibold text-sm text-text-on-dark truncate">{user?.nombre || userFallback}</p>
+            <p className="text-xs text-cyan">Sesión activa</p>
           </div>
         </div>
         

@@ -11,7 +11,7 @@ export default function Confetti({ active, onComplete }) {
       id: i,
       left: Math.random() * 100,
       animationDelay: Math.random() * 0.5,
-      backgroundColor: ['#00BFFF', '#00FF88', '#FFD700', '#FF1493', '#9D4EDD'][Math.floor(Math.random() * 5)],
+      backgroundColor: ['#0697d8', '#41bc7b', '#e91a20', '#ffffff', '#1e1e1e'][Math.floor(Math.random() * 5)],
       rotation: Math.random() * 360
     }))
 

@@ -48,7 +48,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
         {/* Botón cerrar */}
         <button
           onClick={onClose}
-          className="absolute -top-12 right-0 text-white hover:text-[#00BFFF] transition-colors z-10"
+          className="absolute -top-12 right-0 text-white hover:text-[#0697d8] transition-colors z-10"
         >
           <X size={32} strokeWidth={2.5} />
         </button>
@@ -66,7 +66,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
           >
             {/* Frente de la card */}
             <div 
-              className="absolute inset-0 backface-hidden bg-gradient-to-br from-[#1a2942] to-[#0f1729] rounded-3xl border-4 flex flex-col items-center justify-center p-8"
+              className="absolute inset-0 backface-hidden bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-3xl border-4 flex flex-col items-center justify-center p-8"
               style={{ 
                 borderColor: achievement.color,
                 transform: 'translateZ(0)',
@@ -79,7 +79,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
                 className="mb-6 animate-bounce"
                 strokeWidth={2}
               />
-              <h2 className="text-3xl font-black text-[#F3F4F6] text-center mb-2">
+              <h2 className="text-3xl font-black text-[#ffffff] text-center mb-2">
                 {achievement.name}
               </h2>
               <div 
@@ -93,7 +93,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
 
             {/* Reverso de la card */}
             <div 
-              className="absolute inset-0 backface-hidden bg-gradient-to-br from-[#0f1729] to-[#1a2942] rounded-3xl border-4 flex flex-col p-8 rotate-y-180"
+              className="absolute inset-0 backface-hidden bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-3xl border-4 flex flex-col p-8 rotate-y-180"
               style={{ 
                 borderColor: achievement.color,
                 transform: 'translateZ(0) rotateY(180deg)',
@@ -108,7 +108,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
                   strokeWidth={2.5}
                 />
                 <div 
-                  className="px-4 py-2 rounded-full text-sm font-bold text-[#111827]"
+                  className="px-4 py-2 rounded-full text-sm font-bold text-[#1e1e1e]"
                   style={{ backgroundColor: achievement.color }}
                 >
                   Desbloqueado
@@ -117,7 +117,7 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
 
               {/* Contenido */}
               <div className="flex-1 flex flex-col justify-center">
-                <h3 className="text-2xl font-black text-[#F3F4F6] mb-4">
+                <h3 className="text-2xl font-black text-[#ffffff] mb-4">
                   {achievement.name}
                 </h3>
                 
@@ -126,12 +126,12 @@ export default function AchievementModal({ achievement, isOpen, onClose }) {
                   style={{ backgroundColor: achievement.color }}
                 />
 
-                <p className="text-lg text-[#F3F4F6] leading-relaxed mb-6">
+                <p className="text-lg text-[#ffffff] leading-relaxed mb-6">
                   {achievement.description}
                 </p>
 
                 {/* Requisito */}
-                <div className="bg-[#111827] rounded-xl p-4 border-2" style={{ borderColor: achievement.color }}>
+                <div className="bg-[#1e1e1e] rounded-xl p-4 border-2" style={{ borderColor: achievement.color }}>
                   <p className="text-sm text-gray-400 mb-1">Requisito:</p>
                   <p className="text-base font-semibold" style={{ color: achievement.color }}>
                     {achievement.description}

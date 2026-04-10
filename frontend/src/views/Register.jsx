@@ -60,33 +60,33 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] flex items-center justify-center p-4 overflow-y-auto">
+    <div className="auth-shell overflow-y-auto">
       <div className="w-full max-w-2xl my-8 animate-fade-in">
         {/* Header */}
         <div className="text-center mb-8">
           <button
             onClick={() => navigate('/login')}
-            className="flex items-center gap-2 text-[#00BFFF] hover:text-[#1E40AF] transition mb-6 mx-auto"
+            className="flex items-center gap-2 btn-ghost mb-6 mx-auto"
           >
             <ArrowLeft size={20} />
             <span>Volver al inicio de sesión</span>
           </button>
           
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#00BFFF] to-[#1E40AF] rounded-full mb-4 shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#0697d8] to-[#0697d8] rounded-full mb-4 shadow-2xl">
             <UserPlus className="text-white" size={40} strokeWidth={2.5} />
           </div>
-          <h1 className="text-4xl font-black text-[#F3F4F6] mb-2">
+          <h1 className="title-screen mb-2">
             Registro de Alumno
           </h1>
           <p className="text-lg text-gray-400">Crea tu cuenta para acceder a tus rutinas</p>
         </div>
 
         {/* Formulario */}
-        <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-2xl shadow-2xl p-8 border-2 border-[#00BFFF]">
+        <div className="surface-brand p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Nombre */}
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="name" className="label-dark">
                 <User className="inline mr-2" size={16} />
                 Nombre Completo *
               </label>
@@ -98,14 +98,14 @@ export default function Register() {
                 onChange={handleChange}
                 required
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                 placeholder="Juan Pérez"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="email" className="label-dark">
                 <Mail className="inline mr-2" size={16} />
                 Correo Electrónico *
               </label>
@@ -117,14 +117,14 @@ export default function Register() {
                 onChange={handleChange}
                 required
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                 placeholder="juan@email.com"
               />
             </div>
 
             {/* Género */}
             <div>
-              <label htmlFor="gender" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="gender" className="label-dark">
                 Género *
               </label>
               <CustomSelect
@@ -144,7 +144,7 @@ export default function Register() {
             {/* Contraseñas */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="password" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="password" className="label-dark">
                   <Lock className="inline mr-2" size={16} />
                   Contraseña *
                 </label>
@@ -157,13 +157,13 @@ export default function Register() {
                     onChange={handleChange}
                     required
                     disabled={loading}
-                    className="w-full px-4 pr-12 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                    className="w-full px-4 pr-12 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#00BFFF] transition"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#ffffff] transition"
                     disabled={loading}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -172,7 +172,7 @@ export default function Register() {
               </div>
 
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="confirmPassword" className="label-dark">
                   <Lock className="inline mr-2" size={16} />
                   Confirmar Contraseña *
                 </label>
@@ -185,13 +185,13 @@ export default function Register() {
                     onChange={handleChange}
                     required
                     disabled={loading}
-                    className="w-full px-4 pr-12 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                    className="w-full px-4 pr-12 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#00BFFF] transition"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#ffffff] transition"
                     disabled={loading}
                   >
                     {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -202,7 +202,7 @@ export default function Register() {
 
             {/* Teléfono */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="phone" className="label-dark">
                 <Phone className="inline mr-2" size={16} />
                 Teléfono
               </label>
@@ -213,7 +213,7 @@ export default function Register() {
                 value={formData.phone}
                 onChange={handleChange}
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                 placeholder="+54 9 11 1234-5678"
               />
             </div>
@@ -221,7 +221,7 @@ export default function Register() {
             {/* Peso y Altura */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="weight" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="weight" className="label-dark">
                   Peso (kg)
                 </label>
                 <input
@@ -232,13 +232,13 @@ export default function Register() {
                   value={formData.weight}
                   onChange={handleChange}
                   disabled={loading}
-                  className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                  className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                   placeholder="70"
                 />
               </div>
 
               <div>
-                <label htmlFor="height" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="height" className="label-dark">
                   Altura (cm)
                 </label>
                 <input
@@ -248,7 +248,7 @@ export default function Register() {
                   value={formData.height}
                   onChange={handleChange}
                   disabled={loading}
-                  className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                  className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                   placeholder="175"
                 />
               </div>
@@ -256,7 +256,7 @@ export default function Register() {
 
             {/* Fecha de Nacimiento */}
             <div>
-              <label htmlFor="birthDate" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="birthDate" className="label-dark">
                 <Calendar className="inline mr-2" size={16} />
                 Fecha de Nacimiento
               </label>
@@ -267,13 +267,13 @@ export default function Register() {
                 value={formData.birthDate}
                 onChange={handleChange}
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] disabled:opacity-50"
+                className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] disabled:opacity-50"
               />
             </div>
 
             {/* Dirección */}
             <div>
-              <label htmlFor="address" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="address" className="label-dark">
                 <MapPin className="inline mr-2" size={16} />
                 Dirección
               </label>
@@ -284,7 +284,7 @@ export default function Register() {
                 value={formData.address}
                 onChange={handleChange}
                 disabled={loading}
-                className="w-full px-4 py-3 border-2 border-[#111827] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent bg-[#111827] text-[#F3F4F6] placeholder-gray-500 disabled:opacity-50"
+                className="w-full px-4 py-3 border-2 border-[#1e1e1e] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent bg-[#1e1e1e] text-[#ffffff] placeholder-gray-500 disabled:opacity-50"
                 placeholder="Av. Corrientes 1234, CABA"
               />
             </div>
@@ -293,7 +293,7 @@ export default function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#00BFFF] to-[#1E40AF] text-white font-bold py-3 px-6 rounded-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg mt-6"
+              className="w-full btn-primary flex items-center justify-center gap-2 text-lg mt-6"
             >
               {loading ? (
                 <>
@@ -310,12 +310,12 @@ export default function Register() {
           </form>
 
           {/* Link a login */}
-          <div className="mt-6 pt-6 border-t border-[#111827]">
-            <p className="text-sm text-gray-400 text-center">
+          <div className="mt-6 pt-6 border-t border-[#1e1e1e]">
+            <p className="text-sm text-gray-300 text-center">
               ¿Ya tienes una cuenta?{' '}
               <button
                 onClick={() => navigate('/login')}
-                className="text-[#00BFFF] hover:text-[#1E40AF] font-semibold transition"
+                className="text-cyan hover:text-white font-semibold transition"
               >
                 Inicia sesión aquí
               </button>

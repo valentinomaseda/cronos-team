@@ -119,9 +119,9 @@ const ResetPassword = () => {
   // Vista de carga
   if (estado === 'verificando') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+      <div className="auth-shell px-4">
         <div className="text-center">
-          <Loader2 className="w-16 h-16 text-[#00BFFF] animate-spin mx-auto mb-4" />
+          <Loader2 className="w-16 h-16 text-[#0697d8] animate-spin mx-auto mb-4" />
           <p className="text-lg text-gray-300">Verificando token...</p>
         </div>
       </div>
@@ -131,18 +131,18 @@ const ResetPassword = () => {
   // Vista de éxito
   if (estado === 'exito') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+      <div className="auth-shell px-4">
         <div className="max-w-md w-full">
-          <div className="bg-[#1a2942] rounded-2xl shadow-2xl p-8 border border-[#1E40AF]">
+          <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <CheckCircle className="w-16 h-16 text-green-500" />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white">¡Contraseña Actualizada!</h2>
+                <h2 className="text-2xl font-bold text-text-on-dark">¡Contraseña Actualizada!</h2>
                 <p className="text-gray-300">{mensaje}</p>
               </div>
               <button
                 onClick={() => navigate('/login')}
-                className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-[#0a0e1a] font-bold py-3 px-6 rounded-lg transition-all duration-200 active:scale-95"
+                className="w-full btn-primary"
               >
                 Volver al Login
               </button>
@@ -156,25 +156,25 @@ const ResetPassword = () => {
   // Vista de error de token
   if (estado === 'error') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+      <div className="auth-shell px-4">
         <div className="max-w-md w-full">
-          <div className="bg-[#1a2942] rounded-2xl shadow-2xl p-8 border border-[#1E40AF]">
+          <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <XCircle className="w-16 h-16 text-red-500" />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white">Error</h2>
+                <h2 className="text-2xl font-bold text-text-on-dark">Error</h2>
                 <p className="text-gray-300">{error}</p>
               </div>
               <div className="flex flex-col space-y-3 w-full">
                 <button
                   onClick={() => navigate('/forgot-password')}
-                  className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-[#0a0e1a] font-bold py-3 px-6 rounded-lg transition-all duration-200 active:scale-95"
+                  className="w-full btn-primary"
                 >
                   Solicitar Nuevo Enlace
                 </button>
                 <button
                   onClick={() => window.location.href = '/'}
-                  className="w-full bg-[#1E40AF] hover:bg-[#1e3a8a] text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 active:scale-95"
+                  className="w-full btn-secondary"
                 >
                   Ir al Login
                 </button>
@@ -188,15 +188,15 @@ const ResetPassword = () => {
 
   // Formulario de reset
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+    <div className="auth-shell px-4">
       <div className="max-w-md w-full">
-        <div className="bg-[#1a2942] rounded-2xl shadow-2xl p-8 border border-[#1E40AF]">
+        <div className="auth-card">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold racing-sans text-white mb-2">
+            <h1 className="text-3xl font-bold racing-sans text-text-on-dark mb-2">
               NUEVA CONTRASEÑA
             </h1>
-            <div className="h-1 w-20 bg-[#00BFFF] mx-auto rounded"></div>
+            <div className="h-1 w-20 bg-[#0697d8] mx-auto rounded"></div>
             <p className="text-gray-400 mt-4">
               Ingresa tu nueva contraseña para tu cuenta
             </p>
@@ -213,7 +213,7 @@ const ResetPassword = () => {
 
             {/* Nueva Contraseña */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label htmlFor="password" className="label-dark">
                 Nueva Contraseña
               </label>
               <div className="relative">
@@ -224,7 +224,7 @@ const ResetPassword = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Mínimo 6 caracteres"
-                  className="w-full pl-11 pr-12 py-3 bg-[#0a0e1a] border border-[#1E40AF] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                  className="w-full pl-11 pr-12 py-3"
                   disabled={estado === 'procesando'}
                   autoFocus
                 />
@@ -240,7 +240,7 @@ const ResetPassword = () => {
 
             {/* Confirmar Contraseña */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label htmlFor="confirmPassword" className="label-dark">
                 Confirmar Contraseña
               </label>
               <div className="relative">
@@ -251,7 +251,7 @@ const ResetPassword = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Repite la contraseña"
-                  className="w-full pl-11 pr-12 py-3 bg-[#0a0e1a] border border-[#1E40AF] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                  className="w-full pl-11 pr-12 py-3"
                   disabled={estado === 'procesando'}
                 />
                 <button
@@ -280,7 +280,7 @@ const ResetPassword = () => {
             <button
               type="submit"
               disabled={estado === 'procesando'}
-              className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-[#0a0e1a] font-bold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 flex items-center justify-center space-x-2"
+              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {estado === 'procesando' ? (
                 <>
@@ -303,7 +303,7 @@ const ResetPassword = () => {
             ¿Problemas?{' '}
             <button
               onClick={() => navigate('/forgot-password')}
-              className="text-[#00BFFF] hover:underline font-semibold"
+              className="text-cyan hover:underline font-semibold"
             >
               Solicitar Nuevo Enlace
             </button>

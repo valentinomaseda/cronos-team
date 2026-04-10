@@ -1,10 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 
-/**
- * Select personalizado con estética racing/neón
- * Reemplaza el select nativo con control total sobre opciones
- */
 const CustomSelect = ({ 
   value, 
   onChange, 
@@ -77,12 +73,12 @@ const CustomSelect = ({
         disabled={disabled}
         className={`
           w-full px-4 py-3 
-          border-2 border-[#1E40AF] rounded-lg 
-          bg-[#0f1729] text-[#F3F4F6] 
+          border-2 border-border-accent rounded-lg 
+          bg-surface-deep text-text-on-dark 
           flex items-center justify-between
           transition-all duration-200
-          ${!disabled && 'hover:border-[#00BFFF] hover:shadow-[0_0_0_1px_#00BFFF] cursor-pointer'}
-          ${isOpen && !disabled && 'border-[#00BFFF] shadow-[0_0_0_2px_rgba(0,191,255,0.1),0_0_20px_rgba(0,191,255,0.3)]'}
+          ${!disabled && 'hover:border-cyan hover:shadow-[0_0_0_1px_#0697d8] cursor-pointer'}
+          ${isOpen && !disabled && 'border-cyan shadow-[0_0_0_2px_rgba(0,191,255,0.1),0_0_20px_rgba(0,191,255,0.3)]'}
           ${disabled && 'opacity-50 cursor-not-allowed'}
         `}
       >
@@ -94,7 +90,7 @@ const CustomSelect = ({
           className={`
             transition-transform duration-200 
             ${isOpen ? 'rotate-180' : 'rotate-0'}
-            ${disabled ? 'text-gray-400' : 'text-[#00BFFF]'}
+            ${disabled ? 'text-gray-400' : 'text-cyan'}
           `}
         />
       </button>
@@ -104,8 +100,8 @@ const CustomSelect = ({
         <div 
           className="
             absolute z-[9999] w-full mt-2 
-            bg-[#0f1729] 
-            border-2 border-[#00BFFF] 
+            bg-surface-deep 
+            border-2 border-cyan 
             rounded-lg 
             shadow-[0_0_30px_rgba(0,191,255,0.4)]
             max-h-60 overflow-y-auto
@@ -119,12 +115,12 @@ const CustomSelect = ({
               onClick={() => handleSelect(option)}
               className={`
                 w-full px-4 py-3 
-                text-left text-[#F3F4F6]
+                text-left text-text-on-dark
                 transition-all duration-150
-                ${index !== options.length - 1 && 'border-b border-[#1E40AF]'}
+                ${index !== options.length - 1 && 'border-b border-border-accent'}
                 ${value === option.value 
-                  ? 'bg-[#1E40AF] text-[#00BFFF] font-semibold' 
-                  : 'hover:bg-[#1a2942] hover:text-[#00BFFF]'
+                  ? 'bg-cyanDeep text-cyan font-semibold' 
+                  : 'hover:bg-surface-dark hover:text-cyan'
                 }
               `}
             >

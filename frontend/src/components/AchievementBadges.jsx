@@ -8,7 +8,7 @@ const achievements = [
     name: 'Primera Rutina',
     description: 'Completaste tu primera rutina',
     icon: Star,
-    color: '#FFD700',
+    color: '#0697d8',
     requirement: (stats) => stats.completedRoutines >= 1
   },
   {
@@ -16,7 +16,7 @@ const achievements = [
     name: 'Racha de Fuego',
     description: '7 días consecutivos entrenando',
     icon: Flame,
-    color: '#FF4500',
+    color: '#e91a20',
     requirement: (stats) => stats.currentStreak >= 7
   },
   {
@@ -24,7 +24,7 @@ const achievements = [
     name: 'Dedicación',
     description: '10 rutinas completadas',
     icon: Target,
-    color: '#00BFFF',
+    color: '#0697d8',
     requirement: (stats) => stats.completedRoutines >= 10
   },
   {
@@ -32,7 +32,7 @@ const achievements = [
     name: 'Imparable',
     description: '25 rutinas completadas',
     icon: Zap,
-    color: '#9D4EDD',
+    color: '#0697d8',
     requirement: (stats) => stats.completedRoutines >= 25
   },
   {
@@ -40,7 +40,7 @@ const achievements = [
     name: 'Campeón',
     description: '50 rutinas completadas',
     icon: Trophy,
-    color: '#FFD700',
+    color: '#41bc7b',
     requirement: (stats) => stats.completedRoutines >= 50
   },
   {
@@ -48,7 +48,7 @@ const achievements = [
     name: 'Perfeccionista',
     description: '80% de tasa de completado',
     icon: Award,
-    color: '#00FF88',
+    color: '#41bc7b',
     requirement: (stats) => stats.completionRate >= 80
   },
   {
@@ -56,7 +56,7 @@ const achievements = [
     name: 'Guerrero',
     description: '30 días consecutivos',
     icon: Medal,
-    color: '#FF6B6B',
+    color: '#e91a20',
     requirement: (stats) => stats.currentStreak >= 30
   },
   {
@@ -64,7 +64,7 @@ const achievements = [
     name: 'Progreso Excelente',
     description: 'Promedio de rendimiento 90%+',
     icon: TrendingUp,
-    color: '#00BFFF',
+    color: '#0697d8',
     requirement: (stats) => stats.averagePerformance >= 90
   }
 ]
@@ -97,10 +97,10 @@ export default function AchievementBadges({ stats = {} }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold text-[#F3F4F6]">
+        <h3 className="text-lg font-bold text-[#ffffff]">
           Logros Desbloqueados
         </h3>
-        <div className="px-3 py-1 bg-[#00BFFF] text-[#111827] rounded-full font-bold text-sm">
+        <div className="px-3 py-1 bg-[#0697d8] text-[#1e1e1e] rounded-full font-bold text-sm">
           {unlockedAchievements.length}/{achievements.length}
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function AchievementBadges({ stats = {} }) {
               <button
                 key={achievement.id}
                 onClick={() => handleAchievementClick(achievement)}
-                className="bg-gradient-to-br from-[#1a2942] to-[#0f1729] p-4 rounded-xl border-2 animate-scale-in hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] p-4 rounded-xl border-2 animate-scale-in hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 style={{ borderColor: achievement.color }}
               >
                 <Icon
@@ -123,7 +123,7 @@ export default function AchievementBadges({ stats = {} }) {
                   className="mx-auto mb-2"
                   strokeWidth={2.5}
                 />
-                <p className="text-xs font-bold text-center text-[#F3F4F6] leading-tight">
+                <p className="text-xs font-bold text-center text-[#ffffff] leading-tight">
                   {achievement.name}
                 </p>
               </button>
@@ -142,7 +142,7 @@ export default function AchievementBadges({ stats = {} }) {
               return (
                 <div
                   key={achievement.id}
-                  className="bg-[#111827] p-4 rounded-xl border-2 border-gray-700 opacity-50 hover:opacity-70 transition-opacity cursor-not-allowed"
+                  className="bg-[#1e1e1e] p-4 rounded-xl border-2 border-gray-700 opacity-50 hover:opacity-70 transition-opacity cursor-not-allowed"
                   title={`🔒 ${achievement.description}`}
                 >
                   <Icon

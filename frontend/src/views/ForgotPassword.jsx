@@ -56,19 +56,19 @@ const ForgotPassword = () => {
 
   if (estado === 'enviado') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+      <div className="auth-shell px-4">
         <div className="max-w-md w-full">
-          <div className="bg-[#1a2942] rounded-2xl shadow-2xl p-8 border border-[#1E40AF]">
+          <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
               <CheckCircle className="w-16 h-16 text-green-500" />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white">Email Enviado</h2>
+                <h2 className="text-2xl font-bold text-text-on-dark">Email Enviado</h2>
                 <p className="text-gray-300">
-                  Si existe una cuenta con el email <span className="font-semibold text-[#00BFFF]">{email}</span>, 
+                  Si existe una cuenta con el email <span className="font-semibold text-[#0697d8]">{email}</span>, 
                   recibirás instrucciones para restablecer tu contraseña.
                 </p>
                 <div className="pt-4">
-                  <div className="bg-[#1E40AF] rounded-lg p-4 text-sm text-gray-200">
+                  <div className="bg-[#0697d8] rounded-lg p-4 text-sm text-gray-200">
                     <p className="font-semibold mb-2">📧 Revisa tu bandeja de entrada</p>
                     <p>El enlace de recuperación expirará en 1 hora.</p>
                   </div>
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
 
               <button
                 onClick={() => navigate('/login')}
-                className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-[#0a0e1a] font-bold py-3 px-6 rounded-lg transition-all duration-200 active:scale-95"
+                className="w-full btn-primary"
               >
                 Volver al Login
               </button>
@@ -96,15 +96,15 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#111827] to-[#1a2942] flex items-center justify-center px-4">
+    <div className="auth-shell px-4">
       <div className="max-w-md w-full">
-        <div className="bg-[#1a2942] rounded-2xl shadow-2xl p-8 border border-[#1E40AF]">
+        <div className="auth-card">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold racing-sans text-white mb-2">
+            <h1 className="text-3xl font-bold racing-sans text-text-on-dark mb-2">
               RECUPERAR CONTRASEÑA
             </h1>
-            <div className="h-1 w-20 bg-[#00BFFF] mx-auto rounded"></div>
+            <div className="h-1 w-20 bg-[#0697d8] mx-auto rounded"></div>
             <p className="text-gray-400 mt-4">
               Ingresa tu email y te enviaremos instrucciones para restablecer tu contraseña.
             </p>
@@ -121,7 +121,7 @@ const ForgotPassword = () => {
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-2">
+              <label htmlFor="email" className="label-dark">
                 Email
               </label>
               <div className="relative">
@@ -132,7 +132,7 @@ const ForgotPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
-                  className="w-full pl-11 pr-4 py-3 bg-[#0a0e1a] border border-[#1E40AF] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#00BFFF] focus:ring-2 focus:ring-[#00BFFF]/20 transition-all duration-200"
+                  className="w-full pl-11 pr-4 py-3"
                   disabled={estado === 'enviando'}
                   autoFocus
                 />
@@ -143,7 +143,7 @@ const ForgotPassword = () => {
             <button
               type="submit"
               disabled={estado === 'enviando'}
-              className="w-full bg-[#00BFFF] hover:bg-[#0099CC] text-[#0a0e1a] font-bold py-3 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 flex items-center justify-center space-x-2"
+              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {estado === 'enviando' ? (
                 <>
@@ -162,7 +162,7 @@ const ForgotPassword = () => {
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className="w-full flex items-center justify-center space-x-2 bg-[#1E40AF] hover:bg-[#1e3a8a] text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 active:scale-95"
+              className="w-full flex items-center justify-center space-x-2 btn-secondary"
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Volver al Login</span>
@@ -176,7 +176,7 @@ const ForgotPassword = () => {
             ¿Recordaste tu contraseña?{' '}
             <button
               onClick={() => navigate('/login')}
-              className="text-[#00BFFF] hover:underline font-semibold"
+              className="text-cyan hover:underline font-semibold"
             >
               Inicia Sesión
             </button>

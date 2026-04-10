@@ -59,18 +59,18 @@ export default function StudentProgress() {
   }))
 
   return (
-    <div className="p-4 space-y-6 pb-32 md:pb-6 animate-fade-in">
+    <div className="page-shell space-y-6">
       {/* Header */}
       <div className="flex items-center space-x-3 animate-slide-in-left">
-        <TrendingUp className="text-[#00BFFF]" size={28} strokeWidth={2.5} />
-        <h2 className="text-2xl font-bold text-[#F3F4F6]">Mi Progreso</h2>
+        <TrendingUp className="text-cyan" size={28} strokeWidth={2.5} />
+        <h2 className="title-section">Mi Progreso</h2>
       </div>
 
       {/* Tarjetas de estadísticas */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-4 animate-scale-in border border-[#00BFFF]/20">
-          <p className="text-xs text-[#00BFFF] mb-1">Total Rutinas</p>
-          <p className="text-3xl font-bold text-[#F3F4F6]">{totalRoutines}</p>
+        <div className="metric-card animate-scale-in">
+          <p className="text-xs text-cyan mb-1">Total Rutinas</p>
+          <p className="text-3xl font-bold text-text-on-dark">{totalRoutines}</p>
         </div>
 
         <div className="bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-lg p-4 animate-scale-in border border-green-400/20" style={{ animationDelay: '100ms' }}>
@@ -90,14 +90,14 @@ export default function StudentProgress() {
       </div>
 
       {/* Tasa de completado */}
-      <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 animate-slide-in-up delay-200 border border-[#00BFFF]/20">
+      <div className="surface-brand p-6 animate-slide-in-up delay-200">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-[#F3F4F6]">Tasa de Completado</h3>
-          <span className="text-3xl font-bold text-[#00BFFF]">{completionRate}%</span>
+          <h3 className="text-lg font-bold text-[#ffffff]">Tasa de Completado</h3>
+          <span className="text-3xl font-bold text-[#0697d8]">{completionRate}%</span>
         </div>
-        <div className="w-full bg-[#111827] rounded-full h-4 overflow-hidden">
+        <div className="w-full bg-[#1e1e1e] rounded-full h-4 overflow-hidden">
           <div
-            className="bg-gradient-to-r from-[#00BFFF] to-[#00FF88] h-full rounded-full transition-all duration-1000 ease-out"
+            className="bg-gradient-to-r from-[#0697d8] to-[#41bc7b] h-full rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${completionRate}%` }}
           ></div>
         </div>
@@ -109,30 +109,30 @@ export default function StudentProgress() {
       {/* Racha eliminada para MVP */}
 
       {/* Sistema de logros */}
-      <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 animate-slide-in-up delay-300 border border-[#00BFFF]/20">
+      <div className="surface-brand p-6 animate-slide-in-up delay-300">
         <AchievementBadges stats={achievementStats} />
       </div>
 
       {/* Gráfico de rendimiento a lo largo del tiempo */}
       {progressData.length > 0 && (
-        <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 animate-slide-in-up delay-300 border border-[#00BFFF]/20">
-          <h3 className="text-lg font-bold text-[#F3F4F6] mb-4">Rendimiento en el Tiempo</h3>
-          <div className="bg-[#111827] rounded-lg p-4" style={{ height: '300px' }}>
+        <div className="surface-brand p-6 animate-slide-in-up delay-300">
+          <h3 className="text-lg font-bold text-[#ffffff] mb-4">Rendimiento en el Tiempo</h3>
+          <div className="bg-[#1e1e1e] rounded-lg p-4" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={progressData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1E40AF" />
-                <XAxis dataKey="sesion" stroke="#F3F4F6" />
-                <YAxis domain={[0, 100]} stroke="#F3F4F6" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#0697d8" />
+                <XAxis dataKey="sesion" stroke="#ffffff" />
+                <YAxis domain={[0, 100]} stroke="#ffffff" />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#111827', border: '2px solid #00BFFF', borderRadius: '8px' }}
-                  labelStyle={{ color: '#F3F4F6' }}
+                  contentStyle={{ backgroundColor: '#1e1e1e', border: '2px solid #0697d8', borderRadius: '8px' }}
+                  labelStyle={{ color: '#ffffff' }}
                 />
                 <Line
                   type="monotone"
                   dataKey="rendimiento"
-                  stroke="#00BFFF"
+                  stroke="#0697d8"
                   strokeWidth={3}
-                  dot={{ fill: '#00BFFF', r: 6 }}
+                  dot={{ fill: '#0697d8', r: 6 }}
                   activeDot={{ r: 8 }}
                 />
               </LineChart>
@@ -146,21 +146,21 @@ export default function StudentProgress() {
 
       {/* Gráfico de barras por mes */}
       {monthlyData.length > 0 && (
-        <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 animate-slide-in-up delay-400 border border-[#00BFFF]/20">
-          <h3 className="text-lg font-bold text-[#F3F4F6] mb-4">Rutinas por Mes</h3>
-          <div className="bg-[#111827] rounded-lg p-4" style={{ height: '300px' }}>
+        <div className="surface-brand p-6 animate-slide-in-up delay-400">
+          <h3 className="text-lg font-bold text-[#ffffff] mb-4">Rutinas por Mes</h3>
+          <div className="bg-[#1e1e1e] rounded-lg p-4" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1E40AF" />
-                <XAxis dataKey="mes" stroke="#F3F4F6" />
-                <YAxis stroke="#F3F4F6" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#0697d8" />
+                <XAxis dataKey="mes" stroke="#ffffff" />
+                <YAxis stroke="#ffffff" />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#111827', border: '2px solid #00BFFF', borderRadius: '8px' }}
-                  labelStyle={{ color: '#F3F4F6' }}
+                  contentStyle={{ backgroundColor: '#1e1e1e', border: '2px solid #0697d8', borderRadius: '8px' }}
+                  labelStyle={{ color: '#ffffff' }}
                 />
-                <Bar dataKey="completadas" fill="#10B981" name="Completadas" />
-                <Bar dataKey="incompletas" fill="#F59E0B" name="Incompletas" />
-                <Bar dataKey="pendientes" fill="#6B7280" name="Pendientes" />
+                <Bar dataKey="completadas" fill="#41bc7b" name="Completadas" />
+                <Bar dataKey="incompletas" fill="#e91a20" name="Incompletas" />
+                <Bar dataKey="pendientes" fill="#0697d8" name="Pendientes" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -168,10 +168,10 @@ export default function StudentProgress() {
       )}
 
       {/* Historial reciente */}
-      <div className="bg-gradient-to-br from-[#1E40AF] to-[#152e6b] rounded-xl shadow-lg p-6 animate-slide-in-up delay-500 border border-[#00BFFF]/20">
+      <div className="surface-brand p-6 animate-slide-in-up delay-500">
         <div className="flex items-center space-x-2 mb-4">
-          <Calendar className="text-[#00BFFF]" size={20} />
-          <h3 className="text-lg font-bold text-[#F3F4F6]">Actividad Reciente</h3>
+          <Calendar className="text-[#0697d8]" size={20} />
+          <h3 className="text-lg font-bold text-[#ffffff]">Actividad Reciente</h3>
         </div>
         
         {myRoutines && myRoutines.length > 0 ? (
@@ -182,11 +182,11 @@ export default function StudentProgress() {
               .map((routine, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-[#111827] rounded-lg"
+                  className="flex items-center justify-between p-3 bg-[#1e1e1e] rounded-lg"
                 >
                   <div className="flex-1">
-                    <p className="font-semibold text-[#F3F4F6]">{routine.name}</p>
-                    <p className="text-xs text-[#00BFFF]">{routine.date}</p>
+                    <p className="font-semibold text-[#ffffff]">{routine.name}</p>
+                    <p className="text-xs text-[#0697d8]">{routine.date}</p>
                   </div>
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                     routine.status === 'completada' ? 'bg-green-600 text-white' :

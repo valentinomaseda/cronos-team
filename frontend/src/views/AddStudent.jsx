@@ -43,29 +43,29 @@ export default function AddStudent() {
   }
 
   return (
-    <div className="min-h-screen p-4 pb-40 md:pb-6 animate-fade-in">
+    <div className="page-shell pb-40 md:pb-6">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <button
             onClick={() => navigate('/alumnos')}
-            className="flex items-center gap-2 text-[#1E40AF] hover:text-[#00BFFF] transition mb-4"
+            className="flex items-center gap-2 btn-ghost mb-4"
           >
             <ArrowLeft size={20} />
             <span>Volver a Alumnos</span>
           </button>
-          <h1 className="text-3xl font-black text-[#F3F4F6] flex items-center gap-3">
-            <UserPlus className="text-[#00BFFF]" size={36} />
+          <h1 className="title-screen flex items-center gap-3">
+            <UserPlus className="text-cyan" size={36} />
             Agregar Nuevo Alumno
           </h1>
         </div>
 
         {/* Formulario */}
-        <div className="bg-gradient-to-br from-[#1a2942] to-[#0f1729] rounded-xl shadow-2xl p-6 md:p-8 border-2 border-[#1E40AF]">
+        <div className="surface-panel p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Nombre */}
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="name" className="label-dark">
                 Nombre Completo *
               </label>
               <input
@@ -75,14 +75,14 @@ export default function AddStudent() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="Juan Pérez"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="email" className="label-dark">
                 Correo Electrónico *
               </label>
               <input
@@ -92,14 +92,14 @@ export default function AddStudent() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="juan@email.com"
               />
             </div>
 
             {/* Género */}
             <div>
-              <label htmlFor="gender" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="gender" className="label-dark">
                 Género *
               </label>
               <CustomSelect
@@ -118,7 +118,7 @@ export default function AddStudent() {
 
             {/* Teléfono */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="phone" className="label-dark">
                 Teléfono
               </label>
               <input
@@ -127,7 +127,7 @@ export default function AddStudent() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="+54 9 11 1234-5678"
               />
             </div>
@@ -135,7 +135,7 @@ export default function AddStudent() {
             {/* Peso y Altura */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="weight" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="weight" className="label-dark">
                   Peso (kg)
                 </label>
                 <input
@@ -145,13 +145,13 @@ export default function AddStudent() {
                   step="0.1"
                   value={formData.weight}
                   onChange={handleChange}
-                  className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                   placeholder="70"
                 />
               </div>
 
               <div>
-                <label htmlFor="height" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+                <label htmlFor="height" className="label-dark">
                   Altura (cm)
                 </label>
                 <input
@@ -160,7 +160,7 @@ export default function AddStudent() {
                   type="number"
                   value={formData.height}
                   onChange={handleChange}
-                  className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                   placeholder="175"
                 />
               </div>
@@ -168,7 +168,7 @@ export default function AddStudent() {
 
             {/* Fecha de Nacimiento */}
             <div>
-              <label htmlFor="birthDate" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="birthDate" className="label-dark">
                 Fecha de Nacimiento
               </label>
               <input
@@ -177,13 +177,13 @@ export default function AddStudent() {
                 type="date"
                 value={formData.birthDate}
                 onChange={handleChange}
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
               />
             </div>
 
             {/* Dirección */}
             <div>
-              <label htmlFor="address" className="block text-sm font-semibold text-[#F3F4F6] mb-2">
+              <label htmlFor="address" className="label-dark">
                 Dirección
               </label>
               <input
@@ -192,7 +192,7 @@ export default function AddStudent() {
                 type="text"
                 value={formData.address}
                 onChange={handleChange}
-                className="text-[#F3F4F6] bg-[#0f1729] w-full px-4 py-3 border-2 border-[#1E40AF] rounded-lg focus:ring-2 focus:ring-[#00BFFF] focus:border-transparent text-lg"
+                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
                 placeholder="Av. Corrientes 1234, CABA"
               />
             </div>
@@ -203,14 +203,14 @@ export default function AddStudent() {
                 type="button"
                 onClick={() => navigate('/alumnos')}
                 disabled={loading}
-                className="flex-1 bg-gray-700 text-[#F3F4F6] font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition disabled:opacity-50"
+                className="flex-1 btn-secondary disabled:opacity-50"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-[#00BFFF] to-[#1E40AF] text-white font-bold py-3 px-6 rounded-lg hover:shadow-xl transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="flex-1 btn-primary disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
