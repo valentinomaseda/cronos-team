@@ -46,9 +46,9 @@ export default function Sidebar() {
   return (
     <aside className="hidden md:flex flex-col w-64 nav-shell border-r shadow-sm h-[calc(100vh-4rem)] fixed left-0 top-16 animate-slide-in-left">
       <div className="p-6 border-b border-border-accent animate-fade-in delay-200">
-        <p className="text-lg font-bold text-cyan">{dashboardTitle}</p>
+        <p className="text-lg font-bold text-brandBlue">{dashboardTitle}</p>
         {user?.nombre && (
-          <p className="text-sm text-text-on-dark mt-1">Bienvenido, {user.nombre.split(' ')[0]}</p>
+          <p className="text-sm text-text mt-1">Bienvenido, {user.nombre.split(' ')[0]}</p>
         )}
       </div>
 
@@ -60,8 +60,8 @@ export default function Sidebar() {
             onClick={handleNavigation}
             className={`flex items-center space-x-3 w-full px-4 py-3 rounded-lg transition-all hover:scale-105 active:scale-95 animate-slide-in-left ${
               isActive(path)
-                ? 'bg-cyan text-[#1e1e1e] shadow-md'
-                : 'text-text-on-dark hover:bg-cyanDeep'
+                ? 'bg-cyan text-text shadow-md'
+                : 'text-text hover:bg-bg'
             }`}
             style={{ animationDelay: `${0.3 + index * 0.1}s` }}
           >
@@ -72,17 +72,17 @@ export default function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-border-accent space-y-3">
-        <div className="flex items-center space-x-3 p-3 bg-cyanDeep rounded-lg">
-          <UserCircle size={32} className="text-cyan" strokeWidth={2} />
+        <div className="flex items-center space-x-3 p-3 bg-bg rounded-lg">
+          <UserCircle size={32} className="text-brandBlue" strokeWidth={2} />
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-sm text-text-on-dark truncate">{user?.nombre || userFallback}</p>
-            <p className="text-xs text-cyan">Sesión activa</p>
+            <p className="font-semibold text-sm text-text truncate">{user?.nombre || userFallback}</p>
+            <p className="text-xs text-brandBlue">Sesión activa</p>
           </div>
         </div>
         
         <button
           onClick={handleLogout}
-          className="flex items-center space-x-2 w-full px-4 py-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-all"
+          className="flex items-center space-x-2 w-full px-4 py-2 rounded-lg text-primary hover:bg-primary/10 transition-all"
         >
           <LogOut size={20} />
           <span className="font-semibold text-sm">Cerrar Sesión</span>

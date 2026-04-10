@@ -40,36 +40,36 @@ export default function PendingEmailVerification({ email, nombre }) {
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo y Título */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-35 h-35 bg-gradient-to-br from-[#0697d8] to-[#0697d8] rounded-full mb-4 shadow-2xl">
+          <div className="inline-flex items-center justify-center w-35 h-35 bg-bg-surface rounded-full mb-4 shadow-md border border-border">
             <img src="/logo.jpg" alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="title-screen mb-2">
             Verifica tu Email
           </h1>
-          <p className="text-lg text-gray-400">Revisa tu bandeja de entrada</p>
+          <p className="text-lg text-text-muted">Revisa tu bandeja de entrada</p>
         </div>
 
         {/* Card Principal */}
         <div className="surface-brand p-8">
           {/* Icono */}
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-[#0697d8]/20 rounded-full flex items-center justify-center">
-              <Mail className="w-10 h-10 text-[#0697d8]" />
+            <div className="w-20 h-20 bg-bg rounded-full border border-border flex items-center justify-center">
+              <Mail className="text-brandBlue" size={24} strokeWidth={2} />
             </div>
           </div>
 
           {/* Mensaje Principal */}
           <div className="text-center space-y-4 mb-6">
-            <h2 className="text-2xl font-bold text-text-on-dark">
+            <h2 className="text-2xl font-bold text-text">
               ¡Hola {nombre || 'Usuario'}!
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-text-muted text-lg">
               Hemos enviado un correo de verificación a:
             </p>
-            <p className="text-[#0697d8] font-semibold text-lg break-all">
+            <p className="text-brandBlue font-semibold text-lg break-all">
               {email}
             </p>
-            <p className="text-gray-400 text-sm">
+            <p className="text-text-muted text-sm">
               Haz clic en el enlace del correo para activar tu cuenta y poder iniciar sesión.
             </p>
           </div>
@@ -77,8 +77,8 @@ export default function PendingEmailVerification({ email, nombre }) {
           {/* Mensaje de éxito si se reenvió */}
           {emailEnviado && (
             <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-lg flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-              <p className="text-green-300 text-sm">
+              <CheckCircle className="text-success flex-shrink-0" size={24} strokeWidth={2} />
+              <p className="text-success text-sm">
                 ¡Email reenviado! Revisa tu bandeja de entrada.
               </p>
             </div>
@@ -90,16 +90,16 @@ export default function PendingEmailVerification({ email, nombre }) {
             <button
               onClick={reenviarEmail}
               disabled={enviandoDeNuevo}
-              className="w-full flex items-center justify-center gap-2 btn-primary disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+              className="w-full flex items-center justify-center gap-2 btn-primary py-3 active:scale-95 transition-transform touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {enviandoDeNuevo ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="animate-spin" size={24} strokeWidth={2} />
                   <span>Enviando...</span>
                 </>
               ) : (
                 <>
-                  <RefreshCw className="w-5 h-5" />
+                  <RefreshCw size={24} strokeWidth={2} />
                   <span>Reenviar Email de Verificación</span>
                 </>
               )}
@@ -114,28 +114,28 @@ export default function PendingEmailVerification({ email, nombre }) {
                   navigate('/login');
                 }
               }}
-              className="w-full flex items-center justify-center gap-2 btn-secondary"
+              className="w-full flex items-center justify-center gap-2 btn-secondary py-3 active:scale-95 transition-transform touch-manipulation"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft size={24} strokeWidth={2} />
               <span>Volver al Login</span>
             </button>
           </div>
 
           {/* Nota adicional */}
-          <div className="mt-6 p-4 bg-[#1e1e1e] rounded-lg">
-            <p className="text-gray-400 text-sm text-center">
-              <strong className="text-gray-300">Nota:</strong> Si no ves el correo, revisa tu carpeta de spam o correo no deseado.
+          <div className="mt-6 p-4 bg-bg rounded-lg border border-border">
+            <p className="text-text-muted text-sm text-center">
+              <strong className="text-text">Nota:</strong> Si no ves el correo, revisa tu carpeta de spam o correo no deseado.
             </p>
           </div>
         </div>
 
         {/* Footer */}
         <div className="text-center mt-6">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-text-muted">
             ¿Problemas con la verificación?{' '}
             <button
               onClick={() => alert('Contacta a soporte: valentinomaseda@outlook.com')}
-              className="text-cyan hover:underline font-semibold"
+              className="text-brandBlue hover:underline font-semibold"
             >
               Contacta Soporte
             </button>

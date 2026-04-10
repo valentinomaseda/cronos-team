@@ -60,15 +60,15 @@ const ForgotPassword = () => {
         <div className="max-w-md w-full">
           <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <CheckCircle className="w-16 h-16 text-green-500" />
+              <CheckCircle className="text-success" size={24} strokeWidth={2} />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-text-on-dark">Email Enviado</h2>
-                <p className="text-gray-300">
-                  Si existe una cuenta con el email <span className="font-semibold text-[#0697d8]">{email}</span>, 
+                <h2 className="text-2xl font-bold text-text">Email Enviado</h2>
+                <p className="text-text-muted">
+                  Si existe una cuenta con el email <span className="font-semibold text-brandBlue">{email}</span>, 
                   recibirás instrucciones para restablecer tu contraseña.
                 </p>
                 <div className="pt-4">
-                  <div className="bg-[#0697d8] rounded-lg p-4 text-sm text-gray-200">
+                  <div className="bg-bg rounded-lg p-4 text-sm text-text-muted border border-border">
                     <p className="font-semibold mb-2">📧 Revisa tu bandeja de entrada</p>
                     <p>El enlace de recuperación expirará en 1 hora.</p>
                   </div>
@@ -77,14 +77,14 @@ const ForgotPassword = () => {
 
               <button
                 onClick={() => navigate('/login')}
-                className="w-full btn-primary"
+                className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation"
               >
                 Volver al Login
               </button>
 
               <button
                 onClick={() => setEstado('formulario')}
-                className="text-sm text-gray-400 hover:text-gray-300 underline"
+                className="text-sm text-text-muted hover:text-text underline"
               >
                 ¿No recibiste el email? Reintentar
               </button>
@@ -101,11 +101,11 @@ const ForgotPassword = () => {
         <div className="auth-card">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold racing-sans text-text-on-dark mb-2">
+            <h1 className="text-3xl font-bold racing-sans text-text mb-2">
               RECUPERAR CONTRASEÑA
             </h1>
-            <div className="h-1 w-20 bg-[#0697d8] mx-auto rounded"></div>
-            <p className="text-gray-400 mt-4">
+            <div className="h-1 w-20 bg-brandBlue mx-auto rounded"></div>
+            <p className="text-text-muted mt-4">
               Ingresa tu email y te enviaremos instrucciones para restablecer tu contraseña.
             </p>
           </div>
@@ -114,7 +114,7 @@ const ForgotPassword = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Error */}
             {error && (
-              <div className="bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-primary/10 border border-primary text-primary px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -125,7 +125,7 @@ const ForgotPassword = () => {
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted" size={24} strokeWidth={2} />
                 <input
                   type="email"
                   id="email"
@@ -143,16 +143,16 @@ const ForgotPassword = () => {
             <button
               type="submit"
               disabled={estado === 'enviando'}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {estado === 'enviando' ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="animate-spin" size={24} strokeWidth={2} />
                   <span>Enviando...</span>
                 </>
               ) : (
                 <>
-                  <Mail className="w-5 h-5" />
+                  <Mail size={24} strokeWidth={2} />
                   <span>Enviar Instrucciones</span>
                 </>
               )}
@@ -162,9 +162,9 @@ const ForgotPassword = () => {
             <button
               type="button"
               onClick={() => navigate('/login')}
-              className="w-full flex items-center justify-center space-x-2 btn-secondary"
+              className="w-full flex items-center justify-center space-x-2 btn-secondary py-3 active:scale-95 transition-transform touch-manipulation"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft size={24} strokeWidth={2} />
               <span>Volver al Login</span>
             </button>
           </form>
@@ -172,11 +172,11 @@ const ForgotPassword = () => {
 
         {/* Info adicional */}
         <div className="text-center mt-6">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-text-muted">
             ¿Recordaste tu contraseña?{' '}
             <button
               onClick={() => navigate('/login')}
-              className="text-cyan hover:underline font-semibold"
+              className="text-brandBlue hover:underline font-semibold"
             >
               Inicia Sesión
             </button>

@@ -62,29 +62,29 @@ export default function StudentProgress() {
     <div className="page-shell space-y-6">
       {/* Header */}
       <div className="flex items-center space-x-3 animate-slide-in-left">
-        <TrendingUp className="text-cyan" size={28} strokeWidth={2.5} />
+        <TrendingUp className="text-brandBlue" size={28} strokeWidth={2.5} />
         <h2 className="title-section">Mi Progreso</h2>
       </div>
 
       {/* Tarjetas de estadísticas */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="metric-card animate-scale-in">
-          <p className="text-xs text-cyan mb-1">Total Rutinas</p>
-          <p className="text-3xl font-bold text-text-on-dark">{totalRoutines}</p>
+          <p className="text-xs text-brandBlue mb-1">Total Rutinas</p>
+          <p className="text-3xl font-bold text-text">{totalRoutines}</p>
         </div>
 
-        <div className="bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-lg p-4 animate-scale-in border border-green-400/20" style={{ animationDelay: '100ms' }}>
+        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '100ms' }}>
           <p className="text-xs text-green-200 mb-1">Completadas</p>
           <p className="text-3xl font-bold text-white">{completedRoutines}</p>
         </div>
 
-        <div className="bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-xl shadow-lg p-4 animate-scale-in border border-yellow-400/20" style={{ animationDelay: '200ms' }}>
-          <p className="text-xs text-yellow-200 mb-1">Incompletas</p>
+        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '200ms' }}>
+          <p className="text-xs text-text-muted mb-1">Incompletas</p>
           <p className="text-3xl font-bold text-white">{incompleteRoutines}</p>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl shadow-lg p-4 animate-scale-in border border-gray-400/20" style={{ animationDelay: '300ms' }}>
-          <p className="text-xs text-gray-200 mb-1">Pendientes</p>
+        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '300ms' }}>
+          <p className="text-xs text-text-muted mb-1">Pendientes</p>
           <p className="text-3xl font-bold text-white">{pendingRoutines}</p>
         </div>
       </div>
@@ -92,16 +92,16 @@ export default function StudentProgress() {
       {/* Tasa de completado */}
       <div className="surface-brand p-6 animate-slide-in-up delay-200">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-[#ffffff]">Tasa de Completado</h3>
-          <span className="text-3xl font-bold text-[#0697d8]">{completionRate}%</span>
+          <h3 className="text-lg font-bold text-text">Tasa de Completado</h3>
+          <span className="text-3xl font-bold text-brandBlue">{completionRate}%</span>
         </div>
-        <div className="w-full bg-[#1e1e1e] rounded-full h-4 overflow-hidden">
+        <div className="w-full bg-bg rounded-full h-4 overflow-hidden">
           <div
-            className="bg-gradient-to-r from-[#0697d8] to-[#41bc7b] h-full rounded-full transition-all duration-1000 ease-out"
+            className="bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${completionRate}%` }}
           ></div>
         </div>
-        <p className="text-sm text-gray-400 mt-2">
+        <p className="text-sm text-text-muted mt-2">
           {completedRoutines} de {totalRoutines} rutinas completadas
         </p>
       </div>
@@ -116,29 +116,29 @@ export default function StudentProgress() {
       {/* Gráfico de rendimiento a lo largo del tiempo */}
       {progressData.length > 0 && (
         <div className="surface-brand p-6 animate-slide-in-up delay-300">
-          <h3 className="text-lg font-bold text-[#ffffff] mb-4">Rendimiento en el Tiempo</h3>
-          <div className="bg-[#1e1e1e] rounded-lg p-4" style={{ height: '300px' }}>
+          <h3 className="text-lg font-bold text-text mb-4">Rendimiento en el Tiempo</h3>
+          <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={progressData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#0697d8" />
-                <XAxis dataKey="sesion" stroke="#ffffff" />
-                <YAxis domain={[0, 100]} stroke="#ffffff" />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
+                <XAxis dataKey="sesion" stroke="var(--color-text)" />
+                <YAxis domain={[0, 100]} stroke="var(--color-text)" />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#1e1e1e', border: '2px solid #0697d8', borderRadius: '8px' }}
-                  labelStyle={{ color: '#ffffff' }}
+                  contentStyle={{ backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', borderRadius: '8px' }}
+                  labelStyle={{ color: 'var(--color-text)' }}
                 />
                 <Line
                   type="monotone"
                   dataKey="rendimiento"
-                  stroke="#0697d8"
+                  stroke="var(--color-brandBlue)"
                   strokeWidth={3}
-                  dot={{ fill: '#0697d8', r: 6 }}
+                  dot={{ fill: 'var(--color-brandBlue)', r: 6 }}
                   activeDot={{ r: 8 }}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
-          <p className="text-xs text-gray-400 mt-2 text-center">
+          <p className="text-xs text-text-muted mt-2 text-center">
             100% = Completada | 50% = Incompleta
           </p>
         </div>
@@ -147,20 +147,20 @@ export default function StudentProgress() {
       {/* Gráfico de barras por mes */}
       {monthlyData.length > 0 && (
         <div className="surface-brand p-6 animate-slide-in-up delay-400">
-          <h3 className="text-lg font-bold text-[#ffffff] mb-4">Rutinas por Mes</h3>
-          <div className="bg-[#1e1e1e] rounded-lg p-4" style={{ height: '300px' }}>
+          <h3 className="text-lg font-bold text-text mb-4">Rutinas por Mes</h3>
+          <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#0697d8" />
-                <XAxis dataKey="mes" stroke="#ffffff" />
-                <YAxis stroke="#ffffff" />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
+                <XAxis dataKey="mes" stroke="var(--color-text)" />
+                <YAxis stroke="var(--color-text)" />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#1e1e1e', border: '2px solid #0697d8', borderRadius: '8px' }}
-                  labelStyle={{ color: '#ffffff' }}
+                  contentStyle={{ backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', borderRadius: '8px' }}
+                  labelStyle={{ color: 'var(--color-text)' }}
                 />
-                <Bar dataKey="completadas" fill="#41bc7b" name="Completadas" />
-                <Bar dataKey="incompletas" fill="#e91a20" name="Incompletas" />
-                <Bar dataKey="pendientes" fill="#0697d8" name="Pendientes" />
+                <Bar dataKey="completadas" fill="var(--color-success)" name="Completadas" />
+                <Bar dataKey="incompletas" fill="var(--color-primary)" name="Incompletas" />
+                <Bar dataKey="pendientes" fill="var(--color-brandBlue)" name="Pendientes" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -170,8 +170,8 @@ export default function StudentProgress() {
       {/* Historial reciente */}
       <div className="surface-brand p-6 animate-slide-in-up delay-500">
         <div className="flex items-center space-x-2 mb-4">
-          <Calendar className="text-[#0697d8]" size={20} />
-          <h3 className="text-lg font-bold text-[#ffffff]">Actividad Reciente</h3>
+          <Calendar className="text-brandBlue" size={20} />
+          <h3 className="text-lg font-bold text-text">Actividad Reciente</h3>
         </div>
         
         {myRoutines && myRoutines.length > 0 ? (
@@ -182,16 +182,16 @@ export default function StudentProgress() {
               .map((routine, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-[#1e1e1e] rounded-lg"
+                  className="flex items-center justify-between p-3 bg-bg rounded-lg"
                 >
                   <div className="flex-1">
-                    <p className="font-semibold text-[#ffffff]">{routine.name}</p>
-                    <p className="text-xs text-[#0697d8]">{routine.date}</p>
+                    <p className="font-semibold text-text">{routine.name}</p>
+                    <p className="text-xs text-brandBlue">{routine.date}</p>
                   </div>
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                    routine.status === 'completada' ? 'bg-green-600 text-white' :
-                    routine.status === 'incompleta' ? 'bg-yellow-600 text-white' :
-                    'bg-gray-600 text-white'
+                    routine.status === 'completada' ? 'bg-success text-white' :
+                    routine.status === 'incompleta' ? 'bg-primary text-white' :
+                    'bg-bg text-text'
                   }`}>
                     {routine.status === 'completada' ? 'Completada' :
                      routine.status === 'incompleta' ? 'Incompleta' :
@@ -201,7 +201,7 @@ export default function StudentProgress() {
               ))}
           </div>
         ) : (
-          <p className="text-gray-400 text-center py-8">
+          <p className="text-text-muted text-center py-8">
             No hay actividad registrada aún
           </p>
         )}

@@ -30,39 +30,26 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
   const getIcon = () => {
     switch (type) {
       case 'success':
-        return <CheckCircle2 size={24} className="text-green-400 flex-shrink-0" strokeWidth={2.5} />
+        return <CheckCircle2 size={24} className="text-success flex-shrink-0" strokeWidth={2.5} />
       case 'error':
-        return <AlertCircle size={24} className="text-red-400 flex-shrink-0" strokeWidth={2.5} />
+        return <AlertCircle size={24} className="text-primary flex-shrink-0" strokeWidth={2.5} />
       case 'warning':
         return <AlertTriangle size={24} className="text-yellow-400 flex-shrink-0" strokeWidth={2.5} />
       default:
-        return <Info size={24} className="text-cyan flex-shrink-0" strokeWidth={2.5} />
+        return <Info size={24} className="text-brandBlue flex-shrink-0" strokeWidth={2.5} />
     }
   }
 
-  const getBgColor = () => {
+  const getSurfaceClass = () => {
     switch (type) {
       case 'success':
-        return 'from-green-600 to-green-800'
+        return 'bg-bg-surface border-success/40'
       case 'error':
-        return 'from-red-600 to-red-800'
+        return 'bg-bg-surface border-primary/40'
       case 'warning':
-        return 'from-yellow-600 to-yellow-800'
+        return 'bg-bg-surface border-primary/40'
       default:
-        return 'from-cyanDeep to-[#1e1e1e]'
-    }
-  }
-
-  const getBorderColor = () => {
-    switch (type) {
-      case 'success':
-        return 'border-green-400'
-      case 'error':
-        return 'border-red-400'
-      case 'warning':
-        return 'border-yellow-400'
-      default:
-        return 'border-cyan'
+        return 'bg-bg-surface border-border'
     }
   }
 
@@ -70,8 +57,8 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 pointer-events-none">
       <div 
         className={`
-          bg-gradient-to-r ${getBgColor()} 
-          text-white rounded-xl shadow-lg border-2 ${getBorderColor()}
+          ${getSurfaceClass()}
+          text-text rounded-xl shadow-lg border
           max-w-md w-full p-4 pointer-events-auto
           flex items-center gap-3
           ${isExiting ? 'animate-toast-exit' : 'animate-toast-enter'}
@@ -85,7 +72,7 @@ export default function Toast({ isOpen, onClose, message, type = 'info', duratio
 
         <button
           onClick={handleClose}
-          className="p-1 hover:bg-white hover:bg-opacity-20 rounded-full transition-all active:scale-95 flex-shrink-0"
+          className="p-1 hover:bg-bg rounded-full transition-all active:scale-95 flex-shrink-0"
         >
           <X size={20} strokeWidth={2.5} />
         </button>

@@ -55,7 +55,7 @@ export default function AddStudent() {
             <span>Volver a Alumnos</span>
           </button>
           <h1 className="title-screen flex items-center gap-3">
-            <UserPlus className="text-cyan" size={36} />
+            <UserPlus className="text-brandBlue" size={36} />
             Agregar Nuevo Alumno
           </h1>
         </div>
@@ -75,7 +75,7 @@ export default function AddStudent() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="Juan Pérez"
               />
             </div>
@@ -92,7 +92,7 @@ export default function AddStudent() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="juan@email.com"
               />
             </div>
@@ -127,7 +127,7 @@ export default function AddStudent() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="+54 9 11 1234-5678"
               />
             </div>
@@ -145,7 +145,7 @@ export default function AddStudent() {
                   step="0.1"
                   value={formData.weight}
                   onChange={handleChange}
-                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                   placeholder="70"
                 />
               </div>
@@ -160,7 +160,7 @@ export default function AddStudent() {
                   type="number"
                   value={formData.height}
                   onChange={handleChange}
-                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                   placeholder="175"
                 />
               </div>
@@ -177,7 +177,7 @@ export default function AddStudent() {
                 type="date"
                 value={formData.birthDate}
                 onChange={handleChange}
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
               />
             </div>
 
@@ -192,7 +192,7 @@ export default function AddStudent() {
                 type="text"
                 value={formData.address}
                 onChange={handleChange}
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="Av. Corrientes 1234, CABA"
               />
             </div>

@@ -286,8 +286,8 @@ export default function RoutineBuilder() {
   return (
     <div className="page-shell space-y-6">
       <div className="flex items-center space-x-3 mb-6">
-        <Dumbbell className="text-cyan" size={28} strokeWidth={2.5} />
-        <h2 className="font-display text-2xl text-text-on-dark uppercase">
+        <Dumbbell className="text-brandBlue" size={28} strokeWidth={2.5} />
+        <h2 className="font-display text-2xl text-text uppercase">
           Constructor de Rutinas
         </h2>
       </div>
@@ -313,7 +313,7 @@ export default function RoutineBuilder() {
             </label>
             <button
               onClick={addExercise}
-              className="flex items-center space-x-1 text-cyan font-bold py-1 px-3 rounded hover:bg-cyan/10 transition-colors"
+              className="flex items-center space-x-1 text-brandBlue font-bold py-1 px-3 rounded hover:bg-cyan/10 transition-colors"
             >
               <Plus size={18} strokeWidth={2.5} /> <span>Agregar</span>
             </button>
@@ -335,7 +335,7 @@ export default function RoutineBuilder() {
                   <div className="absolute top-4 right-4">
                     <button
                       onClick={() => removeExercise(instance.id)}
-                      className="text-gray-400 hover:text-primary transition-colors"
+                      className="text-text-muted hover:text-primary transition-colors"
                     >
                       <Trash2 size={20} />
                     </button>
@@ -347,7 +347,7 @@ export default function RoutineBuilder() {
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-xs font-semibold text-text-on-dark mb-1">
+                      <label className="block text-xs font-semibold text-text mb-1">
                         Ejercicio
                       </label>
                       <div className="flex flex-col sm:flex-row gap-2">
@@ -365,7 +365,7 @@ export default function RoutineBuilder() {
                             label: ex.name,
                           }))}
                         />
-                        <span className="inline-flex items-center justify-center px-4 py-2 bg-cyanDeep text-cyan rounded-md text-xs font-bold shrink-0">
+                        <span className="inline-flex items-center justify-center px-4 py-2 bg-bg text-brandBlue rounded-md text-xs font-bold shrink-0">
                           {getTypeLabel(instance.type)}
                         </span>
                       </div>
@@ -375,7 +375,7 @@ export default function RoutineBuilder() {
                       className={`grid ${instance.type === "reps" ? "grid-cols-2" : "grid-cols-1"} gap-3`}
                     >
                       <div>
-                        <label className="block text-xs font-semibold text-text-on-dark mb-1">
+                        <label className="block text-xs font-semibold text-text mb-1">
                           {getValueLabel(instance.type)}
                         </label>
                         <input
@@ -396,7 +396,7 @@ export default function RoutineBuilder() {
                       </div>
                       {instance.type === "reps" && (
                         <div>
-                          <label className="block text-xs font-semibold text-text-on-dark mb-1">
+                          <label className="block text-xs font-semibold text-text mb-1">
                             Series
                           </label>
                           <input

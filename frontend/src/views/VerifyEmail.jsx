@@ -86,7 +86,7 @@ const VerifyEmail = () => {
         <div className="auth-card p-6 sm:p-8">
           {/* Header */}
           <div className="text-center mb-6">
-            <h1 className="text-2xl sm:text-3xl font-bold text-text-on-dark mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-text mb-2">
               VERIFICACIÓN DE EMAIL
             </h1>
             <div className="h-1 w-20 bg-primary mx-auto rounded"></div>
@@ -96,20 +96,20 @@ const VerifyEmail = () => {
           <div className="flex flex-col items-center justify-center space-y-4">
             {estado === 'verificando' && (
               <>
-                <Loader2 className="w-12 h-12 sm:w-16 sm:h-16 text-primary animate-spin" />
-                <p className="text-base sm:text-lg text-gray-300">Verificando tu email...</p>
+                <Loader2 className="text-primary animate-spin" size={24} strokeWidth={2} />
+                <p className="text-base sm:text-lg text-text-muted">Verificando tu email...</p>
               </>
             )}
 
             {estado === 'exito' && (
               <>
-                <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500" />
+                <CheckCircle className="text-success" size={24} strokeWidth={2} />
                 <div className="text-center space-y-4 w-full">
-                  <p className="text-lg sm:text-xl font-bold text-text-on-dark">¡Email Verificado!</p>
-                  <p className="text-sm sm:text-base text-gray-300">{mensaje}</p>
+                  <p className="text-lg sm:text-xl font-bold text-text">¡Email Verificado!</p>
+                  <p className="text-sm sm:text-base text-text-muted">{mensaje}</p>
                   <button
                     onClick={() => navigate('/login')}
-                    className="w-full mt-4 px-6 py-3 btn-primary"
+                    className="w-full mt-4 px-6 py-3 btn-primary active:scale-95 transition-transform touch-manipulation"
                   >
                     Ir al Login
                   </button>
@@ -119,29 +119,29 @@ const VerifyEmail = () => {
 
             {estado === 'error' && (
               <>
-                <XCircle className="w-12 h-12 sm:w-16 sm:h-16 text-red-500" />
+                <XCircle className="text-primary" size={24} strokeWidth={2} />
                 <div className="text-center space-y-3 w-full">
-                  <p className="text-lg sm:text-xl font-bold text-text-on-dark">Error de Verificación</p>
-                  <p className="text-sm sm:text-base text-gray-300 px-2">{mensaje}</p>
+                  <p className="text-lg sm:text-xl font-bold text-text">Error de Verificación</p>
+                  <p className="text-sm sm:text-base text-text-muted px-2">{mensaje}</p>
                   
                   {/* Botones de acción */}
                   <div className="flex flex-col space-y-2 sm:space-y-3 mt-4 sm:mt-6 w-full px-2">
                     <button
                       onClick={reenviarEmail}
                       disabled={enviandoDeNuevo}
-                        className="flex items-center justify-center space-x-2 btn-primary py-2.5 sm:py-3 px-4 sm:px-6 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                      className="flex items-center justify-center space-x-2 btn-primary py-2.5 sm:py-3 px-4 sm:px-6 active:scale-95 transition-transform touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     >
                       {enviandoDeNuevo ? (
-                        <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                        <Loader2 className="animate-spin" size={24} strokeWidth={2} />
                       ) : (
-                        <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <Mail size={24} strokeWidth={2} />
                       )}
                       <span>Reenviar Email</span>
                     </button>
 
                     <button
                       onClick={() => navigate('/login')}
-                      className="btn-secondary py-2.5 sm:py-3 px-4 sm:px-6 text-sm sm:text-base"
+                      className="btn-secondary py-2.5 sm:py-3 px-4 sm:px-6 active:scale-95 transition-transform touch-manipulation text-sm sm:text-base"
                     >
                       Ir al Login
                     </button>
@@ -154,11 +154,11 @@ const VerifyEmail = () => {
 
         {/* Link de ayuda */}
         <div className="text-center mt-6">
-            <p className="text-sm text-gray-300">
+          <p className="text-sm text-text-muted">
             ¿Necesitas ayuda?{' '}
             <button
               onClick={() => alert('Contacta a soporte@adrenalina-extrema.com')}
-              className="text-cyan hover:underline font-semibold"
+              className="text-brandBlue hover:underline font-semibold"
             >
               Contacta Soporte
             </button>

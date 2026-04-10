@@ -224,14 +224,14 @@ export default function StudentDetail() {
         return 'border-yellow-400'
       case 'activa':
       default:
-        return 'border-[#0697d8]'
+        return 'border-border'
     }
   }
 
   if (!selectedStudent) {
     return (
       <div className="p-4">
-        <p className="text-center text-gray-500">No se ha seleccionado ningún alumno</p>
+        <p className="text-center text-text-muted">No se ha seleccionado ningún alumno</p>
       </div>
     )
   }
@@ -343,27 +343,27 @@ export default function StudentDetail() {
       <div className="flex items-center space-x-4 animate-slide-in-left">
         <button
           onClick={handleBack}
-          className="p-2 rounded-lg hover:bg-[#0697d8] active:scale-95 transition-all text-[#0697d8]"
+          className="p-2 rounded-lg hover:bg-brandBlue active:scale-95 transition-all text-brandBlue"
         >
           <ArrowLeft size={24} strokeWidth={2.5} />
         </button>
-        <h2 className="text-2xl font-bold text-[#ffffff]">Detalle del Alumno</h2>
+        <h2 className="text-2xl font-bold text-text">Detalle del Alumno</h2>
       </div>
 
       {/* Card del alumno */}
-      <div className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-xl shadow-lg p-6 animate-slide-in-up delay-100 border border-[#0697d8]">
+      <div className="bg-bg-surface rounded-xl shadow-lg p-6 animate-slide-in-up delay-100 border border-border">
         <div className="flex items-center space-x-4">
           <img
             src={selectedStudent.photo}
             alt={selectedStudent.name}
-            className="w-24 h-24 rounded-full border-4 border-[#0697d8]"
+            className="w-24 h-24 rounded-full border-4 border-border"
           />
           <div className="flex-1">
             <div className="flex items-center space-x-3">
-              <h3 className="text-2xl font-bold text-[#0697d8]">{selectedStudent.name}</h3>
+              <h3 className="text-2xl font-bold text-brandBlue">{selectedStudent.name}</h3>
               <button
                 onClick={() => setShowInfoModal(true)}
-                className="p-2 bg-[#0697d8] text-white rounded-full hover:bg-[#0697d8] active:scale-95 transition-all"
+                className="p-2 bg-brandBlue text-white rounded-full hover:bg-brandBlue active:scale-95 transition-all"
                 title="Ver información completa"
               >
                 <Info size={20} strokeWidth={2.5} />
@@ -383,20 +383,20 @@ export default function StudentDetail() {
                   })
                   setShowEditModal(true)
                 }}
-                className="p-2 bg-green-600 text-white rounded-full hover:bg-green-700 active:scale-95 transition-all"
+                className="p-2 bg-success text-white rounded-full hover:bg-success active:scale-95 transition-all"
                 title="Editar alumno"
               >
                 <Edit2 size={20} strokeWidth={2.5} />
               </button>
             </div>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-text-muted mt-1">
               <span
                 className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
                   selectedStudent.level === 'Avanzado'
-                    ? 'bg-[#41bc7b] text-[#1e1e1e]'
+                    ? 'bg-success text-white'
                     : selectedStudent.level === 'Intermedio'
-                    ? 'bg-[#0697d8] text-[#1e1e1e]'
-                    : 'bg-[#e91a20] text-[#ffffff]'
+                    ? 'bg-brandBlue text-white'
+                    : 'bg-primary text-white'
                 }`}
               >
                 {selectedStudent.level}
@@ -409,32 +409,32 @@ export default function StudentDetail() {
       {/* Modal de información del alumno */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in border border-[#0697d8]">
-            <div className="flex-shrink-0 bg-[#0697d8] text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in border border-border">
+            <div className="flex-shrink-0 bg-brandBlue text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Información del Alumno</h3>
               <button
                 onClick={() => setShowInfoModal(false)}
-                className="p-2 hover:bg-[#0697d8] rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-brandBlue rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
             </div>
             
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              <div className="flex items-center space-x-4 pb-4 border-b border-[#0697d8]">
+              <div className="flex items-center space-x-4 pb-4 border-b border-border">
                 <img
                   src={selectedStudent.photo}
                   alt={selectedStudent.name}
-                  className="w-20 h-20 rounded-full border-4 border-[#0697d8]"
+                  className="w-20 h-20 rounded-full border-4 border-border"
                 />
                 <div>
-                  <h4 className="text-xl font-bold text-[#0697d8]">{selectedStudent.name}</h4>
+                  <h4 className="text-xl font-bold text-brandBlue">{selectedStudent.name}</h4>
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mt-1 ${
                     selectedStudent.level === 'Avanzado'
-                      ? 'bg-[#41bc7b] text-[#1e1e1e]'
+                      ? 'bg-success text-white'
                       : selectedStudent.level === 'Intermedio'
-                      ? 'bg-[#0697d8] text-white'
-                      : 'bg-[#e91a20] text-[#ffffff]'
+                      ? 'bg-brandBlue text-white'
+                      : 'bg-primary text-white'
                   }`}>
                     {selectedStudent.level}
                   </span>
@@ -442,52 +442,52 @@ export default function StudentDetail() {
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                  <Phone className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                  <Phone className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-[#0697d8] font-semibold">Teléfono</p>
-                    <p className="text-[#ffffff] font-semibold">{selectedStudent.phone}</p>
+                    <p className="text-xs text-brandBlue font-semibold">Teléfono</p>
+                    <p className="text-text font-semibold">{selectedStudent.phone}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                  <Mail className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                  <Mail className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-[#0697d8] font-semibold">Email</p>
-                    <p className="text-[#ffffff] font-semibold">{selectedStudent.email}</p>
+                    <p className="text-xs text-brandBlue font-semibold">Email</p>
+                    <p className="text-text font-semibold">{selectedStudent.email}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                  <MapPin className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                  <MapPin className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-[#0697d8] font-semibold">Dirección</p>
-                    <p className="text-[#ffffff] font-semibold">{selectedStudent.address}</p>
+                    <p className="text-xs text-brandBlue font-semibold">Dirección</p>
+                    <p className="text-text font-semibold">{selectedStudent.address}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                  <Cake className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                  <Cake className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-[#0697d8] font-semibold">Fecha de Nacimiento</p>
-                    <p className="text-[#ffffff] font-semibold">{new Date(selectedStudent.birthDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <p className="text-xs text-brandBlue font-semibold">Fecha de Nacimiento</p>
+                    <p className="text-text font-semibold">{new Date(selectedStudent.birthDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                    <Weight className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                  <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                    <Weight className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                     <div>
-                      <p className="text-xs text-[#0697d8] font-semibold">Peso</p>
-                      <p className="text-[#ffffff] font-bold">{selectedStudent.weight} kg</p>
+                      <p className="text-xs text-brandBlue font-semibold">Peso</p>
+                      <p className="text-text font-bold">{selectedStudent.weight} kg</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3 p-3 bg-[#1e1e1e] rounded-lg border border-[#0697d8]">
-                    <Ruler className="text-[#0697d8] mt-1" size={20} strokeWidth={2.5} />
+                  <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
+                    <Ruler className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                     <div>
-                      <p className="text-xs text-[#0697d8] font-semibold">Altura</p>
-                      <p className="text-[#ffffff] font-bold">{selectedStudent.height} cm</p>
+                      <p className="text-xs text-brandBlue font-semibold">Altura</p>
+                      <p className="text-text font-bold">{selectedStudent.height} cm</p>
                     </div>
                   </div>
                 </div>
@@ -500,12 +500,12 @@ export default function StudentDetail() {
       {/* Asignar nueva rutina */}
       <div className="surface-brand p-6 animate-slide-in-up delay-200 relative z-20">
         <div className="flex items-center space-x-2 mb-4">
-          <Plus className="text-[#0697d8]" size={20} />
-          <h4 className="text-lg font-semibold text-[#ffffff]">Asignar Nueva Rutina</h4>
+          <Plus className="text-brandBlue" size={20} />
+          <h4 className="text-lg font-semibold text-text">Asignar Nueva Rutina</h4>
         </div>
 
         {savedRoutines.length === 0 ? (
-          <p className="text-[#ffffff] text-center py-8">No hay rutinas guardadas. Crea una rutina en la sección "Rutinas".</p>
+          <p className="text-text text-center py-8">No hay rutinas guardadas. Crea una rutina en la sección "Rutinas".</p>
         ) : (
           <div className="flex flex-col md:flex-row gap-3">
             <CustomSelect
@@ -524,7 +524,7 @@ export default function StudentDetail() {
             <button
               onClick={handleAssignRoutine}
               disabled={assigningRoutine}
-              className="px-6 py-3 bg-[#0697d8] text-[#1e1e1e] rounded-lg hover:bg-[#0697d8] hover:text-[#ffffff] active:scale-95 transition-all font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-3 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-bold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {assigningRoutine ? (
                 <>
@@ -542,12 +542,12 @@ export default function StudentDetail() {
       {/* Historial de rutinas */}
       <div className="surface-brand p-6 animate-slide-in-up delay-300">
         <div className="flex items-center space-x-2 mb-4">
-          <Calendar className="text-[#0697d8]" size={20} />
-          <h4 className="text-lg font-semibold text-[#ffffff]">Historial de Rutinas</h4>
+          <Calendar className="text-brandBlue" size={20} />
+          <h4 className="text-lg font-semibold text-text">Historial de Rutinas</h4>
         </div>
 
         {selectedStudent.routineHistory.length === 0 ? (
-          <p className="text-[#ffffff] text-center py-8">No hay rutinas asignadas aún</p>
+          <p className="text-text text-center py-8">No hay rutinas asignadas aún</p>
         ) : (
           <div className="space-y-3">
             {selectedStudent.routineHistory.map((routine, index) => {
@@ -556,16 +556,16 @@ export default function StudentDetail() {
               return (
               <div
                 key={uniqueId}
-                className={`bg-[#1e1e1e] rounded-lg border-2 ${getStatusColor(routine.status)} hover:border-[#0697d8] transition-colors overflow-hidden`}
+                className={`bg-bg rounded-lg border-2 ${getStatusColor(routine.status)} hover:border-border transition-colors overflow-hidden`}
               >
                 {/* Header de la rutina */}
                 <div className="p-4">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex-1">
-                      <h5 className="font-semibold text-[#ffffff]">{routine.name}</h5>
-                      <p className="text-sm text-[#0697d8] mt-1">{routine.date}</p>
+                      <h5 className="font-semibold text-text">{routine.name}</h5>
+                      <p className="text-sm text-brandBlue mt-1">{routine.date}</p>
                       {routine.exercises && (
-                        <p className="text-xs text-[#ffffff] mt-1">{routine.exercises.length} ejercicios</p>
+                        <p className="text-xs text-text mt-1">{routine.exercises.length} ejercicios</p>
                       )}
                     </div>
                     <div className="flex items-center space-x-2">
@@ -573,7 +573,7 @@ export default function StudentDetail() {
                         <>
                           <button
                             onClick={() => setExpandedRoutine(expandedRoutine === uniqueId ? null : uniqueId)}
-                            className="p-2 bg-[#0697d8] text-[#ffffff] rounded-lg hover:bg-[#0697d8] hover:text-[#1e1e1e] active:scale-95 transition-all"
+                            className="p-2 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all"
                             title="Ver ejercicios"
                           >
                             {expandedRoutine === uniqueId ? (
@@ -584,7 +584,7 @@ export default function StudentDetail() {
                           </button>
                           <button
                             onClick={() => handleSendWhatsApp(routine)}
-                            className="p-2 bg-[#0697d8] text-[#1e1e1e] rounded-lg hover:bg-[#0697d8] hover:text-[#ffffff] active:scale-95 transition-all"
+                            className="p-2 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all"
                             title="Enviar por WhatsApp"
                           >
                             <Send size={20} strokeWidth={2.5} />
@@ -599,7 +599,7 @@ export default function StudentDetail() {
                             setEditAssigned(true)
                             setShowPersonalizeModal(true)
                           }}
-                          className="p-2 bg-[#0697d8] text-[#1e1e1e] rounded-lg hover:bg-[#0697d8] hover:text-[#ffffff] active:scale-95 transition-all"
+                          className="p-2 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all"
                           title="Editar rutina asignada"
                         >
                           <Edit2 size={18} />
@@ -610,7 +610,7 @@ export default function StudentDetail() {
                           setRoutineToDelete(routine)
                           setShowDeleteModal(true)
                         }}
-                        className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all"
+                        className="p-2 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all"
                         title="Eliminar rutina"
                       >
                         <Trash2 size={20} strokeWidth={2.5} />
@@ -619,12 +619,12 @@ export default function StudentDetail() {
                   </div>
 
                   {/* Estado actual */}
-                  <div className="flex items-center justify-between p-2 bg-[#1e1e1e] rounded-lg mb-3">
-                    <span className="text-[#ffffff] font-semibold text-sm">Estado:</span>
+                  <div className="flex items-center justify-between p-2 bg-bg rounded-lg mb-3">
+                    <span className="text-text font-semibold text-sm">Estado:</span>
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      routine.status === 'completada' ? 'bg-green-600 text-white' :
-                      routine.status === 'incompleta' ? 'bg-yellow-600 text-white' :
-                      'bg-gray-600 text-white'
+                      routine.status === 'completada' ? 'bg-success text-white' :
+                      routine.status === 'incompleta' ? 'bg-primary text-white' :
+                      'bg-bg text-text'
                     }`}>
                       {routine.status === 'completada' ? 'Completada' :
                        routine.status === 'incompleta' ? 'Incompleta' :
@@ -639,8 +639,8 @@ export default function StudentDetail() {
                       disabled={updatingRoutineStatus === routine.id || routine.status === 'completada'}
                       className={`px-2 py-2 rounded-lg font-semibold text-xs transition-all active:scale-95 flex items-center justify-center gap-1 ${
                         routine.status === 'completada'
-                          ? 'bg-green-600 text-white'
-                          : 'bg-[#1e1e1e] text-[#ffffff] hover:bg-green-600 hover:text-white'
+                          ? 'bg-success text-white'
+                          : 'bg-bg text-text hover:bg-success hover:text-white'
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {updatingRoutineStatus === routine.id ? (
@@ -654,8 +654,8 @@ export default function StudentDetail() {
                       disabled={updatingRoutineStatus === routine.id || routine.status === 'incompleta'}
                       className={`px-2 py-2 rounded-lg font-semibold text-xs transition-all active:scale-95 flex items-center justify-center gap-1 ${
                         routine.status === 'incompleta'
-                          ? 'bg-yellow-600 text-white'
-                          : 'bg-[#1e1e1e] text-[#ffffff] hover:bg-yellow-600 hover:text-white'
+                          ? 'bg-primary text-white'
+                          : 'bg-bg text-text hover:bg-primary hover:text-white'
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {updatingRoutineStatus === routine.id ? (
@@ -669,8 +669,8 @@ export default function StudentDetail() {
                       disabled={updatingRoutineStatus === routine.id || routine.status === 'activa'}
                       className={`px-2 py-2 rounded-lg font-semibold text-xs transition-all active:scale-95 flex items-center justify-center gap-1 ${
                         routine.status === 'activa'
-                          ? 'bg-gray-600 text-white'
-                          : 'bg-[#1e1e1e] text-[#ffffff] hover:bg-gray-600 hover:text-white'
+                          ? 'bg-bg text-text'
+                          : 'bg-bg text-text hover:bg-bg-surface hover:text-text'
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {updatingRoutineStatus === routine.id ? (
@@ -684,22 +684,22 @@ export default function StudentDetail() {
 
                 {/* Detalles de ejercicios (expandible) */}
                 {expandedRoutine === uniqueId && routine.exercises && (
-                  <div className="border-t-2 border-[#1e1e1e] p-4 bg-[#1e1e1e]/30 animate-slide-in-up">
-                    <h4 className="text-lg font-bold text-[#0697d8] mb-4">
+                  <div className="border-t-2 border-border p-4 bg-bg/30 animate-slide-in-up">
+                    <h4 className="text-lg font-bold text-brandBlue mb-4">
                       Ejercicios ({routine.exercises.length})
                     </h4>
                     <div className="space-y-3">
                       {routine.exercises.map((exercise, idx) => (
                         <div
                           key={idx}
-                          className="bg-[#1e1e1e] rounded-lg p-4 border-2 border-[#0697d8]"
+                          className="bg-bg rounded-lg p-4 border-2 border-border"
                         >
                           {/* Header del ejercicio con indicador de calentamiento */}
                           <div className="flex items-start justify-between mb-2">
-                            <h5 className="font-bold text-[#ffffff] flex items-center gap-2">
+                            <h5 className="font-bold text-text flex items-center gap-2">
                               {idx + 1}. {exercise.name}
                               {exercise.esCalentamiento === 1 && (
-                                <span className="text-xs px-2 py-1 bg-orange-600 text-white rounded-full">
+                                <span className="text-xs px-2 py-1 bg-primary text-white rounded-full">
                                   🔥 Calentamiento
                                 </span>
                               )}
@@ -710,20 +710,20 @@ export default function StudentDetail() {
                           <div className="flex flex-wrap gap-2 text-sm mb-3">
                             {/* Solo mostrar series para ejercicios de tipo 'reps' */}
                             {(exercise.unidad === 'reps' || exercise.type === 'reps') && (
-                              <span className="px-2 py-1 bg-[#0697d8] text-[#ffffff] rounded font-semibold">
+                              <span className="px-2 py-1 bg-brandBlue text-white rounded font-semibold">
                                 {exercise.sets} {exercise.sets === 1 ? 'serie' : 'series'}
                               </span>
                             )}
-                            <span className="px-2 py-1 bg-[#0697d8] text-[#ffffff] rounded font-semibold">
+                            <span className="px-2 py-1 bg-brandBlue text-white rounded font-semibold">
                               {exercise.value} {getUnitName(exercise.unidad || exercise.type)}
                             </span>
                             {exercise.pausaSeries && (
-                              <span className="px-2 py-1 bg-[#0697d8] text-white rounded font-semibold">
+                              <span className="px-2 py-1 bg-brandBlue text-white rounded font-semibold">
                                 ⏸️ Pausa: {exercise.pausaSeries}
                               </span>
                             )}
                             {exercise.intensidad && (
-                              <span className="px-2 py-1 bg-red-600 text-white rounded font-semibold">
+                              <span className="px-2 py-1 bg-primary text-white rounded font-semibold">
                                 ⚡ {exercise.intensidad}
                               </span>
                             )}
@@ -731,17 +731,17 @@ export default function StudentDetail() {
 
                           {/* Información del ejercicio base */}
                           {(exercise.distancia || exercise.duracion || exercise.descripcionIntervalo) && (
-                            <div className="mb-3 p-2 bg-[#0697d8]/20 rounded border border-[#0697d8]/20">
-                              <p className="text-xs text-gray-400 font-semibold mb-1">📋 Info del ejercicio:</p>
-                              <div className="text-sm text-gray-300 space-y-1">
+                            <div className="mb-3 p-2 bg-brandBlue/20 rounded border border-border/20">
+                              <p className="text-xs text-text-muted font-semibold mb-1">📋 Info del ejercicio:</p>
+                              <div className="text-sm text-text-muted space-y-1">
                                 {exercise.distancia && (
-                                  <div>📏 Distancia: <span className="text-[#0697d8] font-semibold">{exercise.distancia}</span></div>
+                                  <div>📏 Distancia: <span className="text-brandBlue font-semibold">{exercise.distancia}</span></div>
                                 )}
                                 {exercise.duracion && (
-                                  <div>⏱️ Duración: <span className="text-[#0697d8] font-semibold">{exercise.duracion}</span></div>
+                                  <div>⏱️ Duración: <span className="text-brandBlue font-semibold">{exercise.duracion}</span></div>
                                 )}
                                 {exercise.descripcionIntervalo && (
-                                  <div className="italic text-[#0697d8]">💭 "{exercise.descripcionIntervalo}"</div>
+                                  <div className="italic text-brandBlue">💭 "{exercise.descripcionIntervalo}"</div>
                                 )}
                               </div>
                             </div>
@@ -749,27 +749,27 @@ export default function StudentDetail() {
 
                           {/* Especificaciones personalizadas */}
                           {exercise.especificaciones && (
-                            <div className="mt-2 p-2 bg-[#0697d8]/30 rounded border border-[#0697d8]/20">
-                              <p className="text-sm text-[#0697d8] font-semibold mb-1">📝 Especificaciones personalizadas:</p>
-                              <p className="text-sm text-gray-300">{exercise.especificaciones}</p>
+                            <div className="mt-2 p-2 bg-brandBlue/30 rounded border border-border/20">
+                              <p className="text-sm text-brandBlue font-semibold mb-1">📝 Especificaciones personalizadas:</p>
+                              <p className="text-sm text-text-muted">{exercise.especificaciones}</p>
                             </div>
                           )}
 
                           {/* Estado del ejercicio y feedback del alumno */}
                           {(exercise.ejercicioCompletado !== undefined || exercise.feedbackAlumno) && (
-                            <div className="mt-2 p-3 bg-gradient-to-r from-[#0f172a] to-[#1e1e1e] rounded-lg border-2 border-[#0697d8]/40">
+                            <div className="mt-2 p-3 bg-bg rounded-lg border-2 border-border/40">
                               {/* Indicador de completado */}
                               {exercise.ejercicioCompletado !== undefined && (
                                 <div className="flex items-center gap-2 mb-2">
                                   {exercise.ejercicioCompletado ? (
                                     <>
-                                      <CheckCircle2 className="text-green-400" size={20} />
-                                      <span className="text-sm font-semibold text-green-400">✓ Completado por el alumno</span>
+                                      <CheckCircle2 className="text-success" size={20} />
+                                      <span className="text-sm font-semibold text-success">✓ Completado por el alumno</span>
                                     </>
                                   ) : (
                                     <>
-                                      <XCircle className="text-gray-400" size={20} />
-                                      <span className="text-sm font-semibold text-gray-400">Pendiente</span>
+                                      <XCircle className="text-text-muted" size={20} />
+                                      <span className="text-sm font-semibold text-text-muted">Pendiente</span>
                                     </>
                                   )}
                                 </div>
@@ -777,11 +777,11 @@ export default function StudentDetail() {
 
                               {/* Feedback del alumno */}
                               {exercise.feedbackAlumno && (
-                                <div className="mt-2 p-2 bg-[#1e1e1e] rounded border border-[#0697d8]/50">
-                                  <p className="text-xs text-[#0697d8] font-semibold mb-1 flex items-center gap-1">
+                                <div className="mt-2 p-2 bg-bg rounded border border-border/50">
+                                  <p className="text-xs text-brandBlue font-semibold mb-1 flex items-center gap-1">
                                     <span>💬</span> Comentario del alumno:
                                   </p>
-                                  <p className="text-sm text-gray-200 italic">"{exercise.feedbackAlumno}"</p>
+                                  <p className="text-sm text-text-muted italic">"{exercise.feedbackAlumno}"</p>
                                 </div>
                               )}
                             </div>
@@ -802,7 +802,7 @@ export default function StudentDetail() {
       <div className="surface-brand p-6 animate-slide-in-up delay-400">
         <button
           onClick={() => setShowProgress(!showProgress)}
-          className="w-full flex items-center justify-between px-4 py-3 bg-[#1e1e1e] text-[#ffffff] rounded-lg hover:bg-[#0697d8] hover:text-[#1e1e1e] active:scale-95 transition-all font-semibold"
+          className="w-full flex items-center justify-between px-4 py-3 bg-bg text-text rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-semibold"
         >
           <div className="flex items-center space-x-2">
             <TrendingUp size={20} strokeWidth={2.5} />
@@ -816,37 +816,37 @@ export default function StudentDetail() {
             {/* Gráfico de progreso */}
             {chartData.length > 0 ? (
               <div>
-                <h4 className="text-sm font-bold text-[#ffffff] mb-3">Rendimiento en el Tiempo</h4>
-                <div className="bg-[#1e1e1e] rounded-lg p-4" style={{ height: '300px' }}>
+                <h4 className="text-sm font-bold text-text mb-3">Rendimiento en el Tiempo</h4>
+                <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#0697d8" />
-                      <XAxis dataKey="sesion" stroke="#ffffff" />
-                      <YAxis domain={[0, 100]} stroke="#ffffff" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
+                      <XAxis dataKey="sesion" stroke="var(--color-text)" />
+                      <YAxis domain={[0, 100]} stroke="var(--color-text)" />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#1e1e1e', border: '2px solid #0697d8', borderRadius: '8px' }}
-                        labelStyle={{ color: '#ffffff' }}
+                        contentStyle={{ backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border)', borderRadius: '8px' }}
+                        labelStyle={{ color: 'var(--color-text)' }}
                       />
                       <Line
                         type="monotone"
                         dataKey="rendimiento"
-                        stroke="#0697d8"
+                        stroke="var(--color-brandBlue)"
                         strokeWidth={3}
-                        dot={{ fill: '#0697d8', r: 6 }}
+                        dot={{ fill: 'var(--color-brandBlue)', r: 6 }}
                         activeDot={{ r: 8 }}
                       />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
-                <p className="text-xs text-gray-400 mt-2 text-center">
+                <p className="text-xs text-text-muted mt-2 text-center">
                   100% = Completada | 50% = Incompleta
                 </p>
               </div>
             ) : (
-              <div className="bg-[#1e1e1e] rounded-lg p-8 text-center">
-                <TrendingUp className="mx-auto text-gray-500 mb-3" size={48} />
-                <p className="text-[#ffffff] font-semibold mb-2">No hay datos de progreso aún</p>
-                <p className="text-sm text-gray-400">
+              <div className="bg-bg rounded-lg p-8 text-center">
+                <TrendingUp className="mx-auto text-text-muted mb-3" size={48} />
+                <p className="text-text font-semibold mb-2">No hay datos de progreso aún</p>
+                <p className="text-sm text-text-muted">
                   El gráfico aparecerá cuando el alumno complete o marque rutinas como incompletas.
                 </p>
               </div>
@@ -854,39 +854,39 @@ export default function StudentDetail() {
 
             {/* Estadísticas rápidas */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-[#1e1e1e] rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-[#0697d8]">
+              <div className="bg-bg rounded-lg p-4 text-center">
+                <p className="text-3xl font-bold text-brandBlue">
                   {lastPerformance}%
                 </p>
-                <p className="text-xs text-[#ffffff] mt-1">Último rendimiento</p>
+                <p className="text-xs text-text mt-1">Último rendimiento</p>
               </div>
-              <div className="bg-[#1e1e1e] rounded-lg p-4 text-center">
-                <p className="text-3xl font-bold text-[#0697d8]">
+              <div className="bg-bg rounded-lg p-4 text-center">
+                <p className="text-3xl font-bold text-brandBlue">
                   {averagePerformance}%
                 </p>
-                <p className="text-xs text-[#ffffff] mt-1">Promedio</p>
+                <p className="text-xs text-text mt-1">Promedio</p>
               </div>
-              <div className="bg-[#1e1e1e] rounded-lg p-4 text-center col-span-2 md:col-span-1">
-                <p className="text-3xl font-bold text-[#0697d8]">
+              <div className="bg-bg rounded-lg p-4 text-center col-span-2 md:col-span-1">
+                <p className="text-3xl font-bold text-brandBlue">
                   {completedRoutines}
                 </p>
-                <p className="text-xs text-[#ffffff] mt-1">Rutinas completadas</p>
+                <p className="text-xs text-text mt-1">Rutinas completadas</p>
               </div>
             </div>
 
             {/* Resumen adicional */}
-            <div className="bg-[#1e1e1e] rounded-lg p-4">
+            <div className="bg-bg rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-bold text-[#ffffff]">Tasa de Completado</h4>
-                <span className="text-2xl font-bold text-[#0697d8]">{completionRate}%</span>
+                <h4 className="text-sm font-bold text-text">Tasa de Completado</h4>
+                <span className="text-2xl font-bold text-brandBlue">{completionRate}%</span>
               </div>
-              <div className="w-full bg-[#1e1e1e] rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-bg rounded-full h-3 overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-[#0697d8] to-[#41bc7b] h-full rounded-full transition-all duration-1000 ease-out"
+                  className="bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out"
                   style={{ width: `${completionRate}%` }}
                 ></div>
               </div>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-text-muted mt-2">
                 {completedRoutines} de {totalRoutines} rutinas completadas
                 {incompleteRoutines > 0 && ` · ${incompleteRoutines} incompletas`}
               </p>
@@ -898,7 +898,7 @@ export default function StudentDetail() {
             </div>
 
             {/* Sistema de logros */}
-            <div className="mt-6 bg-[#1e1e1e] rounded-lg p-4">
+            <div className="mt-6 bg-bg rounded-lg p-4">
               <AchievementBadges stats={achievementStats} />
             </div>
           </div>
@@ -908,25 +908,25 @@ export default function StudentDetail() {
       {/* Modal de confirmación de eliminación */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
-            <div className="sticky top-0 bg-red-600 text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
+            <div className="sticky top-0 bg-primary text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Confirmar Eliminación</h3>
               <button
                 onClick={() => {
                   setShowDeleteModal(false)
                   setRoutineToDelete(null)
                 }}
-                className="p-2 hover:bg-red-700 rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-primary rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
             </div>
             
             <div className="p-6 space-y-4">
-              <p className="text-[#ffffff]">
-                ¿Estás seguro que deseas eliminar la rutina <strong className="text-[#0697d8]">{routineToDelete?.name}</strong>?
+              <p className="text-text">
+                ¿Estás seguro que deseas eliminar la rutina <strong className="text-brandBlue">{routineToDelete?.name}</strong>?
               </p>
-              <p className="text-sm text-gray-400">Esta acción no se puede deshacer.</p>
+              <p className="text-sm text-text-muted">Esta acción no se puede deshacer.</p>
               
               <div className="flex space-x-3 mt-6">
                 <button
@@ -935,14 +935,14 @@ export default function StudentDetail() {
                     setRoutineToDelete(null)
                   }}
                   disabled={deletingRoutine}
-                  className="flex-1 px-4 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-4 py-3 bg-bg text-text rounded-lg hover:bg-bg-surface active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Cancelar
                 </button>
                 <button
                   onClick={handleDeleteRoutine}
                   disabled={deletingRoutine}
-                  className="flex-1 px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {deletingRoutine ? (
                     <>
@@ -962,12 +962,12 @@ export default function StudentDetail() {
       {/* Modal de edición de alumno */}
       {showEditModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-4 animate-fade-in overflow-y-auto">
-          <div className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in border border-[#0697d8] my-8">
-            <div className="flex-shrink-0 bg-[#0697d8] text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in border border-border my-8">
+            <div className="flex-shrink-0 bg-brandBlue text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Editar Alumno</h3>
               <button
                 onClick={() => setShowEditModal(false)}
-                className="p-2 hover:bg-[#0697d8] rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-brandBlue rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
@@ -976,18 +976,18 @@ export default function StudentDetail() {
             <div className="flex-1 overflow-y-auto">
               <form onSubmit={handleEditStudent} className="p-6 space-y-4">
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Nombre</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Nombre</label>
                   <input
                     type="text"
                     value={editFormData.nombre || ''}
                     onChange={(e) => setEditFormData({...editFormData, nombre: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                    className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Nivel</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Nivel</label>
                   <CustomSelect
                     value={editFormData.nivel || 'Intermedio'}
                     onChange={(e) => setEditFormData({...editFormData, nivel: e.target.value})}
@@ -1000,7 +1000,7 @@ export default function StudentDetail() {
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Género</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Género</label>
                   <CustomSelect
                     value={editFormData.genero || 'masculino'}
                     onChange={(e) => setEditFormData({...editFormData, genero: e.target.value})}
@@ -1012,65 +1012,65 @@ export default function StudentDetail() {
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Teléfono</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Teléfono</label>
                   <input
                     type="tel"
                     value={editFormData.telefono || ''}
                     onChange={(e) => setEditFormData({...editFormData, telefono: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                    className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Email</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Email</label>
                   <input
                     type="email"
                     value={editFormData.email || ''}
                     onChange={(e) => setEditFormData({...editFormData, email: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                    className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[#0697d8] font-semibold mb-2">Peso (kg)</label>
+                    <label className="block text-brandBlue font-semibold mb-2">Peso (kg)</label>
                     <input
                       type="number"
                       step="0.1"
                       value={editFormData.peso || ''}
                       onChange={(e) => setEditFormData({...editFormData, peso: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                      className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[#0697d8] font-semibold mb-2">Altura (cm)</label>
+                    <label className="block text-brandBlue font-semibold mb-2">Altura (cm)</label>
                     <input
                       type="number"
                       value={editFormData.altura || ''}
                       onChange={(e) => setEditFormData({...editFormData, altura: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                      className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Domicilio</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Domicilio</label>
                   <input
                     type="text"
                     value={editFormData.domicilio || ''}
                     onChange={(e) => setEditFormData({...editFormData, domicilio: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                    className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#0697d8] font-semibold mb-2">Fecha de Nacimiento</label>
+                  <label className="block text-brandBlue font-semibold mb-2">Fecha de Nacimiento</label>
                   <input
                     type="date"
                     value={editFormData.fechaNacimiento || ''}
                     onChange={(e) => setEditFormData({...editFormData, fechaNacimiento: e.target.value})}
-                    className="w-full px-4 py-3 bg-[#1e1e1e] text-[#ffffff] border-2 border-[#0697d8] rounded-lg focus:border-[#0697d8] focus:outline-none"
+                    className="w-full px-4 py-3 bg-bg text-text border-2 border-border rounded-lg focus:border-border focus:outline-none"
                   />
                 </div>
 
@@ -1079,14 +1079,14 @@ export default function StudentDetail() {
                     type="button"
                     onClick={() => setShowEditModal(false)}
                     disabled={updatingStudent}
-                    className="flex-1 px-4 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-4 py-3 bg-bg text-text rounded-lg hover:bg-bg-surface active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
                     disabled={updatingStudent}
-                    className="flex-1 px-4 py-3 bg-[#0697d8] text-[#1e1e1e] rounded-lg hover:bg-[#0697d8] hover:text-[#ffffff] active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-3 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {updatingStudent ? (
                       <>
@@ -1103,7 +1103,7 @@ export default function StudentDetail() {
                   <button
                     type="button"
                     onClick={() => setShowDeleteStudentModal(true)}
-                    className="w-full px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all font-semibold flex items-center justify-center gap-2"
+                    className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold flex items-center justify-center gap-2"
                   >
                     <Trash2 size={18} /> Eliminar alumno
                   </button>
@@ -1117,34 +1117,34 @@ export default function StudentDetail() {
       {/* Modal de confirmación para eliminar alumno */}
       {showDeleteStudentModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
-            <div className="sticky top-0 bg-red-600 text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
+            <div className="sticky top-0 bg-primary text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Eliminar Alumno</h3>
               <button
                 onClick={() => setShowDeleteStudentModal(false)}
-                className="p-2 hover:bg-red-700 rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-primary rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
-              <p className="text-[#ffffff]">
-                ¿Estás seguro que deseas eliminar al alumno <strong className="text-[#0697d8]">{selectedStudent.name}</strong>? Esta acción no se puede deshacer.
+              <p className="text-text">
+                ¿Estás seguro que deseas eliminar al alumno <strong className="text-brandBlue">{selectedStudent.name}</strong>? Esta acción no se puede deshacer.
               </p>
 
               <div className="flex space-x-3 mt-6">
                 <button
                   onClick={() => setShowDeleteStudentModal(false)}
                   disabled={deletingStudent}
-                  className="flex-1 px-4 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-4 py-3 bg-bg text-text rounded-lg hover:bg-bg-surface active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Cancelar
                 </button>
                 <button
                   onClick={handleDeleteStudent}
                   disabled={deletingStudent}
-                  className="flex-1 px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {deletingStudent ? (
                     <>

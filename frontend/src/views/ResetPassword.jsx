@@ -121,8 +121,8 @@ const ResetPassword = () => {
     return (
       <div className="auth-shell px-4">
         <div className="text-center">
-          <Loader2 className="w-16 h-16 text-[#0697d8] animate-spin mx-auto mb-4" />
-          <p className="text-lg text-gray-300">Verificando token...</p>
+          <Loader2 className="text-brandBlue animate-spin mx-auto mb-4" size={24} strokeWidth={2} />
+          <p className="text-lg text-text-muted">Verificando token...</p>
         </div>
       </div>
     );
@@ -135,14 +135,14 @@ const ResetPassword = () => {
         <div className="max-w-md w-full">
           <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <CheckCircle className="w-16 h-16 text-green-500" />
+              <CheckCircle className="text-success" size={24} strokeWidth={2} />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-text-on-dark">¡Contraseña Actualizada!</h2>
-                <p className="text-gray-300">{mensaje}</p>
+                <h2 className="text-2xl font-bold text-text">¡Contraseña Actualizada!</h2>
+                <p className="text-text-muted">{mensaje}</p>
               </div>
               <button
                 onClick={() => navigate('/login')}
-                className="w-full btn-primary"
+                className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation"
               >
                 Volver al Login
               </button>
@@ -160,21 +160,21 @@ const ResetPassword = () => {
         <div className="max-w-md w-full">
           <div className="auth-card">
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <XCircle className="w-16 h-16 text-red-500" />
+              <XCircle className="text-primary" size={24} strokeWidth={2} />
               <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-text-on-dark">Error</h2>
-                <p className="text-gray-300">{error}</p>
+                <h2 className="text-2xl font-bold text-text">Error</h2>
+                <p className="text-text-muted">{error}</p>
               </div>
               <div className="flex flex-col space-y-3 w-full">
                 <button
                   onClick={() => navigate('/forgot-password')}
-                  className="w-full btn-primary"
+                  className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation"
                 >
                   Solicitar Nuevo Enlace
                 </button>
                 <button
                   onClick={() => window.location.href = '/'}
-                  className="w-full btn-secondary"
+                  className="w-full btn-secondary py-3 active:scale-95 transition-transform touch-manipulation"
                 >
                   Ir al Login
                 </button>
@@ -193,11 +193,11 @@ const ResetPassword = () => {
         <div className="auth-card">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold racing-sans text-text-on-dark mb-2">
+            <h1 className="text-3xl font-bold racing-sans text-text mb-2">
               NUEVA CONTRASEÑA
             </h1>
-            <div className="h-1 w-20 bg-[#0697d8] mx-auto rounded"></div>
-            <p className="text-gray-400 mt-4">
+            <div className="h-1 w-20 bg-brandBlue mx-auto rounded"></div>
+            <p className="text-text-muted mt-4">
               Ingresa tu nueva contraseña para tu cuenta
             </p>
           </div>
@@ -206,7 +206,7 @@ const ResetPassword = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Error */}
             {error && (
-              <div className="bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-primary/10 border border-primary text-primary px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -217,7 +217,7 @@ const ResetPassword = () => {
                 Nueva Contraseña
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted" size={24} strokeWidth={2} />
                 <input
                   type={mostrarPassword ? 'text' : 'password'}
                   id="password"
@@ -231,9 +231,9 @@ const ResetPassword = () => {
                 <button
                   type="button"
                   onClick={() => setMostrarPassword(!mostrarPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-brandBlue transition-colors"
                 >
-                  {mostrarPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {mostrarPassword ? <EyeOff size={24} strokeWidth={2} /> : <Eye size={24} strokeWidth={2} />}
                 </button>
               </div>
             </div>
@@ -244,7 +244,7 @@ const ResetPassword = () => {
                 Confirmar Contraseña
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted" size={24} strokeWidth={2} />
                 <input
                   type={mostrarConfirm ? 'text' : 'password'}
                   id="confirmPassword"
@@ -257,9 +257,9 @@ const ResetPassword = () => {
                 <button
                   type="button"
                   onClick={() => setMostrarConfirm(!mostrarConfirm)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-brandBlue transition-colors"
                 >
-                  {mostrarConfirm ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {mostrarConfirm ? <EyeOff size={24} strokeWidth={2} /> : <Eye size={24} strokeWidth={2} />}
                 </button>
               </div>
             </div>
@@ -267,11 +267,11 @@ const ResetPassword = () => {
             {/* Indicador de fortaleza */}
             {password && (
               <div className="space-y-2">
-                <div className="text-sm text-gray-400">Fortaleza de la contraseña:</div>
+                <div className="text-sm text-text-muted">Fortaleza de la contraseña:</div>
                 <div className="flex space-x-1">
-                  <div className={`h-2 flex-1 rounded ${password.length >= 6 ? 'bg-green-500' : 'bg-gray-600'}`}></div>
-                  <div className={`h-2 flex-1 rounded ${password.length >= 8 ? 'bg-green-500' : 'bg-gray-600'}`}></div>
-                  <div className={`h-2 flex-1 rounded ${password.length >= 10 && /[A-Z]/.test(password) ? 'bg-green-500' : 'bg-gray-600'}`}></div>
+                  <div className={`h-2 flex-1 rounded ${password.length >= 6 ? 'bg-success' : 'bg-border'}`}></div>
+                  <div className={`h-2 flex-1 rounded ${password.length >= 8 ? 'bg-success' : 'bg-border'}`}></div>
+                  <div className={`h-2 flex-1 rounded ${password.length >= 10 && /[A-Z]/.test(password) ? 'bg-success' : 'bg-border'}`}></div>
                 </div>
               </div>
             )}
@@ -280,16 +280,16 @@ const ResetPassword = () => {
             <button
               type="submit"
               disabled={estado === 'procesando'}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {estado === 'procesando' ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="animate-spin" size={24} strokeWidth={2} />
                   <span>Actualizando...</span>
                 </>
               ) : (
                 <>
-                  <Lock className="w-5 h-5" />
+                  <Lock size={24} strokeWidth={2} />
                   <span>Restablecer Contraseña</span>
                 </>
               )}
@@ -299,11 +299,11 @@ const ResetPassword = () => {
 
         {/* Link de ayuda */}
         <div className="text-center mt-6">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-text-muted">
             ¿Problemas?{' '}
             <button
               onClick={() => navigate('/forgot-password')}
-              className="text-cyan hover:underline font-semibold"
+              className="text-brandBlue hover:underline font-semibold"
             >
               Solicitar Nuevo Enlace
             </button>

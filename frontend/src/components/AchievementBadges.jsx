@@ -8,7 +8,7 @@ const achievements = [
     name: 'Primera Rutina',
     description: 'Completaste tu primera rutina',
     icon: Star,
-    color: '#0697d8',
+    color: 'var(--color-brandBlue)',
     requirement: (stats) => stats.completedRoutines >= 1
   },
   {
@@ -16,7 +16,7 @@ const achievements = [
     name: 'Racha de Fuego',
     description: '7 días consecutivos entrenando',
     icon: Flame,
-    color: '#e91a20',
+    color: 'var(--color-primary)',
     requirement: (stats) => stats.currentStreak >= 7
   },
   {
@@ -24,7 +24,7 @@ const achievements = [
     name: 'Dedicación',
     description: '10 rutinas completadas',
     icon: Target,
-    color: '#0697d8',
+    color: 'var(--color-brandBlue)',
     requirement: (stats) => stats.completedRoutines >= 10
   },
   {
@@ -32,7 +32,7 @@ const achievements = [
     name: 'Imparable',
     description: '25 rutinas completadas',
     icon: Zap,
-    color: '#0697d8',
+    color: 'var(--color-brandBlue)',
     requirement: (stats) => stats.completedRoutines >= 25
   },
   {
@@ -40,7 +40,7 @@ const achievements = [
     name: 'Campeón',
     description: '50 rutinas completadas',
     icon: Trophy,
-    color: '#41bc7b',
+    color: 'var(--color-success)',
     requirement: (stats) => stats.completedRoutines >= 50
   },
   {
@@ -48,7 +48,7 @@ const achievements = [
     name: 'Perfeccionista',
     description: '80% de tasa de completado',
     icon: Award,
-    color: '#41bc7b',
+    color: 'var(--color-success)',
     requirement: (stats) => stats.completionRate >= 80
   },
   {
@@ -56,7 +56,7 @@ const achievements = [
     name: 'Guerrero',
     description: '30 días consecutivos',
     icon: Medal,
-    color: '#e91a20',
+    color: 'var(--color-primary)',
     requirement: (stats) => stats.currentStreak >= 30
   },
   {
@@ -64,7 +64,7 @@ const achievements = [
     name: 'Progreso Excelente',
     description: 'Promedio de rendimiento 90%+',
     icon: TrendingUp,
-    color: '#0697d8',
+    color: 'var(--color-brandBlue)',
     requirement: (stats) => stats.averagePerformance >= 90
   }
 ]
@@ -97,10 +97,10 @@ export default function AchievementBadges({ stats = {} }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold text-[#ffffff]">
+        <h3 className="text-lg font-bold text-text">
           Logros Desbloqueados
         </h3>
-        <div className="px-3 py-1 bg-[#0697d8] text-[#1e1e1e] rounded-full font-bold text-sm">
+        <div className="px-3 py-1 bg-brandBlue text-white rounded-full font-bold text-sm">
           {unlockedAchievements.length}/{achievements.length}
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function AchievementBadges({ stats = {} }) {
               <button
                 key={achievement.id}
                 onClick={() => handleAchievementClick(achievement)}
-                className="bg-gradient-to-br from-[#1e1e1e] to-[#1e1e1e] p-4 rounded-xl border-2 animate-scale-in hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="bg-bg-surface p-4 rounded-xl border-2 animate-scale-in hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 style={{ borderColor: achievement.color }}
               >
                 <Icon
@@ -123,7 +123,7 @@ export default function AchievementBadges({ stats = {} }) {
                   className="mx-auto mb-2"
                   strokeWidth={2.5}
                 />
-                <p className="text-xs font-bold text-center text-[#ffffff] leading-tight">
+                <p className="text-xs font-bold text-center text-text leading-tight">
                   {achievement.name}
                 </p>
               </button>
@@ -135,22 +135,22 @@ export default function AchievementBadges({ stats = {} }) {
       {/* Logros bloqueados */}
       {lockedAchievements.length > 0 && (
         <div>
-          <h4 className="text-sm font-semibold text-gray-400 mb-3">Por Desbloquear</h4>
+          <h4 className="text-sm font-semibold text-text-muted mb-3">Por Desbloquear</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {lockedAchievements.map((achievement) => {
               const Icon = achievement.icon
               return (
                 <div
                   key={achievement.id}
-                  className="bg-[#1e1e1e] p-4 rounded-xl border-2 border-gray-700 opacity-50 hover:opacity-70 transition-opacity cursor-not-allowed"
+                  className="bg-bg p-4 rounded-xl border-2 border-border opacity-50 hover:opacity-70 transition-opacity cursor-not-allowed"
                   title={`🔒 ${achievement.description}`}
                 >
                   <Icon
                     size={32}
-                    className="mx-auto mb-2 text-gray-600"
+                    className="mx-auto mb-2 text-text-muted"
                     strokeWidth={2.5}
                   />
-                  <p className="text-xs font-bold text-center text-gray-500 leading-tight">
+                  <p className="text-xs font-bold text-center text-text-muted leading-tight">
                     {achievement.name}
                   </p>
                 </div>

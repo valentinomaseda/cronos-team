@@ -117,7 +117,7 @@ export default function StudentList() {
           <button
             key={student.idPersona}
             onClick={() => handleStudentClick(student)}
-            className={`bg-bg-surface rounded-xl shadow-sm border p-5 text-left active:scale-95 transition-transform touch-manipulation ${
+            className={`bg-bg-surface rounded-xl shadow-sm border p-5 text-left hover:scale-[1.02] active:scale-95 transition-transform duration-200 touch-manipulation ${
               student.necesita_rutina ? 'border-primary' : 'border-border-accent/60'
             } relative z-0`}
           >

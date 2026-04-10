@@ -74,15 +74,15 @@ const CustomSelect = ({
         className={`
           w-full px-4 py-3 
           border-2 border-border-accent rounded-lg 
-          bg-surface-deep text-text-on-dark 
+          bg-bg-surface text-text 
           flex items-center justify-between
           transition-all duration-200
-          ${!disabled && 'hover:border-cyan hover:shadow-[0_0_0_1px_#0697d8] cursor-pointer'}
-          ${isOpen && !disabled && 'border-cyan shadow-[0_0_0_2px_rgba(0,191,255,0.1),0_0_20px_rgba(0,191,255,0.3)]'}
+          ${!disabled && 'hover:border-brandBlue hover:shadow-[0_0_0_1px_var(--color-brandBlue)] cursor-pointer'}
+          ${isOpen && !disabled && 'border-brandBlue shadow-[0_0_0_2px_rgb(6_151_216_/_0.1)]'}
           ${disabled && 'opacity-50 cursor-not-allowed'}
         `}
       >
-        <span className={`${!selectedOption && 'text-gray-400'}`}>
+        <span className={`${!selectedOption && 'text-text-muted'}`}>
           {selectedOption ? selectedOption.label : placeholder}
         </span>
         <ChevronDown 
@@ -90,7 +90,7 @@ const CustomSelect = ({
           className={`
             transition-transform duration-200 
             ${isOpen ? 'rotate-180' : 'rotate-0'}
-            ${disabled ? 'text-gray-400' : 'text-cyan'}
+            ${disabled ? 'text-text-muted' : 'text-brandBlue'}
           `}
         />
       </button>
@@ -100,10 +100,10 @@ const CustomSelect = ({
         <div 
           className="
             absolute z-[9999] w-full mt-2 
-            bg-surface-deep 
-            border-2 border-cyan 
+            bg-bg-surface 
+            border-2 border-brandBlue 
             rounded-lg 
-            shadow-[0_0_30px_rgba(0,191,255,0.4)]
+            shadow-[0_6px_18px_rgb(15_23_42_/_0.12)]
             max-h-60 overflow-y-auto
             animate-slide-in-up
           "
@@ -115,12 +115,12 @@ const CustomSelect = ({
               onClick={() => handleSelect(option)}
               className={`
                 w-full px-4 py-3 
-                text-left text-text-on-dark
+                text-left text-text
                 transition-all duration-150
                 ${index !== options.length - 1 && 'border-b border-border-accent'}
                 ${value === option.value 
-                  ? 'bg-cyanDeep text-cyan font-semibold' 
-                  : 'hover:bg-surface-dark hover:text-cyan'
+                  ? 'bg-bg text-brandBlue font-semibold' 
+                  : 'hover:bg-bg hover:text-brandBlue'
                 }
               `}
             >

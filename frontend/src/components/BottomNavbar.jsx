@@ -43,8 +43,8 @@ export default function BottomNavbar() {
             onClick={handleNavigation}
             className={`flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors active:scale-95 animate-fade-in ${
               isActive(path)
-                ? 'text-cyan bg-cyanDeep'
-                : 'text-text-on-dark hover:text-cyan hover:bg-cyanDeep'
+                ? 'text-brandBlue bg-bg'
+                : 'text-text hover:text-brandBlue hover:bg-bg'
             }`}
             style={{ animationDelay: `${index * 0.1}s` }}
           >

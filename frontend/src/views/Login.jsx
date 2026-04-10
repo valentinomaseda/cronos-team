@@ -27,21 +27,21 @@ export default function Login() {
     <div className="auth-shell">
       <div className="w-full max-w-md animate-fade-in">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-32 h-32 bg-white rounded-full mb-4 shadow-md border border-border overflow-hidden">
+          <div className="inline-flex items-center justify-center w-32 h-32 bg-bg-surface rounded-full mb-4 shadow-md border border-border overflow-hidden">
             <img src="/logo.jpg" alt="Cronos Team Logo" className="w-full h-full object-contain p-2" />
           </div>
-          <h1 className="font-display text-4xl text-text-on-dark mb-2 uppercase">Cronos Team</h1>
-          <p className="text-lg text-gray-300">Plataforma de Entrenamiento</p>
+          <h1 className="font-display text-4xl text-text mb-2 uppercase">Cronos Team</h1>
+          <p className="text-lg text-text-muted">Plataforma de Entrenamiento</p>
         </div>
 
         <div className="auth-card">
-          <h2 className="text-2xl font-bold text-text-on-dark mb-6 text-center">Iniciar Sesión</h2>
+          <h2 className="text-2xl font-bold text-text mb-6 text-center">Iniciar Sesión</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
               <label htmlFor="email" className="label-dark">Correo Electrónico</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted" size={24} strokeWidth={2} />
                 <input
                   id="email"
                   type="email"
@@ -58,7 +58,7 @@ export default function Login() {
             <div className="space-y-2">
               <label htmlFor="password" className="label-dark">Contraseña</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-text-muted" size={24} strokeWidth={2} />
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -72,10 +72,10 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan transition"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-brandBlue transition"
                   disabled={loading}
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <EyeOff size={24} strokeWidth={2} /> : <Eye size={24} strokeWidth={2} />}
                 </button>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => navigate('/forgot-password')}
-                className="text-sm text-cyan hover:underline font-semibold transition-colors"
+                className="text-sm text-brandBlue hover:underline font-semibold transition-colors"
               >
                 ¿Olvidaste tu contraseña?
               </button>
@@ -93,10 +93,10 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary flex items-center justify-center gap-2 text-lg mt-6"
+              className="w-full btn-primary py-3 active:scale-95 transition-transform touch-manipulation flex items-center justify-center gap-2 text-lg mt-6"
             >
               {loading ? (
-                <><Loader2 className="animate-spin" size={20} /> Entrando...</>
+                <><Loader2 className="animate-spin" size={24} strokeWidth={2} /> Entrando...</>
               ) : 'Iniciar Sesión'}
             </button>
           </form>

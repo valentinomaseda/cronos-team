@@ -53,7 +53,7 @@ export default function AddExercise() {
             <span>Volver a Rutinas</span>
           </button>
           <h1 className="title-screen flex items-center gap-3">
-            <Dumbbell className="text-cyan" size={36} />
+            <Dumbbell className="text-brandBlue" size={36} />
             Agregar Nuevo Ejercicio
           </h1>
         </div>
@@ -73,7 +73,7 @@ export default function AddExercise() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="Ej: Burpees, Sentadillas, Plancha..."
               />
             </div>
@@ -99,7 +99,7 @@ export default function AddExercise() {
                 required
                 className="text-lg"
               />
-              <p className="text-sm text-[#9CA3AF] mt-2">
+              <p className="text-sm text-text-muted mt-2">
                 Selecciona la unidad principal para este ejercicio. Las cantidades específicas se asignarán al agregar el ejercicio a una rutina.
               </p>
             </div>
@@ -116,10 +116,10 @@ export default function AddExercise() {
                   type="text"
                   value={formData.distancia}
                   onChange={handleChange}
-                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                   placeholder="Ej: 5, 10, 21..."
                 />
-                <p className="text-sm text-[#9CA3AF] mt-2">
+                <p className="text-sm text-text-muted mt-2">
                   Opcional: Define una distancia por defecto (solo número, sin unidad)
                 </p>
               </div>
@@ -137,10 +137,10 @@ export default function AddExercise() {
                   type="text"
                   value={formData.duracion}
                   onChange={handleChange}
-                  className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                   placeholder="Ej: 30, 5, 90..."
                 />
-                <p className="text-sm text-[#9CA3AF] mt-2">
+                <p className="text-sm text-text-muted mt-2">
                   Opcional: Define una duración por defecto (solo número, sin unidad)
                 </p>
               </div>
@@ -157,23 +157,23 @@ export default function AddExercise() {
                 value={formData.descripcionIntervalo}
                 onChange={handleChange}
                 rows="3"
-                className="text-[#ffffff] bg-[#1e1e1e] w-full px-4 py-3 border-2 border-[#0697d8] rounded-lg focus:ring-2 focus:ring-[#0697d8] focus:border-transparent text-lg"
+                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
                 placeholder="Ej: 3' suaves x 3' fuertes, rápidos km 4, 8 y 12..."
               />
-              <p className="text-sm text-[#9CA3AF] mt-2">
+              <p className="text-sm text-text-muted mt-2">
                 Opcional: Especifica intervalos, ritmos o detalles adicionales del ejercicio
               </p>
             </div>
 
             {/* Vista Previa */}
             <div className="surface-brand rounded-lg p-6">
-              <h3 className="text-sm font-semibold text-gray-300 mb-3">Vista Previa:</h3>
+              <h3 className="text-sm font-semibold text-text-muted mb-3">Vista Previa:</h3>
               <div className="space-y-2">
-                <p className="text-xl font-bold text-[#ffffff]">
+                <p className="text-xl font-bold text-text">
                   {formData.name || 'Nombre del Ejercicio'}
                 </p>
-                <p className="text-lg text-gray-300">
-                  Unidad: <span className="font-semibold text-[#0697d8]">
+                <p className="text-lg text-text-muted">
+                  Unidad: <span className="font-semibold text-brandBlue">
                     {formData.unidad === 'reps' ? 'Repeticiones' : 
                      formData.unidad === 'segundos' ? 'Segundos' :
                      formData.unidad === 'minutos' ? 'Minutos' :
@@ -183,22 +183,22 @@ export default function AddExercise() {
                   </span>
                 </p>
                 {formData.distancia && (
-                  <p className="text-base text-gray-300">
-                    Distancia: <span className="font-semibold text-[#0697d8]">
+                  <p className="text-base text-text-muted">
+                    Distancia: <span className="font-semibold text-brandBlue">
                       {formData.distancia} {formData.unidad === 'km' ? 'km' : 'metros'}
                     </span>
                   </p>
                 )}
                 {formData.duracion && (
-                  <p className="text-base text-gray-300">
-                    Duración: <span className="font-semibold text-[#0697d8]">
+                  <p className="text-base text-text-muted">
+                    Duración: <span className="font-semibold text-brandBlue">
                       {formData.duracion} {formData.unidad === 'segundos' ? 'segundos' : formData.unidad === 'minutos' ? 'minutos' : 'horas'}
                     </span>
                   </p>
                 )}
                 {formData.descripcionIntervalo && (
-                  <p className="text-base text-gray-300">
-                    Intervalos: <span className="font-semibold text-[#0697d8]">{formData.descripcionIntervalo}</span>
+                  <p className="text-base text-text-muted">
+                    Intervalos: <span className="font-semibold text-brandBlue">{formData.descripcionIntervalo}</span>
                   </p>
                 )}
               </div>

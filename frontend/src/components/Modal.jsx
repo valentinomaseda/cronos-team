@@ -12,20 +12,20 @@ export default function Modal({ isOpen, onClose, title, message, type = 'info', 
       case 'warning':
         return <AlertTriangle size={48} className="text-yellow-500 mx-auto mb-4" strokeWidth={2.5} />
       default:
-        return <Info size={48} className="text-cyan mx-auto mb-4" strokeWidth={2.5} />
+        return <Info size={48} className="text-brandBlue mx-auto mb-4" strokeWidth={2.5} />
     }
   }
 
   const getHeaderColor = () => {
     switch (type) {
       case 'success':
-        return 'bg-green-600'
+        return 'bg-success'
       case 'error':
-        return 'bg-red-600'
+        return 'bg-primary'
       case 'warning':
-        return 'bg-yellow-600 text-[#1e1e1e]'
+        return 'bg-primary text-white'
       default:
-        return 'bg-cyanDeep'
+        return 'bg-bg'
     }
   }
 
@@ -37,7 +37,7 @@ export default function Modal({ isOpen, onClose, title, message, type = 'info', 
           <h3 className="text-lg font-bold">{title || 'Notificación'}</h3>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-white hover:bg-opacity-20 rounded-full active:scale-95 transition-all"
+            className="p-1 hover:bg-bg rounded-full active:scale-95 transition-all"
           >
             <X size={20} strokeWidth={2.5} />
           </button>
@@ -46,7 +46,7 @@ export default function Modal({ isOpen, onClose, title, message, type = 'info', 
         {/* Body */}
         <div className="flex-1 overflow-y-auto p-6 text-center">
           {getIcon()}
-          <p className="text-text-on-dark text-base leading-relaxed whitespace-pre-line">{message}</p>
+          <p className="text-text text-base leading-relaxed whitespace-pre-line">{message}</p>
         </div>
 
         {/* Footer con botones */}
