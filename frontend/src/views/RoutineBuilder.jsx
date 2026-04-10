@@ -285,11 +285,20 @@ export default function RoutineBuilder() {
 
   return (
     <div className="page-shell space-y-6">
-      <div className="flex items-center space-x-3 mb-6">
-        <Dumbbell className="text-brandBlue" size={28} strokeWidth={2.5} />
-        <h2 className="font-display text-2xl text-text uppercase">
-          Constructor de Rutinas
-        </h2>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <div className="flex items-center space-x-3">
+          <Dumbbell className="text-brandBlue" size={28} strokeWidth={2.5} />
+          <h2 className="font-display text-2xl text-text uppercase">
+            Constructor de Rutinas
+          </h2>
+        </div>
+        <button
+          onClick={() => navigate('/agregar-ejercicio')}
+          className="btn-primary inline-flex items-center justify-center gap-2 px-4 py-2 text-sm"
+        >
+          <Plus size={16} strokeWidth={2.5} />
+          Añadir ejercicio
+        </button>
       </div>
 
       {/* Panel de Creación */}

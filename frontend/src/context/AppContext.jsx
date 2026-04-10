@@ -471,6 +471,19 @@ export const AppProvider = ({ children }) => {
       await loadData(userWithAvatar)
       return
     }
+        if (email === 'demoal@gmail.com' && password === 'demo') {
+      const demoPersona = {
+        idPersona: 0,
+        nombre: 'Demo User',
+        rol: 'alumno'
+      }
+      const userWithAvatar = addAvatarToUser(demoPersona)
+      setUser(userWithAvatar)
+      setIsAuthenticated(true)
+      localStorage.setItem('user', JSON.stringify(userWithAvatar))
+      await loadData(userWithAvatar)
+      return
+    }
     try {
       const persona = await personasAPI.login(email, password)
       

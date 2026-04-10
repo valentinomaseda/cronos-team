@@ -338,70 +338,75 @@ export default function StudentDetail() {
   }
 
   return (
-    <div className="p-4 space-y-6 pb-32 md:pb-6 animate-fade-in">
+    <div className="page-shell space-y-6 animate-fade-in">
       {/* Header */}
       <div className="flex items-center space-x-4 animate-slide-in-left">
         <button
           onClick={handleBack}
-          className="p-2 rounded-lg hover:bg-brandBlue active:scale-95 transition-all text-brandBlue"
+          className="h-10 w-10 flex items-center justify-center rounded-lg bg-bg-surface border border-border text-brandBlue hover:bg-brandBlue/10 active:scale-95 transition-all"
         >
           <ArrowLeft size={24} strokeWidth={2.5} />
         </button>
-        <h2 className="text-2xl font-bold text-text">Detalle del Alumno</h2>
+        <h2 className="title-section">Detalle del Alumno</h2>
       </div>
 
       {/* Card del alumno */}
-      <div className="bg-bg-surface rounded-xl shadow-lg p-6 animate-slide-in-up delay-100 border border-border">
-        <div className="flex items-center space-x-4">
+      <div className="surface-panel p-6 animate-slide-in-up delay-100">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center space-x-4">
           <img
             src={selectedStudent.photo}
             alt={selectedStudent.name}
             className="w-24 h-24 rounded-full border-4 border-border"
           />
-          <div className="flex-1">
-            <div className="flex items-center space-x-3">
-              <h3 className="text-2xl font-bold text-brandBlue">{selectedStudent.name}</h3>
-              <button
-                onClick={() => setShowInfoModal(true)}
-                className="p-2 bg-brandBlue text-white rounded-full hover:bg-brandBlue active:scale-95 transition-all"
-                title="Ver información completa"
-              >
-                <Info size={20} strokeWidth={2.5} />
-              </button>
-              <button
-                onClick={() => {
-                  setEditFormData({
-                    nombre: selectedStudent.name,
-                    telefono: selectedStudent.phone || '',
-                    email: selectedStudent.email || '',
-                    peso: selectedStudent.weight || '',
-                    altura: selectedStudent.height || '',
-                    domicilio: selectedStudent.address || '',
-                    fechaNacimiento: selectedStudent.birthDate || '',
-                    nivel: selectedStudent.level || 'Intermedio',
-                    genero: selectedStudent.gender || 'masculino'
-                  })
-                  setShowEditModal(true)
-                }}
-                className="p-2 bg-success text-white rounded-full hover:bg-success active:scale-95 transition-all"
-                title="Editar alumno"
-              >
-                <Edit2 size={20} strokeWidth={2.5} />
-              </button>
-            </div>
-            <p className="text-sm text-text-muted mt-1">
+            <div className="flex-1 min-w-0">
+              <h3 className="text-2xl font-bold text-text truncate">{selectedStudent.name}</h3>
+              <p className="text-sm text-text-muted mt-1">
               <span
                 className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
                   selectedStudent.level === 'Avanzado'
                     ? 'bg-success text-white'
                     : selectedStudent.level === 'Intermedio'
                     ? 'bg-brandBlue text-white'
-                    : 'bg-primary text-white'
+                    : 'bg-brandBlue text-white'
                 }`}
               >
                 {selectedStudent.level}
               </span>
-            </p>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 sm:justify-end">
+            <button
+              onClick={() => setShowInfoModal(true)}
+              className="h-10 px-3 inline-flex items-center gap-2 bg-bg text-text rounded-lg border border-border hover:bg-bg-surface active:scale-95 transition-all"
+              title="Ver información completa"
+            >
+              <Info size={18} strokeWidth={2.5} />
+              Info
+            </button>
+            <button
+              onClick={() => {
+                setEditFormData({
+                  nombre: selectedStudent.name,
+                  telefono: selectedStudent.phone || '',
+                  email: selectedStudent.email || '',
+                  peso: selectedStudent.weight || '',
+                  altura: selectedStudent.height || '',
+                  domicilio: selectedStudent.address || '',
+                  fechaNacimiento: selectedStudent.birthDate || '',
+                  nivel: selectedStudent.level || 'Intermedio',
+                  genero: selectedStudent.gender || 'masculino'
+                })
+                setShowEditModal(true)
+              }}
+              className="h-10 px-3 inline-flex items-center gap-2 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all"
+              title="Editar alumno"
+            >
+              <Edit2 size={18} strokeWidth={2.5} />
+              Editar
+            </button>
           </div>
         </div>
       </div>
@@ -428,13 +433,13 @@ export default function StudentDetail() {
                   className="w-20 h-20 rounded-full border-4 border-border"
                 />
                 <div>
-                  <h4 className="text-xl font-bold text-brandBlue">{selectedStudent.name}</h4>
+                  <h4 className="text-xl font-bold text-text">{selectedStudent.name}</h4>
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mt-1 ${
                     selectedStudent.level === 'Avanzado'
                       ? 'bg-success text-white'
                       : selectedStudent.level === 'Intermedio'
                       ? 'bg-brandBlue text-white'
-                      : 'bg-primary text-white'
+                      : 'bg-brandBlue text-white'
                   }`}>
                     {selectedStudent.level}
                   </span>
@@ -445,7 +450,7 @@ export default function StudentDetail() {
                 <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                   <Phone className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-brandBlue font-semibold">Teléfono</p>
+                    <p className="text-xs text-text-muted font-semibold">Teléfono</p>
                     <p className="text-text font-semibold">{selectedStudent.phone}</p>
                   </div>
                 </div>
@@ -453,7 +458,7 @@ export default function StudentDetail() {
                 <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                   <Mail className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-brandBlue font-semibold">Email</p>
+                    <p className="text-xs text-text-muted font-semibold">Email</p>
                     <p className="text-text font-semibold">{selectedStudent.email}</p>
                   </div>
                 </div>
@@ -461,7 +466,7 @@ export default function StudentDetail() {
                 <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                   <MapPin className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-brandBlue font-semibold">Dirección</p>
+                    <p className="text-xs text-text-muted font-semibold">Dirección</p>
                     <p className="text-text font-semibold">{selectedStudent.address}</p>
                   </div>
                 </div>
@@ -469,7 +474,7 @@ export default function StudentDetail() {
                 <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                   <Cake className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                   <div>
-                    <p className="text-xs text-brandBlue font-semibold">Fecha de Nacimiento</p>
+                    <p className="text-xs text-text-muted font-semibold">Fecha de Nacimiento</p>
                     <p className="text-text font-semibold">{new Date(selectedStudent.birthDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   </div>
                 </div>
@@ -478,7 +483,7 @@ export default function StudentDetail() {
                   <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                     <Weight className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                     <div>
-                      <p className="text-xs text-brandBlue font-semibold">Peso</p>
+                      <p className="text-xs text-text-muted font-semibold">Peso</p>
                       <p className="text-text font-bold">{selectedStudent.weight} kg</p>
                     </div>
                   </div>
@@ -486,7 +491,7 @@ export default function StudentDetail() {
                   <div className="flex items-start space-x-3 p-3 bg-bg rounded-lg border border-border">
                     <Ruler className="text-brandBlue mt-1" size={20} strokeWidth={2.5} />
                     <div>
-                      <p className="text-xs text-brandBlue font-semibold">Altura</p>
+                      <p className="text-xs text-text-muted font-semibold">Altura</p>
                       <p className="text-text font-bold">{selectedStudent.height} cm</p>
                     </div>
                   </div>
@@ -556,7 +561,7 @@ export default function StudentDetail() {
               return (
               <div
                 key={uniqueId}
-                className={`bg-bg rounded-lg border-2 ${getStatusColor(routine.status)} hover:border-border transition-colors overflow-hidden`}
+                className={`bg-bg-surface rounded-xl border-2 ${getStatusColor(routine.status)} hover:border-brandBlue/40 transition-colors overflow-hidden shadow-sm`}
               >
                 {/* Header de la rutina */}
                 <div className="p-4">
@@ -610,7 +615,7 @@ export default function StudentDetail() {
                           setRoutineToDelete(routine)
                           setShowDeleteModal(true)
                         }}
-                        className="p-2 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all"
+                        className="p-2 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all"
                         title="Eliminar rutina"
                       >
                         <Trash2 size={20} strokeWidth={2.5} />
@@ -619,7 +624,7 @@ export default function StudentDetail() {
                   </div>
 
                   {/* Estado actual */}
-                  <div className="flex items-center justify-between p-2 bg-bg rounded-lg mb-3">
+                  <div className="flex items-center justify-between p-2 bg-bg rounded-lg mb-3 border border-border/60">
                     <span className="text-text font-semibold text-sm">Estado:</span>
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                       routine.status === 'completada' ? 'bg-success text-white' :
@@ -654,8 +659,8 @@ export default function StudentDetail() {
                       disabled={updatingRoutineStatus === routine.id || routine.status === 'incompleta'}
                       className={`px-2 py-2 rounded-lg font-semibold text-xs transition-all active:scale-95 flex items-center justify-center gap-1 ${
                         routine.status === 'incompleta'
-                          ? 'bg-primary text-white'
-                          : 'bg-bg text-text hover:bg-primary hover:text-white'
+                          ? 'bg-brandBlue text-white'
+                          : 'bg-bg text-text hover:bg-brandBlue hover:text-white'
                       } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {updatingRoutineStatus === routine.id ? (
@@ -684,7 +689,7 @@ export default function StudentDetail() {
 
                 {/* Detalles de ejercicios (expandible) */}
                 {expandedRoutine === uniqueId && routine.exercises && (
-                  <div className="border-t-2 border-border p-4 bg-bg/30 animate-slide-in-up">
+                  <div className="border-t border-border p-4 bg-bg animate-slide-in-up">
                     <h4 className="text-lg font-bold text-brandBlue mb-4">
                       Ejercicios ({routine.exercises.length})
                     </h4>
@@ -692,14 +697,14 @@ export default function StudentDetail() {
                       {routine.exercises.map((exercise, idx) => (
                         <div
                           key={idx}
-                          className="bg-bg rounded-lg p-4 border-2 border-border"
+                          className="bg-bg-surface rounded-lg p-4 border border-border"
                         >
                           {/* Header del ejercicio con indicador de calentamiento */}
                           <div className="flex items-start justify-between mb-2">
                             <h5 className="font-bold text-text flex items-center gap-2">
                               {idx + 1}. {exercise.name}
                               {exercise.esCalentamiento === 1 && (
-                                <span className="text-xs px-2 py-1 bg-primary text-white rounded-full">
+                                <span className="text-xs px-2 py-1 bg-brandBlue text-white rounded-full">
                                   🔥 Calentamiento
                                 </span>
                               )}
@@ -723,7 +728,7 @@ export default function StudentDetail() {
                               </span>
                             )}
                             {exercise.intensidad && (
-                              <span className="px-2 py-1 bg-primary text-white rounded font-semibold">
+                              <span className="px-2 py-1 bg-brandBlue text-white rounded font-semibold">
                                 ⚡ {exercise.intensidad}
                               </span>
                             )}
@@ -731,8 +736,8 @@ export default function StudentDetail() {
 
                           {/* Información del ejercicio base */}
                           {(exercise.distancia || exercise.duracion || exercise.descripcionIntervalo) && (
-                            <div className="mb-3 p-2 bg-brandBlue/20 rounded border border-border/20">
-                              <p className="text-xs text-text-muted font-semibold mb-1">📋 Info del ejercicio:</p>
+                            <div className="mb-3 p-3 bg-bg rounded border border-border/60">
+                              <p className="text-xs text-text font-semibold mb-1">📋 Info del ejercicio:</p>
                               <div className="text-sm text-text-muted space-y-1">
                                 {exercise.distancia && (
                                   <div>📏 Distancia: <span className="text-brandBlue font-semibold">{exercise.distancia}</span></div>
@@ -749,15 +754,15 @@ export default function StudentDetail() {
 
                           {/* Especificaciones personalizadas */}
                           {exercise.especificaciones && (
-                            <div className="mt-2 p-2 bg-brandBlue/30 rounded border border-border/20">
+                            <div className="mt-2 p-3 bg-bg rounded border border-border/60">
                               <p className="text-sm text-brandBlue font-semibold mb-1">📝 Especificaciones personalizadas:</p>
-                              <p className="text-sm text-text-muted">{exercise.especificaciones}</p>
+                              <p className="text-sm text-text">{exercise.especificaciones}</p>
                             </div>
                           )}
 
                           {/* Estado del ejercicio y feedback del alumno */}
                           {(exercise.ejercicioCompletado !== undefined || exercise.feedbackAlumno) && (
-                            <div className="mt-2 p-3 bg-bg rounded-lg border-2 border-border/40">
+                            <div className="mt-2 p-3 bg-bg rounded-lg border border-border/70">
                               {/* Indicador de completado */}
                               {exercise.ejercicioCompletado !== undefined && (
                                 <div className="flex items-center gap-2 mb-2">
@@ -777,11 +782,11 @@ export default function StudentDetail() {
 
                               {/* Feedback del alumno */}
                               {exercise.feedbackAlumno && (
-                                <div className="mt-2 p-2 bg-bg rounded border border-border/50">
+                                <div className="mt-2 p-2 bg-bg rounded border border-border/70">
                                   <p className="text-xs text-brandBlue font-semibold mb-1 flex items-center gap-1">
                                     <span>💬</span> Comentario del alumno:
                                   </p>
-                                  <p className="text-sm text-text-muted italic">"{exercise.feedbackAlumno}"</p>
+                                  <p className="text-sm text-text italic">"{exercise.feedbackAlumno}"</p>
                                 </div>
                               )}
                             </div>
@@ -817,7 +822,7 @@ export default function StudentDetail() {
             {chartData.length > 0 ? (
               <div>
                 <h4 className="text-sm font-bold text-text mb-3">Rendimiento en el Tiempo</h4>
-                <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
+                <div className="bg-bg-surface rounded-lg p-4 border border-border" style={{ height: '300px' }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData}>
                       <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
@@ -843,7 +848,7 @@ export default function StudentDetail() {
                 </p>
               </div>
             ) : (
-              <div className="bg-bg rounded-lg p-8 text-center">
+              <div className="bg-bg-surface rounded-lg p-8 text-center border border-border">
                 <TrendingUp className="mx-auto text-text-muted mb-3" size={48} />
                 <p className="text-text font-semibold mb-2">No hay datos de progreso aún</p>
                 <p className="text-sm text-text-muted">
@@ -854,19 +859,19 @@ export default function StudentDetail() {
 
             {/* Estadísticas rápidas */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-bg rounded-lg p-4 text-center">
+              <div className="bg-bg-surface rounded-lg p-4 text-center border border-border">
                 <p className="text-3xl font-bold text-brandBlue">
                   {lastPerformance}%
                 </p>
                 <p className="text-xs text-text mt-1">Último rendimiento</p>
               </div>
-              <div className="bg-bg rounded-lg p-4 text-center">
+              <div className="bg-bg-surface rounded-lg p-4 text-center border border-border">
                 <p className="text-3xl font-bold text-brandBlue">
                   {averagePerformance}%
                 </p>
                 <p className="text-xs text-text mt-1">Promedio</p>
               </div>
-              <div className="bg-bg rounded-lg p-4 text-center col-span-2 md:col-span-1">
+              <div className="bg-bg-surface rounded-lg p-4 text-center col-span-2 md:col-span-1 border border-border">
                 <p className="text-3xl font-bold text-brandBlue">
                   {completedRoutines}
                 </p>
@@ -875,12 +880,12 @@ export default function StudentDetail() {
             </div>
 
             {/* Resumen adicional */}
-            <div className="bg-bg rounded-lg p-4">
+            <div className="bg-bg-surface rounded-lg p-4 border border-border">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="text-sm font-bold text-text">Tasa de Completado</h4>
                 <span className="text-2xl font-bold text-brandBlue">{completionRate}%</span>
               </div>
-              <div className="w-full bg-bg rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-bg rounded-full h-3 overflow-hidden border border-border/60">
                 <div
                   className="bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out"
                   style={{ width: `${completionRate}%` }}
@@ -898,7 +903,7 @@ export default function StudentDetail() {
             </div>
 
             {/* Sistema de logros */}
-            <div className="mt-6 bg-bg rounded-lg p-4">
+            <div className="mt-6 bg-bg-surface rounded-lg p-4 border border-border">
               <AchievementBadges stats={achievementStats} />
             </div>
           </div>
@@ -908,15 +913,15 @@ export default function StudentDetail() {
       {/* Modal de confirmación de eliminación */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
-            <div className="sticky top-0 bg-primary text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-border">
+            <div className="sticky top-0 bg-brandBlue text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Confirmar Eliminación</h3>
               <button
                 onClick={() => {
                   setShowDeleteModal(false)
                   setRoutineToDelete(null)
                 }}
-                className="p-2 hover:bg-primary rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-brandBlue rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
@@ -942,7 +947,7 @@ export default function StudentDetail() {
                 <button
                   onClick={handleDeleteRoutine}
                   disabled={deletingRoutine}
-                  className="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {deletingRoutine ? (
                     <>
@@ -1103,7 +1108,7 @@ export default function StudentDetail() {
                   <button
                     type="button"
                     onClick={() => setShowDeleteStudentModal(true)}
-                    className="w-full px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold flex items-center justify-center gap-2"
+                    className="w-full px-4 py-3 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-semibold flex items-center justify-center gap-2"
                   >
                     <Trash2 size={18} /> Eliminar alumno
                   </button>
@@ -1117,12 +1122,12 @@ export default function StudentDetail() {
       {/* Modal de confirmación para eliminar alumno */}
       {showDeleteStudentModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-red-600">
-            <div className="sticky top-0 bg-primary text-white p-6 flex items-center justify-between rounded-t-xl">
+          <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full animate-scale-in border border-border">
+            <div className="sticky top-0 bg-brandBlue text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Eliminar Alumno</h3>
               <button
                 onClick={() => setShowDeleteStudentModal(false)}
-                className="p-2 hover:bg-primary rounded-full active:scale-95 transition-all"
+                className="p-2 hover:bg-brandBlue rounded-full active:scale-95 transition-all"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>
@@ -1144,7 +1149,7 @@ export default function StudentDetail() {
                 <button
                   onClick={handleDeleteStudent}
                   disabled={deletingStudent}
-                  className="flex-1 px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-brandBlue text-white rounded-lg hover:bg-brandBlue hover:text-white active:scale-95 transition-all font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {deletingStudent ? (
                     <>

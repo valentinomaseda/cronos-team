@@ -1,12 +1,11 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 import { TrendingUp, Calendar } from 'lucide-react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
 import { useAppContext } from '../context/AppContext'
 import AchievementBadges from '../components/AchievementBadges'
 
 export default function StudentProgress() {
-  const { user, myRoutines } = useAppContext()
-  const [timeRange, setTimeRange] = useState('month') // week, month, year
+  const { myRoutines } = useAppContext()
 
   // Calcular estadísticas
   const totalRoutines = myRoutines?.length || 0
@@ -53,10 +52,10 @@ export default function StudentProgress() {
     return acc
   }, {}) || {}
 
-  const monthlyData = Object.entries(routinesByMonth).map(([mes, data]) => ({
+  const monthlyData = useMemo(() => Object.entries(routinesByMonth).map(([mes, data]) => ({
     mes,
     ...data
-  }))
+  })), [routinesByMonth])
 
   return (
     <div className="page-shell space-y-6">
@@ -69,23 +68,23 @@ export default function StudentProgress() {
       {/* Tarjetas de estadísticas */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="metric-card animate-scale-in">
-          <p className="text-xs text-brandBlue mb-1">Total Rutinas</p>
+          <p className="text-xs text-text-muted mb-1">Total Rutinas</p>
           <p className="text-3xl font-bold text-text">{totalRoutines}</p>
         </div>
 
-        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '100ms' }}>
-          <p className="text-xs text-green-200 mb-1">Completadas</p>
-          <p className="text-3xl font-bold text-white">{completedRoutines}</p>
+        <div className="metric-card animate-scale-in" style={{ animationDelay: '100ms' }}>
+          <p className="text-xs text-text-muted mb-1">Completadas</p>
+          <p className="text-3xl font-bold text-success">{completedRoutines}</p>
         </div>
 
-        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '200ms' }}>
+        <div className="metric-card animate-scale-in" style={{ animationDelay: '200ms' }}>
           <p className="text-xs text-text-muted mb-1">Incompletas</p>
-          <p className="text-3xl font-bold text-white">{incompleteRoutines}</p>
+          <p className="text-3xl font-bold text-brandBlue">{incompleteRoutines}</p>
         </div>
 
-        <div className="bg-bg-surface rounded-xl shadow-lg p-4 animate-scale-in border border-border/20" style={{ animationDelay: '300ms' }}>
+        <div className="metric-card animate-scale-in" style={{ animationDelay: '300ms' }}>
           <p className="text-xs text-text-muted mb-1">Pendientes</p>
-          <p className="text-3xl font-bold text-white">{pendingRoutines}</p>
+          <p className="text-3xl font-bold text-text">{pendingRoutines}</p>
         </div>
       </div>
 
@@ -95,7 +94,7 @@ export default function StudentProgress() {
           <h3 className="text-lg font-bold text-text">Tasa de Completado</h3>
           <span className="text-3xl font-bold text-brandBlue">{completionRate}%</span>
         </div>
-        <div className="w-full bg-bg rounded-full h-4 overflow-hidden">
+        <div className="w-full bg-bg rounded-full h-4 overflow-hidden border border-border/60">
           <div
             className="bg-brandBlue h-full rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${completionRate}%` }}
@@ -117,7 +116,7 @@ export default function StudentProgress() {
       {progressData.length > 0 && (
         <div className="surface-brand p-6 animate-slide-in-up delay-300">
           <h3 className="text-lg font-bold text-text mb-4">Rendimiento en el Tiempo</h3>
-          <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
+          <div className="bg-bg-surface rounded-lg p-4 border border-border" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={progressData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
@@ -148,7 +147,7 @@ export default function StudentProgress() {
       {monthlyData.length > 0 && (
         <div className="surface-brand p-6 animate-slide-in-up delay-400">
           <h3 className="text-lg font-bold text-text mb-4">Rutinas por Mes</h3>
-          <div className="bg-bg rounded-lg p-4" style={{ height: '300px' }}>
+          <div className="bg-bg-surface rounded-lg p-4 border border-border" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-brandBlue)" />
@@ -182,7 +181,7 @@ export default function StudentProgress() {
               .map((routine, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-3 bg-bg rounded-lg"
+                  className="flex items-center justify-between p-3 bg-bg rounded-lg border border-border/70"
                 >
                   <div className="flex-1">
                     <p className="font-semibold text-text">{routine.name}</p>
@@ -190,7 +189,7 @@ export default function StudentProgress() {
                   </div>
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                     routine.status === 'completada' ? 'bg-success text-white' :
-                    routine.status === 'incompleta' ? 'bg-primary text-white' :
+                    routine.status === 'incompleta' ? 'bg-brandBlue text-white' :
                     'bg-bg text-text'
                   }`}>
                     {routine.status === 'completada' ? 'Completada' :

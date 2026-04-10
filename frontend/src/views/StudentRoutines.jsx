@@ -203,12 +203,12 @@ export default function StudentRoutines() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'completada':
-        return 'bg-success border-green-400'
+        return 'border-green-400'
       case 'incompleta':
-        return 'bg-primary border-yellow-400'
+        return 'border-brandBlue/50'
       case 'activa':
       default:
-        return 'bg-brandBlue border-border'
+        return 'border-border'
     }
   }
 
@@ -289,7 +289,7 @@ export default function StudentRoutines() {
             return (
             <div
               key={uniqueId}
-              className={`bg-bg-surface rounded-xl shadow-lg overflow-hidden animate-slide-in-up border-2 ${getStatusColor(routine.status)}`}
+              className={`bg-bg-surface rounded-xl shadow-sm overflow-hidden animate-slide-in-up border-2 ${getStatusColor(routine.status)}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Header de la rutina */}
@@ -317,11 +317,11 @@ export default function StudentRoutines() {
                 </div>
 
                 {/* Estado actual */}
-                <div className="flex items-center justify-between p-3 bg-bg rounded-lg mb-4">
+                <div className="flex items-center justify-between p-3 bg-bg rounded-lg mb-4 border border-border/70">
                   <span className="text-text font-semibold">Estado:</span>
                   <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                     routine.status === 'completada' ? 'bg-success text-white' :
-                    routine.status === 'incompleta' ? 'bg-primary text-white' :
+                    routine.status === 'incompleta' ? 'bg-brandBlue text-white' :
                     'bg-bg text-text'
                   }`}>
                     {getStatusText(routine.status)}
@@ -350,8 +350,8 @@ export default function StudentRoutines() {
                     disabled={updatingStatus === routine.id || routine.status === 'incompleta'}
                     className={`px-3 py-2 rounded-lg font-semibold text-sm transition-all active:scale-95 flex items-center justify-center gap-1 ${
                       routine.status === 'incompleta'
-                        ? 'bg-primary text-white'
-                        : 'bg-bg text-text hover:bg-primary hover:text-white'
+                        ? 'bg-brandBlue text-white'
+                        : 'bg-bg text-text hover:bg-brandBlue hover:text-white'
                     } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     {updatingStatus === routine.id ? (
@@ -380,7 +380,7 @@ export default function StudentRoutines() {
 
               {/* Detalles de ejercicios (expandible) */}
               {expandedRoutine === uniqueId && (
-                <div className="border-t-2 border-border p-6 bg-bg/30 animate-slide-in-up">
+                <div className="border-t border-border p-6 bg-bg animate-slide-in-up">
                   <h4 className="text-lg font-bold text-brandBlue mb-4">
                     Ejercicios ({routine.exercises?.length || 0})
                   </h4>
@@ -399,7 +399,7 @@ export default function StudentRoutines() {
                         return (
                         <div
                           key={idx}
-                          className={`bg-bg rounded-lg p-4 border-2 ${
+                          className={`bg-bg-surface rounded-lg p-4 border ${
                             exerciseState.ejercicioCompletado ? 'border-green-500' : 'border-border'
                           }`}
                         >
@@ -408,7 +408,7 @@ export default function StudentRoutines() {
                             <h5 className="font-bold text-text flex items-center gap-2 flex-1">
                               {idx + 1}. {exercise.name}
                               {exercise.esCalentamiento === 1 && (
-                                <span className="text-xs px-2 py-1 bg-primary text-white rounded-full">
+                                <span className="text-xs px-2 py-1 bg-brandBlue text-white rounded-full">
                                   🔥 Calentamiento
                                 </span>
                               )}
@@ -446,7 +446,7 @@ export default function StudentRoutines() {
                               </span>
                             )}
                             {exercise.intensidad && (
-                              <span className="px-2 py-1 bg-primary text-white rounded font-semibold">
+                              <span className="px-2 py-1 bg-brandBlue text-white rounded font-semibold">
                                 ⚡ {exercise.intensidad}
                               </span>
                             )}
@@ -454,8 +454,8 @@ export default function StudentRoutines() {
 
                           {/* Información del ejercicio base */}
                           {(exercise.distancia || exercise.duracion || exercise.descripcionIntervalo) && (
-                            <div className="mb-3 p-2 bg-brandBlue/20 rounded border border-border/20">
-                              <p className="text-xs text-text-muted font-semibold mb-1">📋 Info del ejercicio:</p>
+                            <div className="mb-3 p-3 bg-bg rounded border border-border/70">
+                              <p className="text-xs text-text font-semibold mb-1">📋 Info del ejercicio:</p>
                               <div className="text-sm text-text-muted space-y-1">
                                 {exercise.distancia && (
                                   <div>📏 Distancia: <span className="text-brandBlue font-semibold">{exercise.distancia}</span></div>
@@ -472,9 +472,9 @@ export default function StudentRoutines() {
 
                           {/* Especificaciones personalizadas */}
                           {exercise.especificaciones && (
-                            <div className="mt-2 p-2 bg-brandBlue/30 rounded border border-border/20">
+                            <div className="mt-2 p-3 bg-bg rounded border border-border/70">
                               <p className="text-sm text-brandBlue font-semibold mb-1">📝 Especificaciones personalizadas:</p>
-                              <p className="text-sm text-text-muted">{exercise.especificaciones}</p>
+                              <p className="text-sm text-text">{exercise.especificaciones}</p>
                             </div>
                           )}
 
@@ -488,7 +488,7 @@ export default function StudentRoutines() {
                               value={exerciseState.feedbackAlumno}
                               onChange={(e) => handleFeedbackChange(routine.id, routine.fechaAsignacion, orden, e.target.value)}
                               placeholder="Escribe tus comentarios sobre este ejercicio..."
-                              className="w-full px-3 py-2 bg-bg border border-border rounded-lg text-text placeholder-gray-500 focus:outline-none focus:border-border transition-colors resize-none"
+                              className="w-full px-3 py-2 bg-bg-surface border border-border rounded-lg text-text placeholder:text-text-muted focus:outline-none focus:border-brandBlue transition-colors resize-none"
                               rows="2"
                             />
                             

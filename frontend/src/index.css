@@ -129,7 +129,7 @@
   }
 
   .btn-primary {
-    background: var(--color-primary);
+    background: var(--color-brandBlue);
     color: rgb(255 255 255);
     font-weight: 700;
     padding: 0.75rem 1.5rem;
@@ -140,18 +140,18 @@
   }
 
   .btn-secondary {
-    background: var(--color-bg-surface);
-    color: var(--color-text);
+    background: var(--color-brandBlue);
+    color: rgb(255 255 255);
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--color-border);
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    border: 1px solid var(--color-brandBlue);
+    transition: opacity 0.2s ease, transform 0.2s ease;
     touch-action: manipulation;
   }
 
   .btn-danger {
-    background: var(--color-primary);
+    background: var(--color-brandBlue);
     color: rgb(255 255 255);
     font-weight: 600;
     padding: 0.75rem 1.5rem;
@@ -170,7 +170,7 @@
   .btn-primary:active,
   .btn-secondary:active,
   .btn-danger:active { transform: scale(0.97); }
-  .btn-secondary:hover { border-color: var(--color-brandBlue); }
+  .btn-secondary:hover { opacity: 0.9; }
   .btn-danger:hover { opacity: 0.9; }
   .btn-ghost:hover { color: var(--color-text); }
 
