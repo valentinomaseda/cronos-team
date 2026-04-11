@@ -413,7 +413,7 @@ export default function StudentDetail() {
 
       {/* Modal de información del alumno */}
       {showInfoModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
+        <div className="fixed inset-0 bg-black/25 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
           <div className="bg-bg-surface rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] flex flex-col animate-scale-in border border-border">
             <div className="flex-shrink-0 bg-brandBlue text-white p-6 flex items-center justify-between rounded-t-xl">
               <h3 className="text-xl font-bold">Información del Alumno</h3>

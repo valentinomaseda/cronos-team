@@ -42,10 +42,8 @@ export default function StudentList() {
   }, [pagination.currentPage])
 
   const filteredStudents = students.filter((student) => {
-    const studentName = student?.nombre || student?.name || ''
-    const studentLevel = student?.nivel || student?.level || ''
-    const matchesSearch = studentName.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesLevel = levelFilter === 'all' || studentLevel === levelFilter
+    const matchesSearch = student.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesLevel = levelFilter === 'all' || student.nivel === levelFilter
     return matchesSearch && matchesLevel
   })
 
@@ -56,7 +54,7 @@ export default function StudentList() {
       setSelectedStudent(studentDetails)
       navigate(`/alumnos/${student.idPersona}`)
     } catch (error) {
-      showAlert('Error al cargar los detalles del alumno', 'error')
+      showAlert('Error al cargar detalles', 'error')
     } finally {
       setLoading(false)
     }
@@ -77,22 +75,22 @@ export default function StudentList() {
   }
 
   return (
-    <div className="page-shell space-y-6 max-w-full overflow-hidden">
-      
-      {/* Controles de Búsqueda y Filtro */}
+    <div className="space-y-6 p-4 pb-32 md:pb-6 animate-fade-in max-w-full overflow-hidden">
+      {/* Buscador y Filtros */}
       <div className="flex flex-col md:flex-row gap-3 relative z-30">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted z-10" size={20} />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted z-10" size={20} strokeWidth={2} />
           <input
             type="text"
             placeholder="Buscar alumno..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10" // Toma los estilos base de index.css
+            className="w-full pl-10 pr-4 py-3 bg-bg-surface border border-border rounded-md text-text placeholder:text-text-muted focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all"
           />
         </div>
+
         <div className="relative w-full md:w-auto md:min-w-[12rem]">
-          <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted z-10 pointer-events-none" size={20} />
+          <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted z-10 pointer-events-none" size={20} strokeWidth={2} />
           <CustomSelect
             value={levelFilter}
             onChange={(e) => setLevelFilter(e.target.value)}
@@ -107,7 +105,7 @@ export default function StudentList() {
         </div>
       </div>
 
-      <div className="text-sm text-text-muted px-1 font-semibold">
+      <div className="text-sm font-semibold text-text-muted px-1">
         Mostrando {filteredStudents.length} de {pagination.totalRecords} alumnos
       </div>
 
@@ -117,13 +115,13 @@ export default function StudentList() {
           <button
             key={student.idPersona}
             onClick={() => handleStudentClick(student)}
-            className={`bg-bg-surface rounded-xl shadow-sm border p-5 text-left hover:scale-[1.02] active:scale-95 transition-transform duration-200 touch-manipulation ${
-              student.necesita_rutina ? 'border-primary' : 'border-border-accent/60'
+            className={`bg-bg-surface rounded-xl p-5 text-left border shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-brandBlue/50 active:scale-[0.98] touch-manipulation ${
+              student.necesita_rutina ? 'border-primary' : 'border-border'
             } relative z-0`}
           >
             {student.necesita_rutina === 1 && (
-              <div className="absolute -top-2 -right-2 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm">
-                <AlertCircle size={14} /> Sin rutina
+              <div className="absolute -top-3 -right-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-md">
+                <AlertCircle size={14} strokeWidth={2.5} /> Sin rutina
               </div>
             )}
 
@@ -134,54 +132,65 @@ export default function StudentList() {
                 className={`w-14 h-14 rounded-full border-2 object-cover ${
                   student.necesita_rutina ? 'border-primary' : 'border-transparent'
                 }`}
-                onError={(e) => { e.target.src = '/avatar-masc.jpg' }}
+                onError={(e) => e.target.src = '/avatar-masc.jpg'}
               />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-text truncate">{student.nombre || student.name || 'Sin nombre'}</h3>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-bold text-text truncate">{student.nombre || 'Sin nombre'}</h3>
                 <div className="mt-1">
                   <span className={`inline-block px-2 py-1 rounded text-xs font-bold ${
-                    student.nivel === 'Avanzado' ? 'bg-success/20 text-success' : 
-                    student.nivel === 'Intermedio' ? 'bg-brandBlue/20 text-brandBlue' : 
-                    'bg-gray-200 text-text-muted'
+                    student.nivel === 'Avanzado' ? 'bg-success/20 text-success' :
+                    student.nivel === 'Intermedio' ? 'bg-brandBlue/20 text-brandBlue' :
+                    'bg-bg border border-border text-text-muted'
                   }`}>
                     {student.nivel || 'Sin nivel'}
                   </span>
                 </div>
               </div>
             </div>
+            <div className="mt-4 pt-3 border-t border-border">
+              <p className="text-sm text-text-muted truncate">
+                {student.mail || 'Sin email'}
+              </p>
+            </div>
           </button>
         ))}
       </div>
 
-      {/* Paginación Mobile-First */}
+      {filteredStudents.length === 0 && !loading && (
+        <div className="text-center py-12 border-2 border-dashed border-border rounded-xl">
+          <p className="text-text-muted font-medium">No se encontraron alumnos</p>
+        </div>
+      )}
+
+      {/* Paginación */}
       {pagination.totalPages > 1 && (
         <div className="mt-8 flex flex-col items-center space-y-3">
           <div className="flex gap-4">
             <button
               onClick={() => handlePageChange(pagination.currentPage - 1)}
               disabled={!pagination.hasPrevPage}
-              className="flex items-center gap-2 py-3 px-6 rounded-md bg-bg-surface border border-border text-text font-bold active:scale-95 disabled:opacity-50"
+              className="flex items-center gap-2 py-3 px-6 rounded-md bg-bg-surface border border-border text-text font-bold active:scale-95 disabled:opacity-50 touch-manipulation"
             >
               <ChevronLeft size={20} /> Anterior
             </button>
             <button
               onClick={() => handlePageChange(pagination.currentPage + 1)}
               disabled={!pagination.hasNextPage}
-              className="flex items-center gap-2 py-3 px-6 rounded-md bg-bg-surface border border-border text-text font-bold active:scale-95 disabled:opacity-50"
+              className="flex items-center gap-2 py-3 px-6 rounded-md bg-bg-surface border border-border text-text font-bold active:scale-95 disabled:opacity-50 touch-manipulation"
             >
               Siguiente <ChevronRight size={20} />
             </button>
           </div>
-          <span className="text-sm text-text-muted font-medium">Página {pagination.currentPage} de {pagination.totalPages}</span>
+          <span className="text-sm font-medium text-text-muted">Página {pagination.currentPage} de {pagination.totalPages}</span>
         </div>
       )}
 
-      {/* Floating Action Button */}
+      {/* FAB - Agregar Alumno */}
       <button
         onClick={() => navigate('/agregar-alumno')}
-        className="fixed bottom-20 md:bottom-8 right-8 btn-primary p-4 rounded-full shadow-lg active:scale-90 z-50 flex items-center gap-2"
+        className="fixed bottom-20 md:bottom-8 right-8 bg-brandBlue text-white p-4 rounded-full shadow-lg hover:opacity-90 active:scale-90 transition-all z-50 flex items-center justify-center"
       >
-        <UserPlus size={24} />
+        <UserPlus size={24} strokeWidth={2} />
       </button>
     </div>
   )

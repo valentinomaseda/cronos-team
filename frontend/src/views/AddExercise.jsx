@@ -10,25 +10,14 @@ export default function AddExercise() {
   const [loading, setLoading] = useState(false)
   
   const [formData, setFormData] = useState({
-    name: '',
-    unidad: 'reps',
-    distancia: '',
-    duracion: '',
-    descripcionIntervalo: ''
+    name: '', unidad: 'reps', distancia: '', duracion: '', descripcionIntervalo: ''
   })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-
     try {
       await addExercise(formData)
       showAlert('Ejercicio creado exitosamente', 'success')
@@ -41,195 +30,70 @@ export default function AddExercise() {
   }
 
   return (
-    <div className="page-shell">
+    <div className="p-4 pb-32 md:pb-6 animate-fade-in">
       <div className="max-w-2xl mx-auto">
-        {/* Header */}
-        <div className="mb-6">
-          <button
+        <div className="flex items-center space-x-3 mb-6">
+          <button 
             onClick={() => navigate('/rutinas')}
-            className="flex items-center gap-2 btn-ghost mb-4"
+            className="p-2 bg-bg-surface border border-border text-text-muted rounded-md hover:text-text active:scale-95 transition-all touch-manipulation"
           >
-            <ArrowLeft size={20} />
-            <span>Volver a Rutinas</span>
+            <ArrowLeft size={20} strokeWidth={2} />
           </button>
-          <h1 className="title-screen flex items-center gap-3">
-            <Dumbbell className="text-brandBlue" size={36} />
-            Agregar Nuevo Ejercicio
-          </h1>
+          <Dumbbell className="text-brandBlue" size={28} strokeWidth={2} />
+          <h2 className="font-display text-2xl text-text uppercase">Nuevo Ejercicio</h2>
         </div>
 
-        {/* Formulario */}
-        <div className="surface-panel p-6 md:p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Nombre del Ejercicio */}
-            <div>
-              <label htmlFor="name" className="label-dark">
-                Nombre del Ejercicio *
-              </label>
+        <div className="bg-bg-surface rounded-xl shadow-sm p-6 border border-border">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-bold text-text">Nombre del Ejercicio *</label>
               <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                placeholder="Ej: Burpees, Sentadillas, Plancha..."
+                id="name" name="name" type="text" required
+                value={formData.name} onChange={handleChange}
+                placeholder="Ej: Pasadas 400m"
               />
             </div>
 
-            {/* Unidad de Medida */}
-            <div>
-              <label htmlFor="unidad" className="label-dark">
-                Unidad de Medida *
-              </label>
-              <CustomSelect
-                id="unidad"
-                name="unidad"
-                value={formData.unidad}
-                onChange={handleChange}
-                options={[
-                  { value: 'reps', label: 'Repeticiones' },
-                  { value: 'segundos', label: 'Segundos' },
-                  { value: 'minutos', label: 'Minutos' },
-                  { value: 'horas', label: 'Horas' },
-                  { value: 'km', label: 'Kilómetros' },
-                  { value: 'metros', label: 'Metros' }
-                ]}
-                required
-                className="text-lg"
-              />
-              <p className="text-sm text-text-muted mt-2">
-                Selecciona la unidad principal para este ejercicio. Las cantidades específicas se asignarán al agregar el ejercicio a una rutina.
-              </p>
-            </div>
-
-            {/* Distancia (para km o metros) */}
-            {(formData.unidad === 'km' || formData.unidad === 'metros') && (
-              <div>
-                <label htmlFor="distancia" className="label-dark">
-                  Distancia Predeterminada
-                </label>
-                <input
-                  id="distancia"
-                  name="distancia"
-                  type="text"
-                  value={formData.distancia}
-                  onChange={handleChange}
-                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                  placeholder="Ej: 5, 10, 21..."
-                />
-                <p className="text-sm text-text-muted mt-2">
-                  Opcional: Define una distancia por defecto (solo número, sin unidad)
-                </p>
-              </div>
-            )}
-
-            {/* Duración (para tiempo) */}
-            {(formData.unidad === 'segundos' || formData.unidad === 'minutos' || formData.unidad === 'horas') && (
-              <div>
-                <label htmlFor="duracion" className="label-dark">
-                  Duración Predeterminada
-                </label>
-                <input
-                  id="duracion"
-                  name="duracion"
-                  type="text"
-                  value={formData.duracion}
-                  onChange={handleChange}
-                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                  placeholder="Ej: 30, 5, 90..."
-                />
-                <p className="text-sm text-text-muted mt-2">
-                  Opcional: Define una duración por defecto (solo número, sin unidad)
-                </p>
-              </div>
-            )}
-
-            {/* Descripción de Intervalo */}
-            <div>
-              <label htmlFor="descripcionIntervalo" className="label-dark">
-                Descripción de Intervalos
-              </label>
-              <textarea
-                id="descripcionIntervalo"
-                name="descripcionIntervalo"
-                value={formData.descripcionIntervalo}
-                onChange={handleChange}
-                rows="3"
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                placeholder="Ej: 3' suaves x 3' fuertes, rápidos km 4, 8 y 12..."
-              />
-              <p className="text-sm text-text-muted mt-2">
-                Opcional: Especifica intervalos, ritmos o detalles adicionales del ejercicio
-              </p>
-            </div>
-
-            {/* Vista Previa */}
-            <div className="surface-brand rounded-lg p-6">
-              <h3 className="text-sm font-semibold text-text-muted mb-3">Vista Previa:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <p className="text-xl font-bold text-text">
-                  {formData.name || 'Nombre del Ejercicio'}
-                </p>
-                <p className="text-lg text-text-muted">
-                  Unidad: <span className="font-semibold text-brandBlue">
-                    {formData.unidad === 'reps' ? 'Repeticiones' : 
-                     formData.unidad === 'segundos' ? 'Segundos' :
-                     formData.unidad === 'minutos' ? 'Minutos' :
-                     formData.unidad === 'horas' ? 'Horas' :
-                     formData.unidad === 'km' ? 'Kilómetros' :
-                     'Metros'}
-                  </span>
-                </p>
-                {formData.distancia && (
-                  <p className="text-base text-text-muted">
-                    Distancia: <span className="font-semibold text-brandBlue">
-                      {formData.distancia} {formData.unidad === 'km' ? 'km' : 'metros'}
-                    </span>
-                  </p>
-                )}
-                {formData.duracion && (
-                  <p className="text-base text-text-muted">
-                    Duración: <span className="font-semibold text-brandBlue">
-                      {formData.duracion} {formData.unidad === 'segundos' ? 'segundos' : formData.unidad === 'minutos' ? 'minutos' : 'horas'}
-                    </span>
-                  </p>
-                )}
-                {formData.descripcionIntervalo && (
-                  <p className="text-base text-text-muted">
-                    Intervalos: <span className="font-semibold text-brandBlue">{formData.descripcionIntervalo}</span>
-                  </p>
-                )}
+                <label className="block text-sm font-bold text-text">Unidad Principal</label>
+                <CustomSelect
+                  name="unidad" value={formData.unidad} onChange={handleChange}
+                  options={[
+                    { value: 'reps', label: 'Repeticiones' },
+                    { value: 'segundos', label: 'Segundos' },
+                    { value: 'minutos', label: 'Minutos' },
+                    { value: 'horas', label: 'Horas' },
+                    { value: 'km', label: 'Kilómetros' },
+                    { value: 'metros', label: 'Metros' }
+                  ]}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="distancia" className="block text-sm font-bold text-text">Distancia Predeterminada (Opcional)</label>
+                <input
+                  id="distancia" name="distancia" type="number" step="0.01" min="0"
+                  value={formData.distancia} onChange={handleChange}
+                  placeholder="Ej: 5 (km)"
+                />
               </div>
             </div>
 
             {/* Botones */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border mt-6">
               <button
-                type="button"
-                onClick={() => navigate('/rutinas')}
-                disabled={loading}
-                className="flex-1 btn-secondary disabled:opacity-50"
+                type="button" onClick={() => navigate('/rutinas')} disabled={loading}
+                className="w-full sm:w-1/3 bg-bg border border-border text-text font-bold py-3 rounded-md active:scale-95 transition-all disabled:opacity-50"
               >
                 Cancelar
               </button>
               <button
-                type="submit"
-                disabled={loading}
-                className="flex-1 btn-primary disabled:opacity-50 flex items-center justify-center gap-2"
+                type="submit" disabled={loading}
+                className="w-full sm:w-2/3 bg-primary text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 active:scale-95 transition-all disabled:opacity-50"
               >
-                {loading ? (
-                  <>
-                    <Loader2 className="animate-spin" size={20} />
-                    Guardando...
-                  </>
-                ) : (
-                  <>
-                    <Dumbbell size={20} />
-                    Crear Ejercicio
-                  </>
-                )}
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <Dumbbell size={20} strokeWidth={2} />}
+                <span>{loading ? 'Guardando...' : 'Crear Ejercicio'}</span>
               </button>
             </div>
           </form>

@@ -48,7 +48,7 @@ export default function Sidebar() {
       <div className="p-6 border-b border-border-accent animate-fade-in delay-200">
         <p className="text-lg font-bold text-brandBlue">{dashboardTitle}</p>
         {user?.nombre && (
-          <p className="text-sm text-text mt-1">Bienvenido, {user.nombre.split(' ')[0]}</p>
+          <p className="text-sm text-text mt-1">Bienvenido, Amilcar</p>
         )}
       </div>
 

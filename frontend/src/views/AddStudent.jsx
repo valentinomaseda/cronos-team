@@ -10,27 +10,15 @@ export default function AddStudent() {
   const [loading, setLoading] = useState(false)
   
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    gender: 'masculino',
-    phone: '',
-    weight: '',
-    height: '',
-    address: '',
-    birthDate: ''
+    name: '', email: '', gender: 'masculino', phone: '',
+    weight: '', height: '', address: '', birthDate: ''
   })
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-
     try {
       await addStudent(formData)
       showAlert('Alumno creado exitosamente', 'success')
@@ -43,186 +31,99 @@ export default function AddStudent() {
   }
 
   return (
-    <div className="page-shell pb-40 md:pb-6">
-      <div className="max-w-3xl mx-auto">
-        {/* Header */}
-        <div className="mb-6">
-          <button
+    <div className="p-4 pb-32 md:pb-6 animate-fade-in">
+      <div className="max-w-2xl mx-auto">
+        <div className="flex items-center space-x-3 mb-6">
+          <button 
             onClick={() => navigate('/alumnos')}
-            className="flex items-center gap-2 btn-ghost mb-4"
+            className="p-2 bg-bg-surface border border-border text-text-muted rounded-md hover:text-text active:scale-95 transition-all touch-manipulation"
           >
-            <ArrowLeft size={20} />
-            <span>Volver a Alumnos</span>
+            <ArrowLeft size={20} strokeWidth={2} />
           </button>
-          <h1 className="title-screen flex items-center gap-3">
-            <UserPlus className="text-brandBlue" size={36} />
-            Agregar Nuevo Alumno
-          </h1>
+          <UserPlus className="text-brandBlue" size={28} strokeWidth={2} />
+          <h2 className="font-display text-2xl text-text uppercase">Nuevo Alumno</h2>
         </div>
 
-        {/* Formulario */}
-        <div className="surface-panel p-6 md:p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Nombre */}
-            <div>
-              <label htmlFor="name" className="label-dark">
-                Nombre Completo *
-              </label>
+        <div className="bg-bg-surface rounded-xl shadow-sm p-6 border border-border">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Campos principales */}
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-bold text-text">Nombre Completo *</label>
               <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                placeholder="Juan Pérez"
+                id="name" name="name" type="text" required
+                value={formData.name} onChange={handleChange}
+                placeholder="Ej: Juan Pérez"
               />
             </div>
 
-            {/* Email */}
-            <div>
-              <label htmlFor="email" className="label-dark">
-                Correo Electrónico *
-              </label>
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-bold text-text">Email *</label>
               <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
+                id="email" name="email" type="email" required
+                value={formData.email} onChange={handleChange}
                 placeholder="juan@email.com"
               />
             </div>
 
-            {/* Género */}
-            <div>
-              <label htmlFor="gender" className="label-dark">
-                Género *
-              </label>
-              <CustomSelect
-                id="gender"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                options={[
-                  { value: 'masculino', label: 'Masculino' },
-                  { value: 'femenino', label: 'Femenino' }
-                ]}
-                required
-                className="text-lg"
-              />
-            </div>
-
-            {/* Teléfono */}
-            <div>
-              <label htmlFor="phone" className="label-dark">
-                Teléfono
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                placeholder="+54 9 11 1234-5678"
-              />
-            </div>
-
-            {/* Peso y Altura */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="weight" className="label-dark">
-                  Peso (kg)
-                </label>
-                <input
-                  id="weight"
-                  name="weight"
-                  type="number"
-                  step="0.1"
-                  value={formData.weight}
-                  onChange={handleChange}
-                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                  placeholder="70"
+            {/* Grid para datos físicos */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-text">Género</label>
+                <CustomSelect
+                  name="gender" value={formData.gender} onChange={handleChange}
+                  options={[
+                    { value: 'masculino', label: 'Masculino' },
+                    { value: 'femenino', label: 'Femenino' },
+                    { value: 'otro', label: 'Otro' }
+                  ]}
                 />
               </div>
 
-              <div>
-                <label htmlFor="height" className="label-dark">
-                  Altura (cm)
-                </label>
+              <div className="space-y-2">
+                <label htmlFor="birthDate" className="block text-sm font-bold text-text">Fecha Nacimiento *</label>
                 <input
-                  id="height"
-                  name="height"
-                  type="number"
-                  value={formData.height}
-                  onChange={handleChange}
-                  className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                  placeholder="175"
+                  id="birthDate" name="birthDate" type="date" required
+                  value={formData.birthDate} onChange={handleChange}
+                  className="w-full bg-bg-surface border border-border text-text rounded-md px-4 py-3"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="weight" className="block text-sm font-bold text-text">Peso (kg)</label>
+                <input
+                  id="weight" name="weight" type="number" step="0.1" min="30" max="200"
+                  value={formData.weight} onChange={handleChange}
+                  placeholder="Ej: 70.5"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="height" className="block text-sm font-bold text-text">Altura (cm)</label>
+                <input
+                  id="height" name="height" type="number" min="100" max="250"
+                  value={formData.height} onChange={handleChange}
+                  placeholder="Ej: 175"
                 />
               </div>
             </div>
 
-            {/* Fecha de Nacimiento */}
-            <div>
-              <label htmlFor="birthDate" className="label-dark">
-                Fecha de Nacimiento
-              </label>
-              <input
-                id="birthDate"
-                name="birthDate"
-                type="date"
-                value={formData.birthDate}
-                onChange={handleChange}
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-              />
-            </div>
-
-            {/* Dirección */}
-            <div>
-              <label htmlFor="address" className="label-dark">
-                Dirección
-              </label>
-              <input
-                id="address"
-                name="address"
-                type="text"
-                value={formData.address}
-                onChange={handleChange}
-                className="text-text bg-bg w-full px-4 py-3 border-2 border-border rounded-lg focus:ring-2 focus:ring-brandBlue focus:border-transparent text-lg"
-                placeholder="Av. Corrientes 1234, CABA"
-              />
-            </div>
-
-            {/* Botones */}
-            <div className="flex gap-4 pt-4">
+            {/* Botones de Acción */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-border mt-6">
               <button
                 type="button"
                 onClick={() => navigate('/alumnos')}
                 disabled={loading}
-                className="flex-1 btn-secondary disabled:opacity-50"
+                className="w-full sm:w-1/3 bg-bg border border-border text-text font-bold py-3 rounded-md active:scale-95 transition-all disabled:opacity-50"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 btn-primary disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full sm:w-2/3 bg-brandBlue text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 active:scale-95 transition-all disabled:opacity-50"
               >
-                {loading ? (
-                  <>
-                    <Loader2 className="animate-spin" size={20} />
-                    Guardando...
-                  </>
-                ) : (
-                  <>
-                    <UserPlus size={20} />
-                    Crear Alumno
-                  </>
-                )}
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <UserPlus size={20} strokeWidth={2} />}
+                <span>{loading ? 'Guardando...' : 'Crear Alumno'}</span>
               </button>
             </div>
           </form>
